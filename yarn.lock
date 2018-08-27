@@ -72,6 +72,10 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
+Faker@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/Faker/-/Faker-0.7.2.tgz#c2474bc77bb1d78018b6877d307bd7fdf082fb14"
+
 abab@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
