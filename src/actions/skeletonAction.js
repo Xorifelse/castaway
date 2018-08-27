@@ -1,4 +1,4 @@
-export const SKELETON_ACTION = 'SKELETON_ACTION'
+export const SET_ = 'SKELETON_ACTION'
 
 export function skeletonAction(param) {
   return {
