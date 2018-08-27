@@ -8,12 +8,18 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 
+// import { allthepeople } from '../lib/People'
+
 function RegisterWho(props) {
   return (
     <Grid container spacing={16} direction="column" justify="center" alignItems="center">
       <Grid item>
         <Typography variant="headline" component="h2">
-          Are you a traveller or local? 
+          Are you a traveller or local?
+          {/* <br />
+          <ul>
+            {allthepeople.map(person => <li key={person.id}> {person.name} </li>)}
+          </ul> */}
         </Typography>
       </Grid>
     </Grid>
