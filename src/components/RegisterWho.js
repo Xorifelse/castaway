@@ -15,6 +15,10 @@ function RegisterWho(props) {
         <Typography variant="headline" component="h2">
           Are you a traveller or local? 
         </Typography>
+        <Grid container spacing={16} direction="row" justify="center" alignItems="center">
+          <Grid><Button onClick={() => props.setTypeBtn('traveller')}>Traveller</Button></Grid>
+          <Grid><Button onClick={() => props.setTypeBtn('local')}>Local</Button></Grid>
+        </Grid>
       </Grid>
     </Grid>
   )
