@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 import {Switch, Route, Link} from 'react-router-dom'
 
-import Skeleton from './components/SkeletonContainer'
+import RegisterWhoContainer from './components/RegisterWhoContainer';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Skeleton />
+        <RegisterWhoContainer />
       </div>
     );
   }
