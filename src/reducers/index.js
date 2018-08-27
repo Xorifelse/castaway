@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import skeleton from './skeleton'
+import user from './user'
 
 export default combineReducers({
-  skeleton
+  user
 })
