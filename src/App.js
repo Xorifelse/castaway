@@ -14,6 +14,7 @@ class App extends Component {
         
         <RegisterLocal /> {/* FIX ME: use routing */}
         {/* <Route path="/chooseLocation" component={RegisterLocal} /> */}
+        
       </div>
     );
   }
