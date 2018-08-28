@@ -11,7 +11,15 @@ class RegisterWhoContainer extends React.PureComponent {
   }
 
   render() {
-    return <RegisterWho setTypeBtn={this.props.setUserType}/>
+    return (
+        <RegisterWho 
+          userObj={this.props.user}
+          setTypeBtn={this.props.setUserType} 
+          userType={this.props.user.type}
+          setLookingForBtn={this.props.setLookingFor}
+          />
+
+    )
   }
 }
 

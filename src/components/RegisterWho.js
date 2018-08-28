@@ -8,19 +8,47 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 
+const displayLookingFor = (propsA) => {
+  return (
+    <Grid item>
+    <Typography variant="headline" component="h2">
+      What are you looking for? 
+    </Typography>
+    <Grid container spacing={16} direction="row" justify="center" alignItems="center">
+      <Grid><Button onClick={() => propsA.setLookingForBtn('traveller')} variant="contained" color="primary">Traveller</Button></Grid>
+      <Grid><Button onClick={() => propsA.setLookingForBtn('local')} variant="contained" color="primary">Local</Button></Grid>
+    </Grid>
+  </Grid>
+  )
+}
+
 function RegisterWho(props) {
   return (
     <Grid container spacing={16} direction="column" justify="center" alignItems="center">
+      <Grid item>
+      <Typography variant="headline" component="h2">
+          What's your name? 
+        </Typography>
+        <Grid container spacing={16} direction="row" justify="center" alignItems="center">
+          <Grid item>
+            {/* input */}
+          </Grid>
+        </Grid>
+      </Grid>
       <Grid item>
         <Typography variant="headline" component="h2">
           Are you a traveller or local? 
         </Typography>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid><Button onClick={() => props.setTypeBtn('traveller')}>Traveller</Button></Grid>
-          <Grid><Button onClick={() => props.setTypeBtn('local')}>Local</Button></Grid>
+          <Grid><Button onClick={() => props.setTypeBtn('traveller')} variant="contained" color="primary">Traveller</Button></Grid>
+          <Grid><Button onClick={() => props.setTypeBtn('local')} variant="contained" color="primary">Local</Button></Grid>
         </Grid>
       </Grid>
+      {/* only display below if user.type is set */}
+      {(props.userObj.type !== '' && props.userObj.type !== 'local') && displayLookingFor(props)}
+
     </Grid>
+    
   )
 }
 
