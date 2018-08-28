@@ -9,10 +9,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Redirect from="/" to="/who" />
-        <Route path="/who" component={RegisterWhoContainer} />
+        <Route exact path="/" render={() => (<Redirect to="/who" />)} />
+        <Route exact path="/who" component={RegisterWhoContainer} />
 
-        <Route path="/chooseLocation" component={RegisterLocal} />
+        <Route exact path="/chooseLocation" component={RegisterLocal} />
       </div>
     );
   }
