@@ -5,6 +5,7 @@ export const allthepeople = [
     type: 'traveller',
     location: 'Amsterdam',
     hobbies: ['soccer', 'craft beers'],
+    group: false,
     date_from: '2018-09-01',
     date_to: '2018-09-28',
     age: 36,
