@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { allthepeople } from '../lib/People'
 import SearchMatches from './SearchMatches'
-import {pushDbResults, PUSH_DB_RESULTS} from '../actions/db'
+import {pushDbResults} from '../actions/db'
 import db from '../lib/db_init'
 
 
