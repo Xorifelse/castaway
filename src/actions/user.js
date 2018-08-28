@@ -30,3 +30,11 @@ export function setLocation(location) {
     payload: location
   }
 }
+
+export const SET_GROUP = 'SET_GROUP'
+export function setGroup(group) {
+  return {
+    type: SET_GROUP,
+    payload: group
+  }
+}

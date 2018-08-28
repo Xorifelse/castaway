@@ -1,4 +1,4 @@
-import {SET_USERTYPE, SET_USERNAME, SET_LOOKINGFOR, SET_LOCATION} from '../actions/user'
+import {SET_USERTYPE, SET_USERNAME, SET_LOOKINGFOR, SET_LOCATION, SET_GROUP} from '../actions/user'
 
 const initialState = {
   type: '',
@@ -6,7 +6,7 @@ const initialState = {
   lookingFor: '',
   location: '',
   age: 0,
-  group: false,
+  group: null,
   dateFrom: '',
   dateTo: '',
   hobbies: [],
@@ -31,6 +31,10 @@ export default (state = '', action = {}) => {
     case SET_LOCATION:
       return {
         ...state, location: action.payload
+      }
+    case SET_GROUP:
+      return {
+        ...state, group: action.payload
       }
     default:
       return initialState
