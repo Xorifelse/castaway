@@ -22,23 +22,42 @@ const people = (pushDbResultsAction) => {
         })
 }
 
-const allLocations = (peopleArr) => peopleArr.map(memb => {
-    return memb.location
-})
+
 
 class RegisterLocalContainer extends React.PureComponent {
 
     componentDidMount() {
-        people(this.props.pushDbResults)
+        // if (this.props.db.dbResults.length === 0) {
+            people(this.props.pushDbResults)
+        // }
     }
 
     componentDidUpdate() {
         // console.log(this.props.db.dbResults)
+        console.log('location', this.props.user.location)
     }
+
+    allLocations = (peopleArr) => peopleArr.map(memb => {
+        return memb.location
+    })
+
+    buttonContained = (city) => {
+        if (this.props.user.location === city) {
+            return 'contained'
+        } else {
+            return 'outlined'
+        }
+    }
+
     render() {
-        if (this.props.db.dbResults.length === 0) return 'getting available cities...'
-        return <RegisterLocal cities={allLocations(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)}
-            setLocation={this.props.setLocation} />
+        // if (this.props.db.dbResults.length === 0) return 'getting available cities...'
+        return (
+          <RegisterLocal 
+            cities={this.allLocations(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)}
+            setLocationFn={this.props.setLocation} 
+            buttonContainedFn={this.buttonContained}
+            />
+        )
     }
 }
 
