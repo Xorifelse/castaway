@@ -1,8 +1,8 @@
 
-export const PUSH_DB_RESULTS = 'PUSH_DB_RESULTS'
+export const FETCH_DB_RESULTS = 'FETCH_DB_RESULTS'
 export function pushDbResults(resultsArray) {
   return {
-    type: PUSH_DB_RESULTS,
+    type: FETCH_DB_RESULTS,
     payload: resultsArray
   }
 }

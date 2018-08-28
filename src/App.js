@@ -15,9 +15,9 @@ class App extends Component {
       <div className="App">
         <Route exact path="/" render={() => (<Redirect to="/who" />)} />
         <Route exact path="/who" component={RegisterWhoContainer} />
-        <Route exact path="/chooseLocation" component={RegisterLocal} />
+        <Route exact path="/localLocation" component={RegisterLocal} />
         <Route exact path="/when" component={RegisterDatePickerContainer} />
-        <Route exact path="/seachMatches" component={SearchMatchesContainer} />
+        <Route exact path="/search" component={SearchMatchesContainer} />
       </div>
     );
   }

@@ -62,16 +62,16 @@ function RegisterWho(props) {
         </Typography>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
           <Grid item><Button onClick={() => props.setTypeBtn('traveller')} variant={props.btnTypeTrav} color="primary">Traveller</Button></Grid>
-          <Grid item><Button onClick={() => props.setTypeBtn('local')} variant={props.btnTypeLoc} color="primary">Local</Button></Grid>
+          <Grid item><Button onClick={() => props.setIfLocal('local')} variant={props.btnTypeLoc} color="primary">Local</Button></Grid>
         </Grid>
       </Grid>
       {/* only display below if user.type is set */}
       {(props.userObj.type !== '' && props.userObj.type !== 'local') && displayLookingFor(props)}
       {(props.userObj.lookingFor !== '' || props.userObj.type === 'local') && displayGroup(props)}
       <Grid item>
-        <Link to="/chooseLocation">
-          <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' && props.userObj.group !== null) ? false : true} variant='outlined' color="primary">Next</Button>
-        </Link>
+        
+          <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' && props.userObj.group !== null) ? false : true} variant='outlined' color="primary"><Link to="/localLocation">Next</Link></Button>
+        
       </Grid>
     </Grid>
     
