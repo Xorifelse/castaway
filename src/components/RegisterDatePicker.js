@@ -10,14 +10,61 @@ import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField';
 
 
-function stepTwo(props){
-  console.log(props.dateFrom)
+function formatDate(date) {
+  var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) month = '0' + month;
+  if (day.length < 2) day = '0' + day;
+
+  return [year, month, day].join('-');
+}
+
+function stepThree(props){
+  const { classes, user} = props
+
+  if (!user.dateFrom || !user.dateTo){
+    return null
+  }
+
+  return (
+    <Grid container spacing={16} direction="row" justify="center" alignItems="right">
+      <Grid><Button onClick={() => props.next()} variant="contained" color="primary">Continue</Button></Grid>
+    </Grid>
+  )
+}
+
+function stepTwo(props) {
+  const { classes, user, defaultValue, onChangeUntilFn } = props;
+
+  if (!user.dateFrom) {
+    return null
+  }
+
+  return (
+    <Grid item>
+      <form className={classes.container} noValidate>
+        <TextField
+          id="date"
+          label="Until"
+          type="date"
+          defaultValue={formatDate(props.defaultUntil)}
+          className={classes.textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={(e) => onChangeUntilFn(e)}
+        />
+      </form>
+    </Grid>
+
+  )
 }
 
 function RegisterDatePicker(props) {
-  const { classes, onChangeFromFn, onChangeUntilFn } = props;
-
-  console.log(props)
+  const { classes, onChangeFromFn } = props;
 
   return (
     <Grid container spacing={16} direction="column" justify="center" alignItems="center">
@@ -34,25 +81,12 @@ function RegisterDatePicker(props) {
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={(e) => onChangeFromFn(e, props)}
+            onChange={(e) => props.onChangeFromFn(e)}
           />
         </form>
       </Grid>
-      <Grid item>
-        <form className={classes.container} noValidate>
-          <TextField
-            id="date"
-            label="Until"
-            type="date"
-            defaultValue={props.defaultValue}
-            className={classes.textField}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={(e) => onChangeUntilFn(e)}
-          />
-        </form>
-      </Grid>
+      {stepTwo(props)}
+      {stepThree(props)}
     </Grid>
 
   )
