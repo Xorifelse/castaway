@@ -17,7 +17,7 @@ const displayLookingFor = (props) => {
   return (
     <Grid item>
     <Typography variant="headline" component="h2">
-      What are you looking for? 
+      Looking for a... 
     </Typography>
     <Grid container spacing={16} direction="row" justify="center" alignItems="center">
       <Grid item><Button onClick={() => props.setLookingForBtn('traveller')} variant={props.btnLookingTrav} color="primary">Traveller</Button></Grid>
@@ -46,11 +46,15 @@ function RegisterWho(props) {
   return (
     <Grid container spacing={16} direction="column" justify="center" alignItems="center">
       <Grid item>
+      <Typography>
+          Hi! I don't think we've met yet. 
+        </Typography>
       <Typography variant="headline" component="h2">
-          What's your name? 
+          Who are you? 
         </Typography>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
           <Grid item>
+            <Typography>Hi, my name is...</Typography>
             {/* input */}
             <TextField id="name" value={props.inputValue} onChange={(event) => props.inputChangeFn(event)} />
           </Grid>
@@ -58,7 +62,7 @@ function RegisterWho(props) {
       </Grid>
       <Grid item>
         <Typography variant="headline" component="h2">
-          Are you a traveller or local?
+          and I'm a...
         </Typography>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
           <Grid item><Button onClick={() => props.setTypeBtn('traveller')} variant={props.btnTypeTrav} color="primary">Traveller</Button></Grid>
