@@ -169,11 +169,23 @@ const hobbys = [
 
 
 const getHobbysMatchingString = (input) => {
+  /* Great to interact and enlist when user is typing a hobby, showing suggestions
+  /*
+  /* @input = string
+  /* @output = array of hobbys matching input
+  */
   return hobbys.filter((elm) => elm.includes(input))
 }
 
 const getRandomHobbys = (max = 10) => {
-  // https://stackoverflow.com/a/49479872/4982088
+  /* Returns an array of @max random hobbys
+  /*
+  /* @input = integer
+  /* @output = array of n random hobbys
+  /*
+  /* https://stackoverflow.com/a/49479872/4982088
+  */ 
+
   return hobbys
     .map(x => ({ x, r: Math.random() }))
     .sort((a, b) => a.r - b.r)
