@@ -10,15 +10,6 @@ import {setDateFrom, setDateUntil} from '../actions/user'
 
 
 class RegisterDatePickerContainer extends React.PureComponent {
-  componentDidMount(){
-
-
-  }
-
-  buttonNext(){
-
-  }
-
   handleFrom = (e) => {
     let d = new Date(e.target.value)
     if(d.getTime() >= (new Date().getTime())){
@@ -45,7 +36,6 @@ class RegisterDatePickerContainer extends React.PureComponent {
         user={this.props.user}
         onChangeFromFn={this.handleFrom}
         onChangeUntilFn={this.handleUntil}
-        next={this.buttonNext}
       />
     )
   }

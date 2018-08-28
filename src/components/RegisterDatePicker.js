@@ -9,6 +9,8 @@ import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField';
 
+import {Link} from 'react-router-dom'
+
 
 function formatDate(date) {
   var d = new Date(date),
@@ -31,7 +33,7 @@ function stepThree(props){
 
   return (
     <Grid container spacing={16} direction="row" justify="center" alignItems="right">
-      <Grid><Button onClick={() => props.next()} variant="contained" color="primary">Continue</Button></Grid>
+      <Grid><Link to="/feed"><Button variant="contained" color="primary">Continue</Button></Link></Grid>
     </Grid>
   )
 }
