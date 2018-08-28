@@ -3,19 +3,41 @@ import { connect } from 'react-redux'
 import { allthepeople } from '../lib/People'
 import RegisterLocal from './RegisterLocal'
 import { setLocation } from '../actions/user'
+import {pushDbResults} from '../actions/db'
+import db from '../lib/db_init'
 
 
-const a = (allthepeople) => allthepeople.map(memb => {
+const people = (pushDbResultsAction) => {
+    let tmp = db.collection("people")
+        .get()
+        .then(querySnapshot => {
+            
+            const results = querySnapshot.docs.map(function (doc) {
+                return doc.data()
+            });
+            pushDbResultsAction(results)
+        })
+        .catch(function (error) {
+            console.log("Error getting documents: ", error);
+        })
+}
+
+const a = (peopleArr) => peopleArr.map(memb => {
     return memb.location
 })
 
 class RegisterLocalContainer extends React.PureComponent {
 
     componentDidMount() {
+        people(this.props.pushDbResults)
+    }
 
+    componentDidUpdate() {
+        console.log(this.props.db.dbResults)
     }
     render() {
-        return <RegisterLocal cities={a(allthepeople).filter((item, pos, self) => self.indexOf(item) == pos)}
+        if (this.props.db.dbResults.length === 0) return 'getting available cities...'
+        return <RegisterLocal cities={a(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)}
             setLocation={this.props.setLocation} />
     }
 }
@@ -23,8 +45,9 @@ class RegisterLocalContainer extends React.PureComponent {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user
+        user: state.user,
+        db: state.db
     }
 }
 
-export default connect(mapStateToProps, { setLocation })(RegisterLocalContainer)
+export default connect(mapStateToProps, { setLocation, pushDbResults })(RegisterLocalContainer)

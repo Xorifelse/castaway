@@ -48,6 +48,7 @@ export default (state = '', action = {}) => {
     case SET_DATE_UNTIL:
       return {
         ...state, dateTo: action.payload
+      }
     case SET_GROUP:
       return {
         ...state, group: action.payload
