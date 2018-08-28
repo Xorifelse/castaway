@@ -30,3 +30,20 @@ export function setLocation(location) {
     payload: location
   }
 }
+
+export const SET_DATE_FROM = 'SET DATE FROM'
+export function setDateFrom(datetime) {
+  return {
+    type: SET_DATE_FROM,
+    payload: datetime
+  }
+}
+
+export const SET_DATE_UNTIL = 'SET DATE UNTIL'
+export function setDateUntil(datetime) {
+  return {
+    type: SET_DATE_UNTIL,
+    payload: datetime
+  }
+}
+

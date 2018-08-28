@@ -7,37 +7,67 @@ import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField';
 
+
+function stepTwo(props){
+  console.log(props.dateFrom)
+}
 
 function RegisterDatePicker(props) {
+  const { classes, onChangeFromFn, onChangeUntilFn } = props;
+
+  console.log(props)
+
   return (
     <Grid container spacing={16} direction="column" justify="center" alignItems="center">
+      <Grid item>
+        <Typography variant="headline" component="h2">When are you traveling</Typography>
+      </Grid>
+      <Grid item>
+        <form className={classes.container} noValidate>
+          <TextField
+            id="date"
+            label="From"
+            type="date"
+            className={classes.textField}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={(e) => onChangeFromFn(e, props)}
+          />
+        </form>
+      </Grid>
+      <Grid item>
+        <form className={classes.container} noValidate>
+          <TextField
+            id="date"
+            label="Until"
+            type="date"
+            defaultValue={props.defaultValue}
+            className={classes.textField}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={(e) => onChangeUntilFn(e)}
+          />
+        </form>
+      </Grid>
     </Grid>
-    
+
   )
 }
 
-const styles = {
-  card: {
-    minWidth: 150
+const styles = theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
   },
-  title: {
-    marginBottom: 16,
-    fontSize: 14,
-  },
-  pos: {
-    // marginBottom: 24,
-  },
-  header: {
-    marginTop: 16,
-    marginBottom: 16,
-    fontSize: 48
-  }
-}
+});
 
 export default withStyles(styles)(RegisterDatePicker)

@@ -1,4 +1,11 @@
-import {SET_USERTYPE, SET_USERNAME, SET_LOOKINGFOR, SET_LOCATION} from '../actions/user'
+import {
+  SET_USERTYPE,
+  SET_USERNAME,
+  SET_LOOKINGFOR,
+  SET_LOCATION,
+  SET_DATE_FROM,
+  SET_DATE_UNTIL
+} from '../actions/user'
 
 const initialState = {
   type: '',
@@ -31,6 +38,14 @@ export default (state = '', action = {}) => {
     case SET_LOCATION:
       return {
         ...state, location: action.payload
+      }
+    case SET_DATE_FROM:
+      return {
+        ...state, dateFrom: action.payload
+      }
+    case SET_DATE_UNTIL:
+      return {
+        ...state, dateTo: action.payload
       }
     default:
       return initialState

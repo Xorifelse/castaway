@@ -6,15 +6,17 @@ import RegisterWhoContainer from './components/RegisterWhoContainer';
 import RegisterLocal from './components/RegisterLocalContainer';
 import RegisterDatePickerContainer from './components/RegisterDatePickerContainer';
 
+// <Redirect from="/" to="/who" />
+
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Redirect from="/" to="/who" />
+        
         <Route path="/who" component={RegisterWhoContainer} />
 
         <Route path="/chooseLocation" component={RegisterLocal} />
-        <Route path="/selectdate" component={RegisterDatePickerContainer} />
+        <Route path="/when" component={RegisterDatePickerContainer} />
       </div>
     );
   }
