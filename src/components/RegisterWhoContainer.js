@@ -5,9 +5,25 @@ import {setUserType, setUserName, setLookingFor, setLocation} from '../actions/u
 
 
 class RegisterWhoContainer extends React.PureComponent {
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     name: ''
+  //   }
+  // }
 
   componentDidMount(){
-    
+  }
+
+  componentDidUpdate() {
+    // this.props.setUserName(this.state.name)
+  }
+
+  handleInputChange = (event) => {
+    // this.setState({
+    //   name: event.target.value
+    // })
+    this.props.setUserName(event.target.value)
   }
 
   render() {
@@ -17,6 +33,8 @@ class RegisterWhoContainer extends React.PureComponent {
           setTypeBtn={this.props.setUserType} 
           userType={this.props.user.type}
           setLookingForBtn={this.props.setLookingFor}
+          inputChangeFn={this.handleInputChange}
+          inputValue={this.props.user.name}
           />
 
     )
