@@ -6,8 +6,17 @@ import {setUserType, setUserName, setLookingFor, setLocation} from '../actions/u
 
 class RegisterWhoContainer extends React.PureComponent {
 
+
   componentDidMount(){
-    
+  }
+
+  componentDidUpdate() {
+
+  }
+
+  handleInputChange = (event) => {
+
+    this.props.setUserName(event.target.value)
   }
 
   render() {
@@ -17,6 +26,8 @@ class RegisterWhoContainer extends React.PureComponent {
           setTypeBtn={this.props.setUserType} 
           userType={this.props.user.type}
           setLookingForBtn={this.props.setLookingFor}
+          inputChangeFn={this.handleInputChange}
+          inputValue={this.props.user.name}
           />
 
     )
