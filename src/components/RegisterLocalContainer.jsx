@@ -22,7 +22,7 @@ const people = (pushDbResultsAction) => {
         })
 }
 
-const a = (peopleArr) => peopleArr.map(memb => {
+const allLocations = (peopleArr) => peopleArr.map(memb => {
     return memb.location
 })
 
@@ -33,11 +33,11 @@ class RegisterLocalContainer extends React.PureComponent {
     }
 
     componentDidUpdate() {
-        console.log(this.props.db.dbResults)
+        // console.log(this.props.db.dbResults)
     }
     render() {
         if (this.props.db.dbResults.length === 0) return 'getting available cities...'
-        return <RegisterLocal cities={a(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)}
+        return <RegisterLocal cities={allLocations(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)}
             setLocation={this.props.setLocation} />
     }
 }

@@ -1,12 +1,13 @@
-import {FETCH_DB_RESULTS} from '../actions/db'
+import {FETCH_ALL_DB} from '../actions/db'
 
 const initialState = {
-  dbResults: []
+  dbResults: [],
+  dbMatches: []
 }
 
 export default (state = '', action = {}) => {
   switch (action.type){
-    case FETCH_DB_RESULTS:
+    case FETCH_ALL_DB:
       return {
         ...state,
         dbResults: action.payload
