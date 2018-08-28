@@ -17,10 +17,12 @@ const initialState = {
 export default (state = '', action = {}) => {
   switch (action.type){
     case SET_USERTYPE:
+    console.log('reducer for type is called')
       return {
         ...state, type: action.payload
       }
     case SET_USERNAME:
+    console.log('reducer for name is called')
       return {
         ...state, name: action.payload
       }
