@@ -5,24 +5,17 @@ import {setUserType, setUserName, setLookingFor, setLocation} from '../actions/u
 
 
 class RegisterWhoContainer extends React.PureComponent {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     name: ''
-  //   }
-  // }
+
 
   componentDidMount(){
   }
 
   componentDidUpdate() {
-    // this.props.setUserName(this.state.name)
+
   }
 
   handleInputChange = (event) => {
-    // this.setState({
-    //   name: event.target.value
-    // })
+
     this.props.setUserName(event.target.value)
   }
 

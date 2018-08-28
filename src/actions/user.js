@@ -9,7 +9,6 @@ export function setUserType(type) {
 
 export const SET_USERNAME = 'SET_USERNAME'
 export function setUserName(name) {
-  console.log('setUsername action creator is called', name)
   return {
     type: SET_USERNAME,
     payload: name
