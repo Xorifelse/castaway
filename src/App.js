@@ -12,11 +12,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        
-        <Route path="/who" component={RegisterWhoContainer} />
-
-        <Route path="/chooseLocation" component={RegisterLocal} />
-        <Route path="/when" component={RegisterDatePickerContainer} />
+        <Route exact path="/" render={() => (<Redirect to="/who" />)} />
+        <Route exact path="/who" component={RegisterWhoContainer} />
+        <Route exact path="/chooseLocation" component={RegisterLocal} />
+        <Route exact path="/when" component={RegisterDatePickerContainer} />
       </div>
     );
   }

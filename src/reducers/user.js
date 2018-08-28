@@ -4,7 +4,8 @@ import {
   SET_LOOKINGFOR,
   SET_LOCATION,
   SET_DATE_FROM,
-  SET_DATE_UNTIL
+  SET_DATE_UNTIL,
+  SET_GROUP
 } from '../actions/user'
 
 const initialState = {
@@ -13,7 +14,7 @@ const initialState = {
   lookingFor: '',
   location: '',
   age: 0,
-  group: false,
+  group: null,
   dateFrom: '',
   dateTo: '',
   hobbies: [],
@@ -46,6 +47,9 @@ export default (state = '', action = {}) => {
     case SET_DATE_UNTIL:
       return {
         ...state, dateTo: action.payload
+    case SET_GROUP:
+      return {
+        ...state, group: action.payload
       }
     default:
       return initialState
