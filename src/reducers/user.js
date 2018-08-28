@@ -5,7 +5,8 @@ import {
   SET_LOCATION,
   SET_DATE_FROM,
   SET_DATE_UNTIL,
-  SET_GROUP
+  SET_GROUP,
+  PUSH_DB_RESULTS
 } from '../actions/user'
 
 const initialState = {
