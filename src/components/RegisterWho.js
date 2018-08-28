@@ -8,6 +8,8 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 
+
+// import { allthepeople } from '../lib/People'
 const displayLookingFor = (propsA) => {
   return (
     <Grid item>
@@ -37,7 +39,11 @@ function RegisterWho(props) {
       </Grid>
       <Grid item>
         <Typography variant="headline" component="h2">
-          Are you a traveller or local? 
+          Are you a traveller or local?
+          {/* <br />
+          <ul>
+            {allthepeople.map(person => <li key={person.id}> {person.name} </li>)}
+          </ul> */}
         </Typography>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
           <Grid><Button onClick={() => props.setTypeBtn('traveller')} variant="contained" color="primary">Traveller</Button></Grid>
