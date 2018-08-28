@@ -1,32 +1,12 @@
 import * as React from 'react'
-import { connect } from 'react-redux'
-import { allthepeople } from '../lib/People'
-import { setUserType, setUserName, setLookingFor, setLocation } from '../actions/user'
+import { Link } from 'react-router-dom'
 
-
-const a = allthepeople.map(memb => {
-    return memb.location
-})
-
-class RegisterLocal extends React.PureComponent {
-
-    componentDidMount() {
-
-    }
-    render() {
-        return <div>Hey
-          {a.filter(function (item, pos, self) {
-                return self.indexOf(item) == pos;
-            })}
+export default function RegisterLocal(props) {
+    return <div>Where are you living?
+        <div>
+            {props.cities.map(location => <button key={location} onClick={() => props.setLocation(location)}>{location}</button>)}
+            <br /><br />
+            <button> <Link to={'/chooseDates'}>NEXT</Link></button>
         </div>
-    }
+    </div>
 }
-
-
-const mapStateToProps = (state) => {
-    return {
-
-    }
-}
-
-export default connect(mapStateToProps, { setUserType, setUserName, setLookingFor, setLocation })(RegisterLocal)
