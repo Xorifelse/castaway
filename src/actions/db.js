@@ -7,6 +7,15 @@ export function pushDbResults(resultsArray) {
   }
 }
 
+
+export const FETCH_MATCHED = 'FETCH_MATCHED'
+export function pushDbMatched(resultsArray) {
+  return {
+    type: FETCH_MATCHED,
+    payload: resultsArray
+  }
+}
+
 // export const CREATE_ALBUM = 'CREATE_ALBUM'
 // export function createAlbum(title) {
 //   return (dispatch) => {

@@ -2,39 +2,43 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { allthepeople } from '../lib/People'
 import SearchMatches from './SearchMatches'
-import {pushDbResults} from '../actions/db'
+import {pushDbResults, pushDbMatched} from '../actions/db'
 import db from '../lib/db_init'
 
 
+const peopleDB = db.collection("people")
+const type = peopleDB.where('type', '==', 'traveller')
+const location = peopleDB.where('location', '==', 'Amsterdam')
+// const hobbies = peopleDB.where(['soccer', 'craft beers']
+// const group = peopleDB.where('false
+// const date_from = peopleDB.where('2018-09-01'
+// const date_to = peopleDB.where('2018-09-28'
+const age = peopleDB.where('age', '>', 36)
+
 const people = (dispatch) => {
-    let tmp = db.collection("people")
-        .get()
-        .then(querySnapshot => {
-            
-            const results = querySnapshot.docs.map(function (doc) {
-                // doc.data() is never undefined for query doc snapshots
-                // console.log(doc.id, " => ", doc.data());
-                // console.log(doc.data(), 'end of row')
-                // results.push(doc.data())
-                return doc.data()
+    let tmp = Promise.all([type.get(), location.get()]) //Hardcoded, FIXME!
+        .then(res => {
+            res.forEach(r => {
+                r.docs.forEach(d => {
+                    console.log('Get:', d.data());
+                    dispatch(d.data())
+                });
             });
-            // return querySnapshot.map((elem) => elem)
-            dispatch(results)
         })
         .catch(function (error) {
             console.log("Error getting documents: ", error);
         })
-    // console.log('end of function' + a, tmp)
 }
+
 
 
 class SearchMatchesContainer extends React.PureComponent {
 
     componentDidMount() {
-        people(this.props.pushDbResults)
+        people(this.props.pushDbMatched)
     }
     render() {
-        
+
         return null
     }
 }
@@ -42,8 +46,9 @@ class SearchMatchesContainer extends React.PureComponent {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user
+        user: state.user,
+        db: state.db
     }
 }
 
-export default connect(mapStateToProps, { pushDbResults })(SearchMatchesContainer)
+export default connect(mapStateToProps, { pushDbResults, pushDbMatched })(SearchMatchesContainer)

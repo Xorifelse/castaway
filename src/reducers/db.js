@@ -1,4 +1,4 @@
-import {FETCH_ALL_DB} from '../actions/db'
+import {FETCH_ALL_DB, FETCH_MATCHED} from '../actions/db'
 
 const initialState = {
   dbResults: [],
@@ -11,6 +11,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         dbResults: action.payload
+      }
+      case FETCH_MATCHED:
+      return {
+        ...state,
+        dbMatches: [...state.dbMatches, action.payload]
       }
     default:
       return state
