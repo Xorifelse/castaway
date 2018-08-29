@@ -9,14 +9,8 @@ import SearchMatchesContainer from './components/SearchMatchesContainer'
 import PeopleFeedContainer from './components/PeopleFeedContainer'
 import UserFilterContainer from './components/UserFilterContainer'
 import UserProfileContainer from './components/UserProfileContainer'
+import ConfirmProfileContainer from './components/ConfirmProfileContainer'
 
-
-
-// import RegisterLocal from './components/RegisterLocalContainer'
-// import RegisterTravelerContainer from './components/RegisterTravelerContainer'
-
-//  <Route exact path="/localLocation" component={RegisterLocal} />
-//  <Route exact path="/travelerLocation" component={RegisterTravelerContainer} />
 
 class App extends Component {
   render() {
@@ -26,6 +20,7 @@ class App extends Component {
           <Route exact path="/who" component={RegisterWhoContainer} />
           <Route exact path="/where" component={RegisterWhereContainer} />
           <Route exact path="/when" component={RegisterWhenContainer} />
+          <Route exact path="/confirm" component={ConfirmProfileContainer} />
           <Route exact path="/search" component={SearchMatchesContainer} />
           <Route exact path="/feed" component={PeopleFeedContainer} />
           <Route exact path="/profile" component={UserProfileContainer} />
