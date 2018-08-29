@@ -9,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 
 export default function RegisterWhere(props) {
-    console.log(props)
+
    return (
     <Grid container spacing={16} direction="column" justify="center" alignItems="center">
         <Grid item>

@@ -78,3 +78,11 @@ export function setFirestoreID(id){
     payload: id
   }
 }
+
+export const SET_AVATAR_URL = 'SET_AVATAR_URL'
+export function setAvatarUrl(url){
+  return {
+    type: SET_AVATAR_URL,
+    payload: url
+  }
+}

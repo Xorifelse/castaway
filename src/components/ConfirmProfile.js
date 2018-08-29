@@ -22,7 +22,7 @@ function getFormattedDate(dateStamp) {
 
 
 function ConfirmProfile(props) {
-  console.log(props.userObj)
+  
   return (
     <Grid container spacing={16} direction="column" justify="center" alignItems="center">
       <Grid item>
@@ -56,6 +56,11 @@ function ConfirmProfile(props) {
       <Grid item>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
           <Grid item><Typography>and </Typography></Grid><Grid item><Typography>{getFormattedDate(props.userObj.dateTo)}</Typography></Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        <Grid container spacing={16} direction="row" justify="center" alignItems="center">
+          <Grid item><Typography>pick a image </Typography></Grid><Grid item><input type="file" accept="image/*" onChange={(event) => props.imgUploadFn(event.target.files[0])}/></Grid>
         </Grid>
       </Grid>
       <Grid item>

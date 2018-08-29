@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { allthepeople } from '../lib/People'
 import SearchMatches from './SearchMatches'
 import { pushDbResults, pushDbMatched } from '../actions/db'
-import db from '../lib/db_init'
+import {db} from '../lib/db_init'
 import PeopleFeedContainer from './PeopleFeedContainer';
 
 
@@ -14,7 +14,6 @@ class SearchMatchesContainer extends React.PureComponent {
         //All the filter are valued the first time
         filterArrary.push(peopleDB.where('type', '==', this.props.user.lookingFor)
             .where('location', '==', this.props.user.location)
-            // .where(id, '!=', )
             .get())
         //Date range should be added
         //  .where('dateFrom', '>=', this.props.user.dateFrom)
@@ -31,7 +30,7 @@ class SearchMatchesContainer extends React.PureComponent {
                 res.forEach(r => {
                     r.docs.forEach(d => {
 
-                        dispatch(d.data()) //d.id
+                        dispatch(d.data())
                     });
                 });
             })
