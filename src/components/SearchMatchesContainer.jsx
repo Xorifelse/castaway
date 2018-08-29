@@ -2,22 +2,9 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { allthepeople } from '../lib/People'
 import SearchMatches from './SearchMatches'
-import { pushDbResults, PUSH_DB_RESULTS } from '../actions/db'
+import {pushDbResults, pushDbMatched} from '../actions/db'
 import db from '../lib/db_init'
 
-/* var brazilCities = citiesRef.where('state', '==', 'CA');
-var smallCities = citiesRef.where('population', '<', 1000000);
-var afterParis = citiesRef.where('name', '>=', 'San Francisco');
-
-return Promise.all([brazilCities.get(), smallCities.get(), afterParis.get()]).then(res => {
-    res.forEach(r => {
-      r.forEach(d => {
-        console.log('Get:', d);
-      });
-      console.log();
-    });
-  });
- */
 
 const peopleDB = db.collection("people")
 const type = peopleDB.where('type', '==', 'traveller')
@@ -29,7 +16,7 @@ const location = peopleDB.where('location', '==', 'Amsterdam')
 const age = peopleDB.where('age', '>', 36)
 
 const people = (dispatch) => {
-    let tmp = Promise.all([type.get(), location.get()])
+    let tmp = Promise.all([type.get(), location.get()]) //Hardcoded, FIXME!
         .then(res => {
             res.forEach(r => {
                 r.docs.forEach(d => {
@@ -44,29 +31,11 @@ const people = (dispatch) => {
 }
 
 
-/////////
-// let tmp = () => db.collection("people")
-// .where()
-// .where()
-//     .get()
-// .then(querySnapshot => {
-//     console.log("sdsdsdsf: " + querySnapshot.docs)
-//     const results = querySnapshot.docs.map(function (doc) {
-//         console.log("sdsdsdsf: " + querySnapshot)
-//         return doc.data()
-//     });
-//     dispatch(results)
-// })
-// .catch(function (error) {
-//     console.log("Error getting documents: ", error);
-// })
-
-
 
 class SearchMatchesContainer extends React.PureComponent {
 
     componentDidMount() {
-        people(this.props.pushDbResults)
+        people(this.props.pushDbMatched)
     }
     render() {
 
@@ -82,4 +51,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { pushDbResults })(SearchMatchesContainer)
+export default connect(mapStateToProps, { pushDbResults, pushDbMatched })(SearchMatchesContainer)

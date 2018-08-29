@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-
+import './App.css';
 import {Switch, Route, Link, Redirect} from 'react-router-dom'
 
 import RegisterWhoContainer from './components/RegisterWhoContainer'; 
 import RegisterLocal from './components/RegisterLocalContainer';
+
+import RegisterDatePickerContainer from './components/RegisterDatePickerContainer';
+
 import SearchMatchesContainer from './components/SearchMatchesContainer'
 
 class App extends Component {
@@ -12,9 +15,9 @@ class App extends Component {
       <div className="App">
         <Route exact path="/" render={() => (<Redirect to="/who" />)} />
         <Route exact path="/who" component={RegisterWhoContainer} />
-
-        <Route exact path="/chooseLocation" component={RegisterLocal} />
-        <Route exact path="/seachMatches" component={SearchMatchesContainer} />
+        <Route exact path="/localLocation" component={RegisterLocal} />
+        <Route exact path="/when" component={RegisterDatePickerContainer} />
+        <Route exact path="/search" component={SearchMatchesContainer} />
       </div>
     );
   }

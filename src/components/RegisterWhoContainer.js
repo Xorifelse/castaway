@@ -65,6 +65,10 @@ class RegisterWhoContainer extends React.PureComponent {
     this.props.setUserName(event.target.value)
   }
 
+  setIfLocalFn = (type) => {
+    this.props.setUserType(type)
+    this.props.setLookingFor('traveller')
+  }
  
 
   render() {
@@ -72,6 +76,7 @@ class RegisterWhoContainer extends React.PureComponent {
         <RegisterWho 
           userObj={this.props.user}
           setTypeBtn={this.props.setUserType} 
+          setIfLocal={this.setIfLocalFn}
           userType={this.props.user.type}
           setLookingForBtn={this.props.setLookingFor}
           inputChangeFn={this.handleInputChange}
