@@ -7,7 +7,7 @@ import db from '../lib/db_init'
 
 
 const peopleDB = db.collection("people")
-const type = peopleDB.where('type', '==', 'traveller')
+const type = peopleDB.where('type', '==', '')
 const location = peopleDB.where('location', '==', 'Amsterdam')
 // const hobbies = peopleDB.where(['soccer', 'craft beers']
 // const group = peopleDB.where('false
@@ -16,7 +16,7 @@ const location = peopleDB.where('location', '==', 'Amsterdam')
 const age = peopleDB.where('age', '>', 36)
 
 const people = (dispatch) => {
-    let tmp = Promise.all([type.get(), location.get()]) //Hardcoded, FIXME!
+    let tmp = Promise.all([type.get()]) //Hardcoded, FIXME!
         .then(res => {
             res.forEach(r => {
                 r.docs.forEach(d => {
