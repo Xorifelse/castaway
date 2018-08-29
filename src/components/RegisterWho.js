@@ -1,20 +1,11 @@
 import * as React from 'react'
-import propTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
 import Button         from '@material-ui/core/Button'
 import Grid           from '@material-ui/core/Grid'
-import Card           from '@material-ui/core/Card'
-import CardContent    from '@material-ui/core/CardContent'
 import Typography     from '@material-ui/core/Typography'
 import TextField      from '@material-ui/core/TextField'
-import Switch         from '@material-ui/core/Switch'
-import AppBar         from '@material-ui/core/AppBar';
-import Toolbar        from '@material-ui/core/Toolbar';
-
-
-import { width } from 'window-size';
 
 // import { allthepeople } from '../lib/People'
 const displayLookingFor = (props) => {
