@@ -12,7 +12,6 @@ import {setDateFrom, setDateUntil} from '../actions/user'
 class RegisterWhenContainer extends React.PureComponent {
   handleFrom = (e) => {
     let d = new Date(e.target.value)
-    console.log(d.getTime(), new Date().getTime() - d.getTime())
     if(d.getTime() + 90000000 >= (new Date().getTime())) {
       this.props.setDateFrom(d)
     } else {
