@@ -5,7 +5,7 @@ const initialState = {
   dbMatches: []
 }
 
-export default (state = '', action = {}) => {
+export default (state = initialState, action = {}) => {
   switch (action.type){
     case FETCH_ALL_DB:
       return {
@@ -13,6 +13,6 @@ export default (state = '', action = {}) => {
         dbResults: action.payload
       }
     default:
-      return initialState
+      return state
   }
 }

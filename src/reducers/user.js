@@ -23,7 +23,7 @@ const initialState = {
   arrayDisliked: []
 }
 
-export default (state = '', action = {}) => {
+export default (state = initialState, action = {}) => {
   switch (action.type){
     case SET_USERTYPE:
       return {
@@ -55,6 +55,6 @@ export default (state = '', action = {}) => {
         ...state, group: action.payload
       }
     default:
-      return initialState
+      return state
   }
 }
