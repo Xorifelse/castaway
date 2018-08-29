@@ -6,7 +6,9 @@ import {
   SET_DATE_FROM,
   SET_DATE_UNTIL,
   SET_GROUP,
-  PUSH_DB_RESULTS
+  PUSH_DB_RESULTS,
+  ADD_LIKED,
+  ADD_DISLIKED
 } from '../actions/user'
 
 const initialState = {
@@ -42,7 +44,6 @@ export default (state = initialState, action = {}) => {
         ...state, location: action.payload
       }
     case SET_DATE_FROM:
-      console.log(state)
       return {
         ...state, dateFrom: action.payload
       }
@@ -53,6 +54,14 @@ export default (state = initialState, action = {}) => {
     case SET_GROUP:
       return {
         ...state, group: action.payload
+      }
+    case ADD_LIKED:
+      return {
+        ...state, arrayLiked: state.arrayLiked.concat(action.payload)
+      }
+    case ADD_DISLIKED:
+      return {
+        ...state, arrayDisliked: state.arrayDisliked.concat(action.payload)
       }
     default:
       return state

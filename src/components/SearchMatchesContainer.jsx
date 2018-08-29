@@ -20,7 +20,7 @@ const people = (dispatch) => {
         .then(res => {
             res.forEach(r => {
                 r.docs.forEach(d => {
-                    console.log('Get:', d.data());
+
                     dispatch(d.data())
                 });
             });

@@ -54,3 +54,19 @@ export function setGroup(group) {
     payload: group
   }
 }
+
+export const ADD_LIKED = 'ADD_LIKED'
+export function addPerson(id){
+  return {
+    type: ADD_LIKED,
+    payload: id
+  }
+}
+
+export const ADD_DISLIKED = 'ADD_DISLIKED'
+export function remPerson(id){
+  return {
+    type: ADD_DISLIKED,
+    payload: id
+  }
+}
