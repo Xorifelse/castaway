@@ -54,3 +54,35 @@ export function setGroup(group) {
     payload: group
   }
 }
+
+export const ADD_LIKED = 'ADD_LIKED'
+export function addPerson(id){
+  return {
+    type: ADD_LIKED,
+    payload: id
+  }
+}
+
+export const ADD_DISLIKED = 'ADD_DISLIKED'
+export function remPerson(id){
+  return {
+    type: ADD_DISLIKED,
+    payload: id
+  }
+}
+
+export const SET_FIRESTORE_ID = 'SET_FIRESTORE_ID'
+export function setFirestoreID(id){
+  return {
+    type: SET_FIRESTORE_ID,
+    payload: id
+  }
+}
+
+export const SET_AVATAR_URL = 'SET_AVATAR_URL'
+export function setAvatarUrl(url){
+  return {
+    type: SET_AVATAR_URL,
+    payload: url
+  }
+}

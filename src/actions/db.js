@@ -1,8 +1,17 @@
 
-export const FETCH_DB_RESULTS = 'FETCH_DB_RESULTS'
+export const FETCH_ALL_DB = 'FETCH_ALL_DB'
 export function pushDbResults(resultsArray) {
   return {
-    type: FETCH_DB_RESULTS,
+    type: FETCH_ALL_DB,
+    payload: resultsArray
+  }
+}
+
+
+export const FETCH_MATCHED = 'FETCH_MATCHED'
+export function pushDbMatched(resultsArray) {
+  return {
+    type: FETCH_MATCHED,
     payload: resultsArray
   }
 }

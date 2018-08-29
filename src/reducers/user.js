@@ -6,7 +6,11 @@ import {
   SET_DATE_FROM,
   SET_DATE_UNTIL,
   SET_GROUP,
-  PUSH_DB_RESULTS
+  PUSH_DB_RESULTS,
+  ADD_LIKED,
+  ADD_DISLIKED,
+  SET_FIRESTORE_ID,
+  SET_AVATAR_URL
 } from '../actions/user'
 
 const initialState = {
@@ -20,10 +24,11 @@ const initialState = {
   dateTo: '',
   hobbies: [],
   arrayLiked: [],
-  arrayDisliked: []
+  arrayDisliked: [],
+  feedCurrent: 0                  // current viewed person in matched
 }
 
-export default (state = '', action = {}) => {
+export default (state = initialState, action = {}) => {
   switch (action.type){
     case SET_USERTYPE:
       return {
@@ -53,7 +58,27 @@ export default (state = '', action = {}) => {
       return {
         ...state, group: action.payload
       }
+    case ADD_LIKED:
+      return {
+        ...state, 
+        arrayLiked: state.arrayLiked.concat(action.payload),
+        feedCurrent: state.feedCurrent + 1
+      }
+    case ADD_DISLIKED:
+      return {
+        ...state, 
+        arrayDisliked: state.arrayDisliked.concat(action.payload),
+        feedCurrent: state.feedCurrent + 1
+      }
+    case SET_FIRESTORE_ID:
+      return {
+        ...state, firestoreID: action.payload
+    }
+    case SET_AVATAR_URL:
+      return {
+        ...state, avatar: action.payload
+      }
     default:
-      return initialState
+      return state
   }
 }

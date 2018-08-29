@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import RegisterDatePicker from './RegisterDatePicker'
+import RegisterDatePicker from './RegisterWhen'
 
 
 
@@ -43,7 +43,7 @@ class RegisterDatePickerContainer extends React.PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    ...state
   }
 }
 
