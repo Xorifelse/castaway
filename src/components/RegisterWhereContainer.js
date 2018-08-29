@@ -53,6 +53,7 @@ class RegisterWhereContainer extends React.PureComponent {
             cities={this.allLocations(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)}
             setLocationFn={this.props.setLocation} 
             buttonContainedFn={this.buttonContained}
+            userObj={this.props.user}
             />
         )
     }
