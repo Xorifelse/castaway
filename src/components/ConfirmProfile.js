@@ -2,6 +2,7 @@ import * as React from 'react'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
+import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 
 function getFormattedDate(dateStamp) {
@@ -55,6 +56,11 @@ function ConfirmProfile(props) {
       <Grid item>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
           <Grid item><Typography>and </Typography></Grid><Grid item><Typography>{getFormattedDate(props.userObj.dateTo)}</Typography></Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        <Grid container spacing={16} direction="row" justify="center" alignItems="center">
+          <Grid item><Link to="/search"><Button variant='outlined' color="primary">NEXT</Button></Link></Grid>
         </Grid>
       </Grid>
           
