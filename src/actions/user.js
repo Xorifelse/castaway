@@ -64,10 +64,26 @@ export function addPerson(id){
 }
 
 export const ADD_DISLIKED = 'ADD_DISLIKED'
-export function remPerson(id){
+export function removePerson(id){
   return {
     type: ADD_DISLIKED,
     payload: id
+  }
+}
+
+export const PREVIOUS_PERSON = 'PREVIOUS_PERSON'
+export function previousPerson(){
+  return {
+    type: PREVIOUS_PERSON,
+    payload: null
+  }
+}
+
+export const NEXT_PERSON = 'NEXT_PERSON'
+export function nextPerson(){
+  return {
+    type: NEXT_PERSON,
+    payload: null
   }
 }
 
