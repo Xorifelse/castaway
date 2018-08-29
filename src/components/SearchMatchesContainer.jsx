@@ -10,7 +10,7 @@ class SearchMatchesContainer extends React.PureComponent{
   state = {
     expired: false
   }
-  
+
   filterConstructor = () => {
     const peopleDB = db.collection("people")
     const filterArrary = []
@@ -31,7 +31,6 @@ class SearchMatchesContainer extends React.PureComponent{
         res.forEach(r => {
           r.docs.forEach(d => {
             let person = d.data()
-            console.log(person)
             let dateFrom = new Date(this.props.user.dateFrom).getTime() / 1000
             let dateTo = new Date(this.props.user.dateTo).getTime() / 1000
 
