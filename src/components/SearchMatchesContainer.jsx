@@ -30,9 +30,9 @@ class SearchMatchesContainer extends React.PureComponent {
                         let dateFrom = new Date(this.props.user.dateFrom).getTime()/1000
                         let dateTo = new Date(this.props.user.dateTo).getTime()/1000
                         
-                        if(person.date_from.seconds <= dateFrom && dateTo <= person.date_to.seconds){
+                        // if(person.date_from.seconds <= dateFrom && dateTo <= person.date_to.seconds){
                             dispatch(person)
-                        }
+                        // }
                     });
                 });
             })

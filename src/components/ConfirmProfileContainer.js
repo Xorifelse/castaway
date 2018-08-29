@@ -18,7 +18,7 @@ class ConfirmProfileContainer extends React.PureComponent {
     return addDoc
   }
 
-  uploadToStorage = (file: FileList) => {
+  uploadToStorage = (file: FileList) => { // vs code says this is wrong but it works.. check it out?! PvD
     const storageRef = storage.ref() // storage is exported from /lib/db_init.js
 
       // Create the file metadata
