@@ -1,19 +1,30 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import ConfirmProfile from './ConfirmProfile'
+import db from '../lib/db_init'
 
 
 
 class ConfirmProfileContainer extends React.PureComponent {
 
+  imgUrl = 'http://petervandijk.net/castaway/avatars/anonymous.jpg';
+
+  dbAddPromise = (userObj) => {
+    var addDoc = db.collection('people').add({...userObj, avatar:this.imgUrl}).then(ref => {
+      console.log('Added document with ID: ', ref.id)
+    })
+    return addDoc
+  }
 
 
 
 
-  
   render() {
     return (
-        <ConfirmProfile userObj={this.props.user}/>
+        <ConfirmProfile 
+          userObj={this.props.user}
+          dbAddFn={this.dbAddPromise}
+          />
     )
   }
 }
