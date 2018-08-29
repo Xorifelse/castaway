@@ -4,8 +4,6 @@ import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 
 import { withStyles } from '@material-ui/core/styles'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 
@@ -65,13 +63,13 @@ function stepTwo(props) {
   )
 }
 
-function RegisterDatePicker(props) {
+function RegisterWhen(props) {
   const { classes, onChangeFromFn } = props;
 
   return (
     <Grid container spacing={16} direction="column" justify="center" alignItems="center">
       <Grid item>
-        <Typography variant="headline" component="h2">When are you traveling</Typography>
+        <Typography variant="headline" component="h2">When are you traveling?</Typography>
       </Grid>
       <Grid item>
         <form className={classes.container} noValidate>
@@ -83,7 +81,7 @@ function RegisterDatePicker(props) {
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={(e) => props.onChangeFromFn(e)}
+            onChange={(e) => onChangeFromFn(e)}
           />
         </form>
       </Grid>
@@ -106,4 +104,4 @@ const styles = theme => ({
   },
 });
 
-export default withStyles(styles)(RegisterDatePicker)
+export default withStyles(styles)(RegisterWhen)
