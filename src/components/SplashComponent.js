@@ -1,9 +1,10 @@
 import * as React  from 'react'
 import { connect } from 'react-redux'
 import Grid        from '@material-ui/core/Grid'
+import RegisterWhoContainer from './RegisterWhoContainer'
 
-import splashLg from '../../public/splashdesktop.png'
-import splashXs from '../../public/splashdesktop.png'
+import splashLg from '../img/splashdesktop.png'
+import splashXs from '../img/splashmobile.png'
 
 class SplashContainer extends React.PureComponent{
   state = {
@@ -22,12 +23,8 @@ class SplashContainer extends React.PureComponent{
     if(!this.state.continue){
       return (
         <Grid container spacing={16} direction="column">
-          <Grid item xs>
-            <img src={splashXs} />
-          </Grid>
-          <Grid item lg>
-            <img src={splashLg} />
-          </Grid>
+          <Grid item only={['xs', 'sm']}><img src={splashXs} /></Grid>
+          <Grid item only={['md', 'lg', 'xl']}   ><img src={splashLg} /></Grid>
         </Grid>
       )
     }
