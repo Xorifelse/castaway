@@ -4,6 +4,7 @@ import { allthepeople } from '../lib/People'
 import SearchMatches from './SearchMatches'
 import {pushDbResults, pushDbMatched} from '../actions/db'
 import db from '../lib/db_init'
+import PeopleFeedContainer from './PeopleFeedContainer';
 
 
 const peopleDB = db.collection("people")
@@ -30,19 +31,19 @@ const people = (dispatch) => {
         })
 }
 
-
-
 class SearchMatchesContainer extends React.PureComponent {
-
     componentDidMount() {
         people(this.props.pushDbMatched)
     }
-    render() {
 
-        return null
+    render() {
+        if(this.props.db.dbMatches.length > 0){
+            return <PeopleFeedContainer />
+        }
+        
+        return <div>Searching....</div>
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {

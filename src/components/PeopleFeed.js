@@ -1,10 +1,18 @@
 import * as React from 'react'
 import { withStyles } from '@material-ui/core/styles'
+import Button         from '@material-ui/core/Button'
 
 function PeopleFeed(props) {
-  
+
   return (
-    <div>Hi from People Feed</div>
+    <div>
+      <div><h1>{props.person.name}</h1></div>
+      <div><img src={props.person.avatar} />></div>
+
+      <Button onClick={props.dislikeFn}>dislike</Button>
+      <Button onClick={props.likeFn}>like</Button>
+    </div>
+
   )
 }
 

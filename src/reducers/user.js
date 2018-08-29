@@ -8,7 +8,7 @@ import {
   SET_GROUP,
   PUSH_DB_RESULTS,
   ADD_LIKED,
-  ADD_DISLIKED
+  ADD_DISLIKED,
 } from '../actions/user'
 
 const initialState = {
@@ -22,7 +22,8 @@ const initialState = {
   dateTo: '',
   hobbies: [],
   arrayLiked: [],
-  arrayDisliked: []
+  arrayDisliked: [],
+  feedCurrent: 0                  // current viewed person in matched
 }
 
 export default (state = initialState, action = {}) => {
@@ -57,11 +58,15 @@ export default (state = initialState, action = {}) => {
       }
     case ADD_LIKED:
       return {
-        ...state, arrayLiked: state.arrayLiked.concat(action.payload)
+        ...state, 
+        arrayLiked: state.arrayLiked.concat(action.payload),
+        feedCurrent: state.feedCurrent + 1
       }
     case ADD_DISLIKED:
       return {
-        ...state, arrayDisliked: state.arrayDisliked.concat(action.payload)
+        ...state, 
+        arrayDisliked: state.arrayDisliked.concat(action.payload),
+        feedCurrent: state.feedCurrent + 1
       }
     default:
       return state
