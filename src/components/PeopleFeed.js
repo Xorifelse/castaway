@@ -3,16 +3,14 @@ import { withStyles } from '@material-ui/core/styles'
 import Button         from '@material-ui/core/Button'
 
 function PeopleFeed(props) {
-
   return (
     <div>
       <div><h1>{props.person.name}</h1></div>
       <div><img src={props.person.avatar} width="100%"/></div>
 
-      <Button onClick={props.dislikeFn} color="secondary">dislike</Button>
-      <Button onClick={props.likeFn} color="primary">like</Button>
+      <Button onClick={props.dislikeFn} variant="contained" color="secondary">dislike</Button>
+      <Button onClick={props.likeFn} variant="contained" color="primary">like</Button>
     </div>
-
   )
 }
 
