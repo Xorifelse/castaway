@@ -7,7 +7,7 @@ function PeopleFeed(props) {
   return (
     <div>
       <div><h1>{props.person.name}</h1></div>
-      <div><img src={props.person.avatar} width="100%"/>></div>
+      <div><img src={props.person.avatar} width="100%"/></div>
 
       <Button onClick={props.dislikeFn}>dislike</Button>
       <Button onClick={props.likeFn}>like</Button>
