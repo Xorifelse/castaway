@@ -10,6 +10,10 @@ import {db} from '../lib/db_init'
 
 class RegisterWhereContainer extends React.PureComponent {
 
+    handleInputChange = (event) => {
+        this.props.setLocation(event.target.value)
+      }
+
     componentDidMount() {
         const people = (pushDbResultsAction) => {
             let tmp = db.collection("people")
@@ -53,6 +57,8 @@ class RegisterWhereContainer extends React.PureComponent {
             setLocationFn={this.props.setLocation} 
             buttonContainedFn={this.buttonContained}
             userObj={this.props.user}
+            inputChangeFn={this.handleInputChange}
+            inputValue={this.props.user.location}
             />
         )
     }
