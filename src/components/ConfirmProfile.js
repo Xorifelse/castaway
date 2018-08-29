@@ -65,12 +65,12 @@ function ConfirmProfile(props) {
       </Grid>
       <Grid item>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item><Button variant='outlined' color="primary" onClick={() => props.dbAddFn(props.userObj)}>CONFIRM</Button></Grid>
+          <Grid item><Button variant='outlined' color="primary" onClick={() => props.dbAddFn(props.userObj)}>SUBSCRIBE</Button></Grid>
         </Grid>
       </Grid>
       <Grid item>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item><Link to="/search"><Button variant='outlined' color="primary">NEXT</Button></Link></Grid>
+          <Grid item><Link to="/search"><Button variant='outlined' color="primary">FEED ME!</Button></Link></Grid>
         </Grid>
       </Grid>
 
@@ -83,6 +83,7 @@ function ConfirmProfile(props) {
 }
 
 const styles ={
+
 };
 
 export default withStyles(styles)(ConfirmProfile)
