@@ -89,6 +89,10 @@ function RegisterDatePicker(props) {
       </Grid>
       {stepTwo(props)}
       {stepThree(props)}
+
+      {/* next button */}
+      <Button variant='outlined' color="primary"><Link to={'/search'}>NEXT</Link></Button>
+
     </Grid>
 
   )
