@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
+import TextField      from '@material-ui/core/TextField'
 
 export default function RegisterWhere(props) {
 
@@ -21,6 +22,21 @@ export default function RegisterWhere(props) {
                 {(props.userObj.type === 'local') && "Where do you live?"}
                 {(props.userObj.type === 'traveller') && "Where are you headed?"}
             </Typography>
+        </Grid>
+        <Grid item>
+            <Grid container spacing={16} direction="row" justify="center" alignItems="center">
+                <Grid item>
+                    <Typography>fill in your location or choose one from below</Typography>
+                </Grid>
+
+                <Grid>
+                {/* input */}
+                    <TextField id="city" value={props.inputValue} onChange={(event) => props.inputChangeFn(event)} />
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid>
+            .
         </Grid>
         <Grid item>
             <Grid container spacing={16} direction="row" justify="center" alignItems="center">
