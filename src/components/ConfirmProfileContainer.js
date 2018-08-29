@@ -2,6 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import ConfirmProfile from './ConfirmProfile'
 import db from '../lib/db_init'
+import {setFirestoreID} from '../actions/user'
 
 
 
@@ -12,6 +13,7 @@ class ConfirmProfileContainer extends React.PureComponent {
   dbAddPromise = (userObj) => {
     var addDoc = db.collection('people').add({...userObj, avatar:this.imgUrl}).then(ref => {
       console.log('Added document with ID: ', ref.id)
+      this.props.setFirestoreID(ref.id)
     })
     return addDoc
   }
@@ -35,4 +37,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {})(ConfirmProfileContainer)
+export default connect(mapStateToProps, {setFirestoreID})(ConfirmProfileContainer)

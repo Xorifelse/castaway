@@ -14,6 +14,7 @@ class SearchMatchesContainer extends React.PureComponent {
         //All the filter are valued the first time
         filterArrary.push(peopleDB.where('type', '==', this.props.user.lookingFor)
             .where('location', '==', this.props.user.location)
+            // .where(id, '!=', )
             .get())
         //Date range should be added
         //  .where('dateFrom', '>=', this.props.user.dateFrom)
@@ -30,7 +31,7 @@ class SearchMatchesContainer extends React.PureComponent {
                 res.forEach(r => {
                     r.docs.forEach(d => {
 
-                        dispatch(d.data())
+                        dispatch(d.data()) //d.id
                     });
                 });
             })

@@ -70,3 +70,11 @@ export function remPerson(id){
     payload: id
   }
 }
+
+export const SET_FIRESTORE_ID = 'SET_FIRESTORE_ID'
+export function setFirestoreID(id){
+  return {
+    type: SET_FIRESTORE_ID,
+    payload: id
+  }
+}
