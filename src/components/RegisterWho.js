@@ -77,9 +77,7 @@ function RegisterWho(props) {
       {(props.userObj.type !== '' && props.userObj.type !== 'local') && displayLookingFor(props)}
       {(props.userObj.lookingFor !== '' || props.userObj.type === 'local') && displayGroup(props)}
       <Grid item>
-        
-          <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' && props.userObj.group !== null) ? false : true} variant='outlined' color="primary"><Link to="/where">Next</Link></Button>
-        
+        <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' && props.userObj.group !== null) ? false : true} variant='outlined' color="primary"><Link to="/where">Next</Link></Button>
       </Grid>
     </Grid>
 
