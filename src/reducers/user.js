@@ -6,7 +6,9 @@ import {
   SET_DATE_FROM,
   SET_DATE_UNTIL,
   SET_GROUP,
-  PUSH_DB_RESULTS
+  PUSH_DB_RESULTS,
+  ADD_LIKED,
+  ADD_DISLIKED,
 } from '../actions/user'
 
 const initialState = {
@@ -20,7 +22,8 @@ const initialState = {
   dateTo: '',
   hobbies: [],
   arrayLiked: [],
-  arrayDisliked: []
+  arrayDisliked: [],
+  feedCurrent: 0                  // current viewed person in matched
 }
 
 export default (state = initialState, action = {}) => {
@@ -42,7 +45,6 @@ export default (state = initialState, action = {}) => {
         ...state, location: action.payload
       }
     case SET_DATE_FROM:
-      console.log(state)
       return {
         ...state, dateFrom: action.payload
       }
@@ -53,6 +55,18 @@ export default (state = initialState, action = {}) => {
     case SET_GROUP:
       return {
         ...state, group: action.payload
+      }
+    case ADD_LIKED:
+      return {
+        ...state, 
+        arrayLiked: state.arrayLiked.concat(action.payload),
+        feedCurrent: state.feedCurrent + 1
+      }
+    case ADD_DISLIKED:
+      return {
+        ...state, 
+        arrayDisliked: state.arrayDisliked.concat(action.payload),
+        feedCurrent: state.feedCurrent + 1
       }
     default:
       return state
