@@ -9,7 +9,8 @@ import {
   PUSH_DB_RESULTS,
   ADD_LIKED,
   ADD_DISLIKED,
-  SET_FIRESTORE_ID
+  SET_FIRESTORE_ID,
+  SET_AVATAR_URL
 } from '../actions/user'
 
 const initialState = {
@@ -69,9 +70,13 @@ export default (state = initialState, action = {}) => {
         arrayDisliked: state.arrayDisliked.concat(action.payload),
         feedCurrent: state.feedCurrent + 1
       }
-      case SET_FIRESTORE_ID:
+    case SET_FIRESTORE_ID:
       return {
         ...state, firestoreID: action.payload
+    }
+    case SET_AVATAR_URL:
+      return {
+        ...state, avatar: action.payload
       }
     default:
       return state

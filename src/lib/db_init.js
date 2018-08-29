@@ -16,5 +16,7 @@ const firestore = firebase.firestore();
 const settings = {/* your settings... */ timestampsInSnapshots: true};
 firestore.settings(settings);
 
-export default firebase.firestore()
+const db = firebase.firestore()
+const storage = firebase.storage()
 
+export {db, storage, firebase}

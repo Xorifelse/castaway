@@ -4,7 +4,7 @@ import { allthepeople } from '../lib/People'
 import RegisterWhere from './RegisterWhere'
 import { setLocation } from '../actions/user'
 import {pushDbResults} from '../actions/db'
-import db from '../lib/db_init'
+import {db} from '../lib/db_init'
 
 
 
@@ -30,8 +30,7 @@ class RegisterWhereContainer extends React.PureComponent {
     }
 
     componentDidUpdate() {
-        console.log('location', this.props.user.location)
-        console.log('dbResults', this.props.db.dbResults)
+     
     }
 
     allLocations = (peopleArr) => peopleArr.map(memb => {
