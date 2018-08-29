@@ -48,30 +48,40 @@ const displayGroup = (props) => {
 
 function RegisterWho(props) {
   return (
-    <div>
-      <Grid container spacing={16} direction="row">
-        <Grid item xs={12} style={styles.top} >
-          <Typography style={styles.stage}>
-            1 > 2 > 3
-          </Typography>
-        </Grid>
-        <Grid item xs={24} style={styles.welcome}>
-          <Typography style={styles.hi}>
-            Hi! I don't think we've met.
-          </Typography>
-          <Typography style={styles.who}>
-            Who are you?
-          </Typography>
+    <Grid container spacing={16} direction="column" justify="center" alignItems="center">
+      <Grid item>
+      <Typography>
+          Hi! I don't think we've met yet. 
+        </Typography>
+      <Typography variant="headline" component="h2">
+          Who are you? 
+        </Typography>
+        <Grid container spacing={16} direction="row" justify="center" alignItems="center">
+          <Grid item>
+            <Typography>Hi, my name is...</Typography>
+            {/* input */}
+            <TextField id="name" value={props.inputValue} onChange={(event) => props.inputChangeFn(event)} />
+          </Grid>
         </Grid>
       </Grid>
-      <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-        <Grid item xs={12} style={styles.nameInput}>
-          <Typography style={styles.fat}>Hi, my name is...</Typography>
-          
+      <Grid item>
+        <Typography variant="headline" component="h2">
+          and I'm a...
+        </Typography>
+        <Grid container spacing={16} direction="row" justify="center" alignItems="center">
+          <Grid item><Button onClick={() => props.setTypeBtn('traveller')} variant={props.btnTypeTrav} color="primary">Traveller</Button></Grid>
+          <Grid item><Button onClick={() => props.setIfLocal('local')} variant={props.btnTypeLoc} color="primary">Local</Button></Grid>
         </Grid>
-
       </Grid>
-    </div>
+      {/* only display below if user.type is set */}
+      {(props.userObj.type !== '' && props.userObj.type !== 'local') && displayLookingFor(props)}
+      {(props.userObj.lookingFor !== '' || props.userObj.type === 'local') && displayGroup(props)}
+      <Grid item>
+        
+          <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' && props.userObj.group !== null) ? false : true} variant='outlined' color="primary"><Link to="/where">Next</Link></Button>
+        
+      </Grid>
+    </Grid>
 
   )
 }

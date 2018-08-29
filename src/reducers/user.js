@@ -42,6 +42,7 @@ export default (state = '', action = {}) => {
         ...state, location: action.payload
       }
     case SET_DATE_FROM:
+      console.log(state)
       return {
         ...state, dateFrom: action.payload
       }

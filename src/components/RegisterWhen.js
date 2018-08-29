@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
-import TextField from '@material-ui/core/TextField';
+import TextField from '@material-ui/core/TextField'
 
 import {Link} from 'react-router-dom'
 
@@ -39,7 +39,7 @@ function stepThree(props){
 }
 
 function stepTwo(props) {
-  const { classes, user, defaultValue, onChangeUntilFn } = props;
+  const { classes, user, onChangeUntilFn } = props;
 
   if (!user.dateFrom) {
     return null
