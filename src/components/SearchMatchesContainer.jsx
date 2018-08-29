@@ -14,6 +14,7 @@ class SearchMatchesContainer extends React.PureComponent {
         filterArrary.push(peopleDB
             .where('type', '==', this.props.user.lookingFor)
             .where('location', '==', this.props.user.location)
+            // .where(id, '!=', )
             .get())
            
         return filterArrary
