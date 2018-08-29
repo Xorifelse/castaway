@@ -2,12 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import RegisterWhen from './RegisterWhen'
 
-
-
 import {setDateFrom, setDateUntil} from '../actions/user'
-
-
-
 
 class RegisterWhenContainer extends React.PureComponent {
   handleFrom = (e) => {

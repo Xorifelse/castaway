@@ -8,7 +8,6 @@ import TextField from '@material-ui/core/TextField'
 
 import {Link} from 'react-router-dom'
 
-
 function formatDate(date) {
   var d = new Date(date),
       month = '' + (d.getMonth() + 1),
@@ -58,7 +57,6 @@ function stepTwo(props) {
         />
       </form>
     </Grid>
-
   )
 }
 
@@ -87,7 +85,6 @@ function RegisterWhen(props) {
       {stepTwo(props)}
       {stepThree(props)}
     </Grid>
-
   )
 }
 

@@ -1,7 +1,7 @@
 import * as React  from 'react'
 import {connect}   from 'react-redux'
 import {Link}      from 'react-router-dom'
-
+import Button      from '@material-ui/core/Button'
 
 import {
   addPerson,
@@ -12,11 +12,6 @@ import {
 
 import PeopleFeed from './PeopleFeed'
 import Swipeable  from 'react-swipeable'
-
-
-
-//import {} from '../actions/'
-
 
 class PeopleFeedContainer extends React.PureComponent {
   swiping(e, deltaX, deltaY, absX, absY, velocity) {
@@ -64,8 +59,8 @@ class PeopleFeedContainer extends React.PureComponent {
               />
           </Swipeable>
 
-          <Link to="/profile">Profile</Link><br />
-          <Link to="/filter">Filter</Link>
+          <Link to="/profile"><Button variant="contained" color="primary">Profile</Button></Link>
+          <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
         </div>
       )
     }
@@ -84,10 +79,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {addPerson, removePerson, nextPerson, previousPerson})(PeopleFeedContainer)
-
-
-/* 
-
-
-
-              */
