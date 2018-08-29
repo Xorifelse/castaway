@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { allthepeople } from '../lib/People'
-import RegisterLocal from './RegisterLocal'
+import RegisterWhere from './RegisterWhere'
 import { setLocation } from '../actions/user'
 import {pushDbResults} from '../actions/db'
 import db from '../lib/db_init'
 
 
 
-class RegisterLocalContainer extends React.PureComponent {
+class RegisterWhereContainer extends React.PureComponent {
 
     componentDidMount() {
         const people = (pushDbResultsAction) => {
@@ -49,7 +49,7 @@ class RegisterLocalContainer extends React.PureComponent {
     render() {
         if (this.props.db.dbResults.length === 0) return 'getting available cities...'
         return (
-          <RegisterLocal 
+          <RegisterWhere 
             cities={this.allLocations(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)}
             setLocationFn={this.props.setLocation} 
             buttonContainedFn={this.buttonContained}
@@ -66,4 +66,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { setLocation, pushDbResults })(RegisterLocalContainer)
+export default connect(mapStateToProps, { setLocation, pushDbResults })(RegisterWhereContainer)
