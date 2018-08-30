@@ -48,6 +48,8 @@ function stepTwo(props) {
           id="date"
           label="Until"
           type="date"
+          error={props.inputErrorUntil}
+          helperText={props.inputErrorUntilHelper}
           defaultValue={formatDate(props.defaultUntil)}
           className={classes.textField}
           InputLabelProps={{
@@ -81,6 +83,8 @@ function RegisterWhen(props) {
             id="date"
             label="From"
             type="date"
+            error={props.inputErrorFrom}
+            helperText={props.inputErrorFromHelper}
             className={classes.textField}
             InputLabelProps={{
               shrink: true,
