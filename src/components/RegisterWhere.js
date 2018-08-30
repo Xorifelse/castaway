@@ -42,7 +42,7 @@ export default function RegisterWhere(props) {
       </Grid>
       <Grid item>
         {/* next button */}
-        <Button variant='outlined' color="primary"><Link to={'/when'}>NEXT</Link></Button>
+        <Button variant='outlined' color="primary" disabled={(props.userObj.location !== '') ? false : true}><Link to={'/when'}>NEXT</Link></Button>
       </Grid>
     </Grid>
   )
