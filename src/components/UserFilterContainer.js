@@ -16,7 +16,7 @@ class UserFilterContainer extends React.PureComponent {
   allLocations = (peopleArr) => peopleArr.map(memb => {
     return memb.location
   })
-  allLK = (a) => a.map(memb => {
+  allLK = (a) => a.map(memb => {  //FIX ME: the current selection is not highlighted
     return memb.lookingFor
   })
 
@@ -30,6 +30,7 @@ class UserFilterContainer extends React.PureComponent {
       setLookingForFn={this.props.setLookingFor}
       cities={this.allLocations(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)}
       setLocationFn={this.props.setLocation}
+
       // group={['alone, group']}
       // hobbies={this.allHobbies(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)}
       // setHobbiesFn={this.props.setHobbies}

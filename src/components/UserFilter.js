@@ -2,6 +2,19 @@ import * as React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Button         from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
+import RegisterWhenContainer from './RegisterWhenContainer'
+
+function formatDate(date) {
+  var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) month = '0' + month;
+  if (day.length < 2) day = '0' + day;
+
+  return [year, month, day].join('-');
+}
 
 function UserFilter(props) {
   return (
@@ -19,8 +32,9 @@ function UserFilter(props) {
 
         {/* {props.hobbies.map(hobbie => <Button key={hobbie} onClick={() => props.setHobbiesFn(hobbie)}
         variant={props.buttonContainedFn(hobbie)} color="primary">{hobbie}</Button>)} */}
-        
+
       {/* <Link to="/feed">Back To Feed</Link> */}
+      <RegisterWhenContainer changingFilter={true}/>
       <Link to="/search">Back To Feed</Link>
     </div>
   )
