@@ -41,9 +41,9 @@ class UserFilterContainer extends React.PureComponent {
 
   render() {
     return <UserFilter
-      lookingFor={this.allLK(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)}
+      lookingFor={this.allLK(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) === pos)}
       setLookingForFn={this.props.setLookingFor}
-      cities={this.allLocations(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)}
+      cities={this.allLocations(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) === pos)}
       setLocationFn={this.props.setLocation}
 
       // group={['alone, group']}

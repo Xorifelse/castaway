@@ -66,12 +66,14 @@ function ConfirmProfile(props) {
       <Grid item>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
           <Grid item><Button variant='outlined' color="primary" onClick={() => props.dbAddFn(props.userObj)}>SUBSCRIBE</Button></Grid>
+          {/*  ==== SUBSCRIBE BUTTON ADDED FOR TESTING  */}
         </Grid>
       </Grid>
       <Grid item>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item><Button variant='outlined' color="primary" disabled={(props.userObj.avatar) ? false : true} ><Link to="/search">FEED ME!</Link></Button></Grid>
-          {/* onClick={() => props.dbAddFn(props.userObj)}  ==== REMOVED FOR TESTING   */}
+          <Grid item><Button variant='outlined' color="primary" ><Link to="/search">FEED ME!</Link></Button></Grid>
+          {/* disabled={(props.userObj.avatar) ? false : true} ====== REMOVED FOR TESTING - ADD TO BUTTON FEED ME */} 
+          {/* onClick={() => props.dbAddFn(props.userObj)}  ==== REMOVED FOR TESTING  - ADD TO BUTTON FEED ME */}
         </Grid>
       </Grid>
 

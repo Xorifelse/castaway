@@ -1,12 +1,11 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import FilterWhenContainer from './FilterWhenContainer'
 
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
-import TextField from '@material-ui/core/TextField'
 
 
 function UserFilter(props) {

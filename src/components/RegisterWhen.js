@@ -23,14 +23,14 @@ function formatDate(date) {
 }
 
 function stepThree(props) {
-  const { classes, user } = props
+  const { user } = props
 
   if (!user.dateFrom || !user.dateTo) {
     return null
   }
 
   return (
-    <Grid container spacing={16} direction="row" justify="center" alignItems="right">
+    <Grid container spacing={16} direction="row" justify="center" alignItems="flex-end">
       <Grid>
         <Link to="/confirm"><Button variant="contained" color="primary">Continue</Button></Link>
       </Grid>
@@ -78,9 +78,9 @@ function RegisterWhen(props) {
   }
 
   return (
-    <Grid container spacing={16} direction="column" justify="top" alignItems="left" className={classes.content}>
+    <Grid container spacing={16} direction="column" justify="flex-start" alignItems="flex-start" className={classes.content}>
       <Grid item className={classes.topBarBreadcrumbs}>
-        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state} width="80px" /></Grid>
+        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state} width="80px" alt=""/></Grid>
       </Grid>
       <Grid item className={classes.topBar}>
         <Typography variant="headline" component="h2" className={classes.txtBig}>
@@ -185,23 +185,9 @@ const styles = theme => ({
     marginBottom: 16,
     fontSize: 48
   },
-  colorSwitchBase: {
-    color: 'primary',
-    '&$colorChecked': {
-      color: 'primary',
-      '& + $colorBar': {
-        backgroundColor: 'primary',
-      },
-    },
-  },
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
   },
 });
 
