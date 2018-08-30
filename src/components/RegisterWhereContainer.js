@@ -39,7 +39,7 @@ class RegisterWhereContainer extends React.PureComponent {
   })
 
   buttonContained = (city) => {
-    if (this.props.user.location === city) {
+    if (this.props.user.location.toLowerCase() === city.toLowerCase()) {
       return 'contained'
     } else {
       return 'outlined'
@@ -50,7 +50,13 @@ class RegisterWhereContainer extends React.PureComponent {
     if (this.props.db.dbResults.length === 0) return 'getting available cities...'
     return (
       <RegisterWhere
-        cities={this.allLocations(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)}
+        cities={Array.from(new Set(this.allLocations(this.props.db.dbResults))).filter(city => {
+          if(this.props.user.location.length > 0){
+            return city.toLowerCase().includes(this.props.user.location.toLowerCase())
+          } else {
+            return true
+          }
+        })}
         setLocationFn={this.props.setLocation}
         buttonContainedFn={this.buttonContained}
         userObj={this.props.user}
