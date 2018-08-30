@@ -81,21 +81,10 @@ class SearchMatchesContainer extends React.PureComponent {
   }
 
   componentDidMount() {
-    console.log("OUTSIDE: ", this.props.db.dbMatches.length)
     if (this.props.db.dbMatches.length !== 0) {
-      console.log("wwwwwwwwwwwwwwwwwwwwwwwww: ")
-      //cancella state
-      // this.setState(() => {
-      //   return {
-      //     dbMatches: []
-      //   }
-      // });
       this.props.clearMatched()
-      this.people(this.props.pushDbMatched)
-    } else {
-      console.log("wfdfsdfsdgsdgsdfgsdfsdwwww: ")
-      this.people(this.props.pushDbMatched)
     }
+    this.people(this.props.pushDbMatched)
 
     // Set a timer so the message changes when no matches are returned quickly enough.
     this.setState({
