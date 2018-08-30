@@ -3,11 +3,13 @@ import {Link} from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
 import Button         from '@material-ui/core/Button'
+import Switch         from '@material-ui/core/Switch'
 import Grid           from '@material-ui/core/Grid'
 import Typography     from '@material-ui/core/Typography'
 import TextField      from '@material-ui/core/TextField'
+import breadcrumbs_state01 from '../img/breadcrumbs_state01.png'
 
-import breadcrumbs_state01 from '../lib/graphics/breadcrumbs-allstates/breadcrumbs_state01.png'
+// const breadcrumbs_state01 = require('../lib/graphics/breadcrumbs-allstates/breadcrumbs_state01.png')
 
 
 const displayLookingFor = (props) => {
@@ -39,35 +41,55 @@ const displayGroup = (props) => {
 }
 
 
+
 function RegisterWho(props) {
+
   const { classes } = props
   return (
-    <Grid container spacing={16} direction="column" justify="center" alignItems="center">
+    <Grid container spacing={16} direction="column" justify="top" alignItems="left" className={classes.content}>
       <Grid item className={classes.topBarBreadcrumbs}>
-        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state01}/></Grid>
+        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state01} width="80px"/></Grid>
       </Grid>
-      <Grid item>
-      <Typography>
+      <Grid item className={classes.topBar}>
+      <Typography className={classes.txtSmall}>
           Hi! I don't think we've met yet. 
         </Typography>
-      <Typography variant="headline" component="h2">
-          Who are you? 
+      <Typography variant="headline" component="h2" className={classes.txtBig}>
+          Tell me a bit about you  
         </Typography>
-        <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item>
-            <Typography>Hi, my name is...</Typography>
-            {/* input */}
-            <TextField id="name" value={props.inputValue} onChange={(event) => props.inputChangeFn(event)} />
-          </Grid>
-        </Grid>
       </Grid>
-      <Grid item>
-        <Typography variant="headline" component="h2">
+      <Grid item className={classes.name}>
+      
+        {/* <Grid container spacing={16} direction="row" justify="left" alignItems="left"> */}
+          {/* <Grid item> */}
+            <Typography variant="title">Hi, my name is...</Typography>
+            {/* input */}
+            <TextField id="name" value={props.inputValue} onChange={(event) => props.inputChangeFn(event)} className={classes.textField} />
+          {/* </Grid> */}
+        {/* </Grid> */}
+      </Grid>
+      <Grid item className={classes.type}>
+        <Typography variant="title">
           and I'm a...
         </Typography>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item><Button onClick={() => props.setTypeBtn('traveller')} variant={props.btnTypeTrav} color="secondary">Traveller</Button></Grid>
-          <Grid item><Button onClick={() => props.setIfLocal('local')} variant={props.btnTypeLoc} color="secondary">Local</Button></Grid>
+          <Grid item style={{position: 'relative', left: -30}}>
+            <Typography 
+              style={{display: 'inline-block'}} 
+              color={(props.userObj.type === 'traveller') ? 'secondary' : ''}
+              >Traveller</Typography>
+              <Switch 
+                value="traveller" 
+                checked={props.userTypeBool} onChange={(event) => props.userTypeChangeFn(event)} 
+                />
+              <Typography 
+                style={{display: 'inline-block'}}
+                color={(props.userObj.type === 'local') ? 'secondary' : ''}
+                >
+                Local</Typography>
+            {/* <Button onClick={() => props.setTypeBtn('traveller')} variant={props.btnTypeTrav} color="secondary">Traveller</Button> */}
+          </Grid>
+          {/* <Grid item><Button onClick={() => props.setIfLocal('local')} variant={props.btnTypeLoc} color="secondary">Local</Button></Grid> */}
         </Grid>
       </Grid>
       {/* only display below if user.type is set */}
@@ -86,18 +108,25 @@ const styles = {
     background: '#BE8D8A',
     textAlign: "center",
     width: '100%',
-    height: '50px'
-
+    height: '70px',
   },
   topBarBreadcrumbs: {
     background: '#EBF0FF',
     textAlign: "center",
     width: '100%',
-    height: '50px'
-
+    height: '30px'
   },
   topBarBreadcrumbsPNG: {
-    marginTop: 10,
+    marginTop: 2,
+  },
+  txtSmall: {
+    color: 'white',
+  },
+  txtBig: {
+    color: 'white',
+  },
+  textField: {
+    width: 250
   },
   welcome: {
     background: '#a1a1a1',
@@ -113,16 +142,17 @@ const styles = {
     padding: '0 0 10px 0',
     textAlign: "center"
   },
-  nameInput: {
-    paddingTop: '50px',
-    textAlign: 'center'
-  },
-
   content: {
-    background: '#FFF',
+    background: '#EBF0FF',
+    height: '100vh',
   },
-  title: {
-    color: 'gray'
+  name: {
+    marginTop: 40,
+    marginLeft: 40
+  },
+  type: {
+    marginTop: 20,
+    marginLeft: 40
   },
   card: {
     minWidth: 150
@@ -134,7 +164,7 @@ const styles = {
   },
   title: {
     marginBottom: 16,
-    fontSize: 14,
+    fontSize: 18,
   },
   pos: {
     // marginBottom: 24,
@@ -143,6 +173,15 @@ const styles = {
     marginTop: 16,
     marginBottom: 16,
     fontSize: 48
+  },
+  colorSwitchBase: {
+    color: 'primary',
+    '&$colorChecked': {
+      color: 'primary',
+      '& + $colorBar': {
+        backgroundColor: 'primary',
+      },
+    },
   }
 }
 

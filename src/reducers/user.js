@@ -16,9 +16,9 @@ import {
 } from '../actions/user'
 
 const initialState = {
-  type: '',
+  type: 'traveller',
   name: '',
-  lookingFor: '',
+  lookingFor: 'traveller',
   location: '',
   age: 0,
   group: null,

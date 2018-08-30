@@ -12,6 +12,7 @@ import UserProfileContainer from './components/UserProfileContainer'
 import ConfirmProfileContainer from './components/ConfirmProfileContainer'
 import SplashComponent from './components/SplashComponent';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import 'typeface-roboto'
 
 const theme = createMuiTheme({
   palette: {
@@ -21,6 +22,23 @@ const theme = createMuiTheme({
     secondary: {
       main: '#009688'
     },
+    
+  },
+  overrides: {
+    MuiInput: {
+      underline: {
+        "&&&&:hover:before": {
+          borderBottom: "1px solid rgba(0, 150, 136, 0.42)"
+        },
+        "&&&&:hover:after": {
+          borderBottom: "2px solid rgba(0, 150, 136, 0.42)"
+        },
+        '&:after': {
+          borderBottom: "3px solid rgba(0, 150, 136, 0.42)"
+        }
+        
+      }
+    }
   }
 })
 
