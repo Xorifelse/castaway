@@ -116,8 +116,8 @@ function RegisterWho(props) {
       {/* only display below if user.type is set */}
       {(props.userObj.type !== '' && props.userObj.type !== 'local') && displayLookingFor(props)}
       {/* {(props.userObj.lookingFor !== '' || props.userObj.type === 'local') && displayGroup(props)} */}
-      <Grid item>
-      <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' ) ? false : true} variant='outlined' color="secondary"><Link to="/where">Next</Link></Button>
+      <Grid item className={classes.griditemNextBtn}>
+      <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' ) ? false : true} variant='text' color="secondary"><Link to="/where">Next</Link></Button>
       </Grid>
     </Grid>
 
@@ -149,20 +149,6 @@ const styles = {
   textField: {
     width: 250
   },
-  welcome: {
-    background: '#a1a1a1',
-    textAlign: "center"
-  },
-  hi: {
-    background: '#a1a1a1',
-    padding: '15px 0 15px 0',
-  },
-  who: {
-    fontSize: '30px',
-    background: '#a1a1a1',
-    padding: '0 0 10px 0',
-    textAlign: "center"
-  },
   content: {
     background: '#EBF0FF',
     height: '100vh',
@@ -174,6 +160,10 @@ const styles = {
   type: {
     marginTop: 20,
     marginLeft: 40
+  },
+  griditemNextBtn: {
+    marginTop: 20,
+    marginLeft: 300
   },
   card: {
     minWidth: 150
