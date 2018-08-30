@@ -31,6 +31,7 @@ class SearchMatchesContainer extends React.PureComponent{
         res.forEach(r => {
           r.docs.forEach(d => {
             let person = d.data()
+            person.docid = d.id
             let dateFrom = new Date(this.props.user.dateFrom).getTime() / 1000
             let dateTo = new Date(this.props.user.dateTo).getTime() / 1000
 
