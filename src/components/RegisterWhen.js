@@ -28,12 +28,11 @@ function stepThree(props) {
   }
 
   const changingFilter = props.changingFilter
-  console.log("CHANCHCHCHSINSLCNASHCASKJN: ", changingFilter)
   if (changingFilter) {
     return (
       <Grid container spacing={16} direction="row" justify="center" alignItems="right">
         <Grid>
-          <Link from="/filter" to="/search"><Button variant="contained" color="primary">FILTRA!</Button></Link>
+          <Link from="/filter" to="/search"><Button variant="contained" color="primary">Filter</Button></Link>
         </Grid>
       </Grid>
     )

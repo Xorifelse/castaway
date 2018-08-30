@@ -1,51 +1,64 @@
 import * as React from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import Button         from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 import RegisterWhenContainer from './RegisterWhenContainer'
 
-function formatDate(date) {
-  var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
+import { withStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
 
-  if (month.length < 2) month = '0' + month;
-  if (day.length < 2) day = '0' + day;
-
-  return [year, month, day].join('-');
-}
 
 function UserFilter(props) {
   return (
-    <div>
-      <div>Hi from UserFilter</div>
-      {console.log("location: "+props.cities)}
-      {console.log("Look: "+props.lookingFor)}
-      {props.lookingFor.map(lookingFor => <Button key={lookingFor} onClick={() => props.setLookingForFn(lookingFor)}
-        variant={props.buttonContainedFn(lookingFor)} color="primary">{lookingFor}</Button>)}
-      {props.cities.map(location => <Button key={location} onClick={() => props.setLocationFn(location)}
-        variant={props.buttonContainedFn(location)} color="primary">{location}</Button>)}
-
-      {/* {props.group.map(groupType => <Button key={groupType} onClick={() => props.setGroupFn(groupType)}
+    <Grid container spacing={16} direction="column" justify="center" alignItems="center">
+      <Grid item>
+        <Typography variant="headline" component="h2">
+          Change your preferences!
+        </Typography>
+        <Grid container spacing={16} direction="column" justify="center" alignItems="center">
+          <Grid item>
+            <Typography variant="headline" component="h2">
+              Looking for a...
+          </Typography>
+          </Grid>
+          <Grid item>
+            {props.lookingFor.map(lookingFor => <Button key={lookingFor} onClick={() => props.setLookingForFn(lookingFor)}
+              variant={props.buttonLookingForContainedFn(lookingFor)} color="primary">{lookingFor}</Button>)}
+          </Grid>
+        </Grid>
+        <Grid container spacing={16} direction="row" justify="center" alignItems="center">
+          <Grid item>
+            <Typography variant="headline" component="h2">
+              Which city...
+          </Typography>
+          </Grid>
+          <Grid item>
+            {props.cities.map(location => <Button key={location} onClick={() => props.setLocationFn(location)}
+              variant={props.buttonLocationContainedFn(location)} color="primary">{location}</Button>)}
+          </Grid>
+        </Grid>
+        {/* {props.group.map(groupType => <Button key={groupType} onClick={() => props.setGroupFn(groupType)}
         variant={props.buttonContainedFn(groupType)} color="primary">{groupType}</Button>)} */}
 
         {/* {props.hobbies.map(hobbie => <Button key={hobbie} onClick={() => props.setHobbiesFn(hobbie)}
         variant={props.buttonContainedFn(hobbie)} color="primary">{hobbie}</Button>)} */}
 
-      {/* <Link to="/feed">Back To Feed</Link> */}
-      <RegisterWhenContainer changingFilter={true}/>
-      <Link to="/search">Back To Feed</Link>
-    </div>
+        {/* <Link to="/feed">Back To Feed</Link> */}
+        <Grid container spacing={16} direction="row" justify="center" alignItems="center">
+          <Grid item><RegisterWhenContainer changingFilter={true} /></Grid>
+        </Grid>
+      </Grid>
+    </Grid>
   )
 }
 
-/* 
-lookingFor(pin): "traveller"
-location(pin): ""
+/* FILTERS TO ADD:
+lookingFor(pin): "traveller"  --> added
+location(pin): ""             --> added
 group(pin): null
-dateFrom(pin): ""
-dateTo(pin): ""
+dateFrom(pin): ""             --> added
+dateTo(pin): ""               --> added
 hobbies(pin):
 */
 

@@ -4,8 +4,23 @@ import UserFilter from './UserFilter'
 import { setLocation, setLookingFor } from '../actions/user'
 
 class UserFilterContainer extends React.PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {
+      btnLookingTrav: 'outlined',
+      btnLookingLoc: 'outlined',
+    }
+  }
 
-  buttonContained = (city) => {
+  buttonLookingForContained = (lookingFor) => {
+    if (this.props.user.lookingFor === lookingFor) {
+      return 'contained'
+    } else {
+      return 'outlined'
+    }
+  }
+
+  buttonLocationContained = (city) => {
     if (this.props.user.location === city) {
       return 'contained'
     } else {
@@ -34,7 +49,8 @@ class UserFilterContainer extends React.PureComponent {
       // group={['alone, group']}
       // hobbies={this.allHobbies(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)}
       // setHobbiesFn={this.props.setHobbies}
-      buttonContainedFn={this.buttonContained}
+      buttonLookingForContainedFn={this.buttonLookingForContained}
+      buttonLocationContainedFn={this.buttonLocationContained}
     />
   }
 }

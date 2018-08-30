@@ -70,7 +70,7 @@ function ConfirmProfile(props) {
       </Grid>
       <Grid item>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item><Button variant='outlined' color="primary"  ><Link to="/filter">FEED ME!</Link></Button></Grid>
+          <Grid item><Button variant='outlined' color="primary" disabled={(props.userObj.avatar) ? false : true} ><Link to="/search">FEED ME!</Link></Button></Grid>
           {/* onClick={() => props.dbAddFn(props.userObj)}  ==== REMOVED FOR TESTING   */}
         </Grid>
       </Grid>
