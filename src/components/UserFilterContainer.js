@@ -2,11 +2,6 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import UserFilter from './UserFilter'
 
-
-
-//import {} from '../actions/'
-
-
 class UserFilterContainer extends React.PureComponent {
   render() {
     return (

@@ -10,6 +10,7 @@ import PeopleFeedContainer from './components/PeopleFeedContainer'
 import UserFilterContainer from './components/UserFilterContainer'
 import UserProfileContainer from './components/UserProfileContainer'
 import ConfirmProfileContainer from './components/ConfirmProfileContainer'
+import SplashComponent from './components/SplashComponent';
 
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
+          <Route exact path="/" component={SplashComponent} />
           <Route exact path="/who" component={RegisterWhoContainer} />
           <Route exact path="/where" component={RegisterWhereContainer} />
           <Route exact path="/when" component={RegisterWhenContainer} />
@@ -25,7 +27,7 @@ class App extends Component {
           <Route exact path="/feed" component={PeopleFeedContainer} />
           <Route exact path="/profile" component={UserProfileContainer} />
           <Route exact path="/filter" component={UserFilterContainer} />
-          <Route component={() =>(<Redirect to="/who" />)} />
+          <Route component={() =>(<Redirect to="/" />)} />
         </Switch>
       </div>
     );
