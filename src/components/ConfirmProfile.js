@@ -63,14 +63,15 @@ function ConfirmProfile(props) {
           <Grid item><Typography>pick a image </Typography></Grid><Grid item><input type="file" accept="image/*" onChange={(event) => props.imgUploadFn(event.target.files[0])}/></Grid>
         </Grid>
       </Grid>
-      {/* <Grid item>
+      <Grid item>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
           <Grid item><Button variant='outlined' color="primary" onClick={() => props.dbAddFn(props.userObj)}>SUBSCRIBE</Button></Grid>
         </Grid>
-      </Grid> */}
+      </Grid>
       <Grid item>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item><Button variant='outlined' color="primary" disabled={(props.userObj.avatar) ? false : true}  onClick={() => props.dbAddFn(props.userObj)}><Link to="/search">FEED ME!</Link></Button></Grid>
+          <Grid item><Button variant='outlined' color="primary" disabled={(props.userObj.avatar) ? false : true} ><Link to="/search">FEED ME!</Link></Button></Grid>
+          {/* onClick={() => props.dbAddFn(props.userObj)}  ==== REMOVED FOR TESTING   */}
         </Grid>
       </Grid>
 
