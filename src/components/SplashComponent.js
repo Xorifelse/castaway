@@ -1,6 +1,7 @@
 import * as React  from 'react'
 import { connect } from 'react-redux'
 import Grid        from '@material-ui/core/Grid'
+import Hidden      from '@material-ui/core/Hidden'
 import RegisterWhoContainer from './RegisterWhoContainer'
 
 import splashLg from '../img/splashdesktop.png'
@@ -23,8 +24,13 @@ class SplashContainer extends React.PureComponent{
     if(!this.state.continue){
       return (
         <Grid container spacing={16} direction="column">
-          <Grid item only={['xs', 'sm']}><img src={splashXs} /></Grid>
-          <Grid item only={['md', 'lg', 'xl']}><img src={splashLg} /></Grid>
+          <Hidden only={['xs', 'sm']}>
+          <Grid item ><img src={splashLg} /></Grid>
+          </Hidden>
+
+          <Hidden only={['md', 'lg', 'xl']}>
+            <Grid item><img src={splashXs} /></Grid>
+          </Hidden>
         </Grid>
       )
     }
@@ -33,6 +39,6 @@ class SplashContainer extends React.PureComponent{
   }
 }
 
-const mapStateToProps = (state) => {}
+const mapStateToProps = (state) => ({state})
 
 export default connect(mapStateToProps, {})(SplashContainer)
