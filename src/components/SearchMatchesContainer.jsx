@@ -32,7 +32,7 @@ class SearchMatchesContainer extends React.PureComponent {
     filterArrary.push(peopleDB
       .where('type', '==', this.props.user.lookingFor)
       .where('location', '==', this.props.user.location)  //FIX ME: retrieve all cities if the location filter isn't valued
-      .where('group', '==', this.props.user.group) //false -> alone, true -> group
+      // .where('group', '==', this.props.user.group) //false -> alone, true -> group
       .get())
 
     return filterArrary
