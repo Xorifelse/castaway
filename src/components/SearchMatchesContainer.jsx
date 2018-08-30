@@ -6,7 +6,11 @@ import { db } from '../lib/db_init'
 import PeopleFeedContainer from './PeopleFeedContainer';
 
 
-class SearchMatchesContainer extends React.PureComponent {
+class SearchMatchesContainer extends React.PureComponent{
+  state = {
+    expired: false
+  }
+  
   filterConstructor = () => {
     const peopleDB = db.collection("people")
     const filterArrary = []
@@ -44,11 +48,22 @@ class SearchMatchesContainer extends React.PureComponent {
 
   componentDidMount() {
     this.people(this.props.pushDbMatched)
+
+    // Set a timer so the message changes when no matches are returned quickly enough.
+    setTimeout(() => {
+      this.setState({
+        expired: true
+      })
+    }, 5000)
   }
 
   render() {
-    if (this.props.db.dbMatches.length > 0) {
-      return <PeopleFeedContainer />
+    if(!this.state.expired){
+      if (this.props.db.dbMatches.length > 0) {
+        return <PeopleFeedContainer />
+      }
+    } else {
+      return <div>No Matches Found!</div>
     }
 
     return <div>Searching....</div>
