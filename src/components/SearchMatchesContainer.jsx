@@ -49,16 +49,19 @@ class SearchMatchesContainer extends React.PureComponent{
     this.people(this.props.pushDbMatched)
 
     // Set a timer so the message changes when no matches are returned quickly enough.
-    setTimeout(() => {
-      this.setState({
-        expired: true
-      })
-    }, 5000)
+    this.setState({
+      timer: setTimeout(() => {
+        this.setState({
+          expired: true
+        })
+      }, 5000)
+    })
   }
 
   render() {
     if(!this.state.expired){
       if (this.props.db.dbMatches.length > 0) {
+        clearTimeout(this.state.timer)
         return <PeopleFeedContainer />
       }
     } else {
