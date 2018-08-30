@@ -6,8 +6,6 @@ import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 
-import breadcrumbs_state from '../img/breadcrumbs_state03.png'
-
 import { Link } from 'react-router-dom'
 
 function formatDate(date) {
@@ -32,7 +30,7 @@ function stepThree(props) {
   return (
     <Grid container spacing={16} direction="row" justify="center" alignItems="right">
       <Grid>
-        <Link to="/confirm"><Button variant="contained" color="primary">Continue</Button></Link>
+        <Link to="/search"><Button variant="contained" color="primary">Filter</Button></Link>
       </Grid>
     </Grid>
   )
@@ -54,8 +52,7 @@ function stepTwo(props) {
           type="date"
           error={props.inputErrorUntil}
           helperText={props.inputErrorUntilHelper}
-          defaultValue={formatDate(props.defaultUntil)}  //CHANGED FOR TEST
-          // defaultValue={formatDate(props.user.dateTo)}//CHANGED FOR TEST
+          defaultValue={formatDate(props.user.dateTo)}
           className={classes.textField}
           InputLabelProps={{
             shrink: true,
@@ -67,7 +64,7 @@ function stepTwo(props) {
   )
 }
 
-function RegisterWhen(props) {
+function FilterWhen(props) {
   const { classes, onChangeFromFn } = props;
 
   let title = []
@@ -78,16 +75,11 @@ function RegisterWhen(props) {
   }
 
   return (
-    <Grid container spacing={16} direction="column" justify="top" alignItems="left" className={classes.content}>
-      <Grid item className={classes.topBarBreadcrumbs}>
-        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state} width="80px" /></Grid>
+    <Grid container spacing={16} direction="column" justify="center" alignItems="center">
+      <Grid item>
+        <Typography variant="headline" component="h2">{title}</Typography>
       </Grid>
-      <Grid item className={classes.topBar}>
-        <Typography variant="headline" component="h2" className={classes.txtBig}>
-          {title}
-        </Typography>
-      </Grid>
-      <Grid item className={classes.name}>
+      <Grid item>
         <form className={classes.container} noValidate>
           <TextField
             id="date"
@@ -104,96 +96,13 @@ function RegisterWhen(props) {
           />
         </form>
       </Grid>
-      <Grid item className={classes.name}>
-        {stepTwo(props)}
-      </Grid>
-      <Grid item className={classes.name}>
-        {stepThree(props)}
-      </Grid>
+      {stepTwo(props)}
+      {stepThree(props)}
     </Grid>
   )
 }
 
 const styles = theme => ({
-  topBar: {
-    background: '#BE8D8A',
-    textAlign: "center",
-    width: '100%',
-    height: '70px',
-  },
-  topBarBreadcrumbs: {
-    background: '#EBF0FF',
-    textAlign: "center",
-    width: '100%',
-    height: '30px'
-  },
-  topBarBreadcrumbsPNG: {
-    marginTop: 2,
-  },
-  txtSmall: {
-    color: 'white',
-  },
-  txtBig: {
-    color: 'white',
-  },
-  textField: {
-    width: 250
-  },
-  welcome: {
-    background: '#a1a1a1',
-    textAlign: "center"
-  },
-  hi: {
-    background: '#a1a1a1',
-    padding: '15px 0 15px 0',
-  },
-  who: {
-    fontSize: '30px',
-    background: '#a1a1a1',
-    padding: '0 0 10px 0',
-    textAlign: "center"
-  },
-  content: {
-    background: '#EBF0FF',
-    height: '100vh',
-  },
-  name: {
-    marginTop: 40,
-    marginLeft: 40
-  },
-  type: {
-    marginTop: 20,
-    marginLeft: 40
-  },
-  card: {
-    minWidth: 150
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    marginBottom: 16,
-    fontSize: 18,
-  },
-  pos: {
-    // marginBottom: 24,
-  },
-  header: {
-    marginTop: 16,
-    marginBottom: 16,
-    fontSize: 48
-  },
-  colorSwitchBase: {
-    color: 'primary',
-    '&$colorChecked': {
-      color: 'primary',
-      '& + $colorBar': {
-        backgroundColor: 'primary',
-      },
-    },
-  },
   container: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -205,4 +114,4 @@ const styles = theme => ({
   },
 });
 
-export default withStyles(styles)(RegisterWhen)
+export default withStyles(styles)(FilterWhen)

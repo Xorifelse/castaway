@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import RegisterWhenContainer from './RegisterWhenContainer'
+import FilterWhenContainer from './FilterWhenContainer'
 
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
@@ -46,7 +46,7 @@ function UserFilter(props) {
 
         {/* <Link to="/feed">Back To Feed</Link> */}
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item><RegisterWhenContainer changingFilter={true} /></Grid>
+          <Grid item><FilterWhenContainer /></Grid>
         </Grid>
       </Grid>
     </Grid>

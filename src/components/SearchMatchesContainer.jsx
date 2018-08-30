@@ -1,9 +1,11 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import SearchMatches from './SearchMatches'
-import { pushDbResults, pushDbMatched } from '../actions/db'
+import { pushDbResults, pushDbMatched, clearMatched } from '../actions/db'
 import { db } from '../lib/db_init'
 import PeopleFeedContainer from './PeopleFeedContainer';
+import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
 
 
 class SearchMatchesContainer extends React.PureComponent {
@@ -63,11 +65,6 @@ class SearchMatchesContainer extends React.PureComponent {
             let dateFrom = new Date(this.props.user.dateFrom).getTime() / 1000
             let dateTo = new Date(this.props.user.dateTo).getTime() / 1000
 
-            console.log("date from: ", dateFrom)
-            console.log("Person from: ", person.dateFrom.seconds)
-            console.log("date to: ", dateTo)
-            console.log("Person to: ", person.dateTo.seconds)
-
             if (dateFrom >= person.dateFrom.seconds && dateTo <= person.dateTo.seconds) {
 
               if (this.checkHobbies(person)) {
@@ -84,7 +81,21 @@ class SearchMatchesContainer extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.people(this.props.pushDbMatched)
+    console.log("OUTSIDE: ", this.props.db.dbMatches.length)
+    if (this.props.db.dbMatches.length !== 0) {
+      console.log("wwwwwwwwwwwwwwwwwwwwwwwww: ")
+      //cancella state
+      // this.setState(() => {
+      //   return {
+      //     dbMatches: []
+      //   }
+      // });
+      this.props.clearMatched()
+      this.people(this.props.pushDbMatched)
+    } else {
+      console.log("wfdfsdfsdgsdgsdfgsdfsdwwww: ")
+      this.people(this.props.pushDbMatched)
+    }
 
     // Set a timer so the message changes when no matches are returned quickly enough.
     this.setState({
@@ -103,7 +114,10 @@ class SearchMatchesContainer extends React.PureComponent {
         return <PeopleFeedContainer />
       }
     } else {
-      return <div>No Matches Found!</div>
+      return <div>
+        <div>No Matches Found!</div>
+        <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
+      </div>
     }
 
     return <div>Searching....</div>
@@ -117,4 +131,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { pushDbResults, pushDbMatched })(SearchMatchesContainer)
+export default connect(mapStateToProps, { pushDbResults, pushDbMatched, clearMatched })(SearchMatchesContainer)
