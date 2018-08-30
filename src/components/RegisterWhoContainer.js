@@ -14,7 +14,8 @@ class RegisterWhoContainer extends React.PureComponent {
       btnLookingLoc: 'outlined',
       btnGroupFalse: 'outlined',
       btnGroupTrue: 'outlined',
-      userType: false
+      userType: false,
+      lookingFor: false
     }
   }
 
@@ -72,6 +73,15 @@ class RegisterWhoContainer extends React.PureComponent {
     }
   }
 
+  handleUserLookingForChange = event => {
+    this.setState({ userLookingFor: event.target.checked })
+    if (this.state.userLookingFor === true) {
+      this.props.setLookingFor('traveller')
+    } else {
+      this.props.setLookingFor('local')
+    }
+  }
+
   setIfLocalFn = (type) => {
     this.props.setUserType(type)
     this.props.setLookingFor('traveller')
@@ -96,6 +106,8 @@ class RegisterWhoContainer extends React.PureComponent {
         setGroupBtn={this.props.setGroup}
         userTypeChangeFn={this.handleUserTypeChange}
         userTypeBool={this.state.userType}
+        userLookingForChangeFn={this.handleUserLookingForChange}
+        userLookingForBool={this.state.userLookingFor}
       />
     )
   }
