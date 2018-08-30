@@ -63,10 +63,17 @@ function stepTwo(props) {
 function RegisterWhen(props) {
   const { classes, onChangeFromFn } = props;
 
+  let title = []
+  if(props.user.type === 'traveller'){
+    title[0] = "When are you around?"
+  } else {
+    title[0] = "When are you available?"
+  }
+
   return (
     <Grid container spacing={16} direction="column" justify="center" alignItems="center">
       <Grid item>
-        <Typography variant="headline" component="h2">When are you traveling?</Typography>
+        <Typography variant="headline" component="h2">{title}</Typography>
       </Grid>
       <Grid item>
         <form className={classes.container} noValidate>
