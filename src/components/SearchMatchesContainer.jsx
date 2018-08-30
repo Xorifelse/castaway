@@ -11,9 +11,19 @@ class SearchMatchesContainer extends React.PureComponent {
         const peopleDB = db.collection("people")
         const filterArrary = []
 
+        const sign = (field) => {
+            if (field !== '') {
+                return '=='
+            } else {
+                return '!='
+            }
+        }
+        
+
         filterArrary.push(peopleDB
             .where('type', '==', this.props.user.lookingFor)
-            .where('location', '==', this.props.user.location)
+            // .where('location', '==', this.props.user.location)
+            .where('location', sign(this.props.user.location), this.props.user.location)
             .get())
            
         return filterArrary
