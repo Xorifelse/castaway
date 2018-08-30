@@ -30,7 +30,7 @@ function stepThree(props) {
   return (
     <Grid container spacing={16} direction="row" justify="center" alignItems="right">
       <Grid>
-        <Link to="/confirm"><Button variant="contained" color="primary">Continue</Button></Link>
+        <Link to="/search"><Button variant="contained" color="primary">Filter</Button></Link>
       </Grid>
     </Grid>
   )
@@ -52,8 +52,7 @@ function stepTwo(props) {
           type="date"
           error={props.inputErrorUntil}
           helperText={props.inputErrorUntilHelper}
-          defaultValue={formatDate(props.defaultUntil)}  //CHANGED FOR TEST
-          // defaultValue={formatDate(props.user.dateTo)}//CHANGED FOR TEST
+          defaultValue={formatDate(props.user.dateTo)}
           className={classes.textField}
           InputLabelProps={{
             shrink: true,
@@ -65,7 +64,7 @@ function stepTwo(props) {
   )
 }
 
-function RegisterWhen(props) {
+function FilterWhen(props) {
   const { classes, onChangeFromFn } = props;
 
   let title = []
@@ -115,4 +114,4 @@ const styles = theme => ({
   },
 });
 
-export default withStyles(styles)(RegisterWhen)
+export default withStyles(styles)(FilterWhen)
