@@ -25,11 +25,11 @@ class SplashContainer extends React.PureComponent{
       return (
         <Grid container spacing={16} direction="column">
           <Hidden only={['xs', 'sm']}>
-          <Grid item ><img src={splashLg} /></Grid>
+          <Grid item ><img src={splashLg} alt=""/></Grid>
           </Hidden>
 
           <Hidden only={['md', 'lg', 'xl']}>
-            <Grid item><img src={splashXs} /></Grid>
+            <Grid item><img src={splashXs} alt=""/></Grid>
           </Hidden>
         </Grid>
       )

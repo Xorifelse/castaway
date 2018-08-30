@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { allthepeople } from '../lib/People'
 import RegisterWhere from './RegisterWhere'
 import { setLocation } from '../actions/user'
 import { pushDbResults } from '../actions/db'
@@ -13,7 +12,7 @@ class RegisterWhereContainer extends React.PureComponent {
 
   componentDidMount() {
     const people = (pushDbResultsAction) => {
-      let tmp = db.collection("people")
+      db.collection("people")
         .get()
         .then(querySnapshot => {
           const results = querySnapshot.docs.map(function (doc) {

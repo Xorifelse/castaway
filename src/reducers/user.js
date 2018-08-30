@@ -6,7 +6,6 @@ import {
   SET_DATE_FROM,
   SET_DATE_UNTIL,
   SET_GROUP,
-  PUSH_DB_RESULTS,
   ADD_LIKED,
   ADD_DISLIKED,
   SET_FIRESTORE_ID,
@@ -83,10 +82,8 @@ export default (state = initialState, action = {}) => {
           ...state, 
           feedCurrent: state.feedCurrent - 1
         }
-
-        return state
       }
-
+      break
     case SET_FIRESTORE_ID:
       return {
         ...state, firestoreID: action.payload
