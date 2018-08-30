@@ -13,16 +13,39 @@ import breadcrumbs_state01 from '../img/breadcrumbs_state01.png'
 
 
 const displayLookingFor = (props) => {
+  const { classes } = props
   return (
-    <Grid item>
-    <Typography variant="headline" component="h2">
-      Looking for a... 
+    <Grid item className={classes.type}>
+    <Typography variant="title">
+      Looking for a...
     </Typography>
     <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-      <Grid item><Button onClick={() => props.setLookingForBtn('traveller')} variant={props.btnLookingTrav} color="secondary">Traveller</Button></Grid>
-      <Grid item><Button onClick={() => props.setLookingForBtn('local')} variant={props.btnLookingLoc} color="secondary">Local</Button></Grid>
+      <Grid item style={{position: 'relative', left: -30}}>
+        <Typography 
+          style={{display: 'inline-block'}} 
+          color={(props.userObj.lookingFor === 'traveller') ? 'secondary' : ''}
+          >Traveller</Typography>
+          <Switch 
+            value="traveller" 
+            checked={props.userLookingForBool} onChange={(event) => props.userLookingForChangeFn(event)} 
+            />
+          <Typography 
+            style={{display: 'inline-block'}}
+            color={(props.userObj.lookingFor === 'local') ? 'secondary' : ''}
+            >
+            Local</Typography>
+      </Grid>
     </Grid>
   </Grid>
+  //   <Grid item>
+  //   <Typography variant="headline" component="h2">
+  //     Looking for a... 
+  //   </Typography>
+  //   <Grid container spacing={16} direction="row" justify="center" alignItems="center">
+  //     <Grid item><Button onClick={() => props.setLookingForBtn('traveller')} variant={props.btnLookingTrav} color="secondary">Traveller</Button></Grid>
+  //     <Grid item><Button onClick={() => props.setLookingForBtn('local')} variant={props.btnLookingLoc} color="secondary">Local</Button></Grid>
+  //   </Grid>
+  // </Grid>
   )
 }
 
@@ -87,9 +110,7 @@ function RegisterWho(props) {
                 color={(props.userObj.type === 'local') ? 'secondary' : ''}
                 >
                 Local</Typography>
-            {/* <Button onClick={() => props.setTypeBtn('traveller')} variant={props.btnTypeTrav} color="secondary">Traveller</Button> */}
           </Grid>
-          {/* <Grid item><Button onClick={() => props.setIfLocal('local')} variant={props.btnTypeLoc} color="secondary">Local</Button></Grid> */}
         </Grid>
       </Grid>
       {/* only display below if user.type is set */}
