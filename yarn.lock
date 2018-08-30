@@ -236,6 +236,53 @@
     recompose "^0.28.0"
     warning "^4.0.1"
 
+"@material/animation@^0.39.0":
+  version "0.39.0"
+  resolved "https://registry.yarnpkg.com/@material/animation/-/animation-0.39.0.tgz#d3d503c9f87ac1193dc4a5b0cccfaedb39478439"
+
+"@material/base@^0.39.0":
+  version "0.39.0"
+  resolved "https://registry.yarnpkg.com/@material/base/-/base-0.39.0.tgz#ca451531cf438f51bf999ad7b96b5e8f3929e19a"
+
+"@material/elevation@^0.39.0":
+  version "0.39.0"
+  resolved "https://registry.yarnpkg.com/@material/elevation/-/elevation-0.39.0.tgz#031976d771f234c7b85309caca9203391d0d9797"
+  dependencies:
+    "@material/animation" "^0.39.0"
+    "@material/theme" "^0.39.0"
+
+"@material/ripple@^0.39.0":
+  version "0.39.0"
+  resolved "https://registry.yarnpkg.com/@material/ripple/-/ripple-0.39.0.tgz#0fe86415f6e78a7315f0fd5369b321eaa10d180d"
+  dependencies:
+    "@material/animation" "^0.39.0"
+    "@material/base" "^0.39.0"
+    "@material/theme" "^0.39.0"
+
+"@material/rtl@^0.39.0":
+  version "0.39.0"
+  resolved "https://registry.yarnpkg.com/@material/rtl/-/rtl-0.39.0.tgz#f7f9fe4f11934efb7d5a8c06a2f2860de81743b4"
+
+"@material/theme@^0.39.0":
+  version "0.39.0"
+  resolved "https://registry.yarnpkg.com/@material/theme/-/theme-0.39.0.tgz#2c7a2167b59e5757737ec3dea43790eeb85778ce"
+
+"@material/top-app-bar@^0.39.0":
+  version "0.39.0"
+  resolved "https://registry.yarnpkg.com/@material/top-app-bar/-/top-app-bar-0.39.0.tgz#3ca73119076051ade11158946ddacd7429a6c2ab"
+  dependencies:
+    "@material/animation" "^0.39.0"
+    "@material/base" "^0.39.0"
+    "@material/elevation" "^0.39.0"
+    "@material/ripple" "^0.39.0"
+    "@material/rtl" "^0.39.0"
+    "@material/theme" "^0.39.0"
+    "@material/typography" "^0.39.0"
+
+"@material/typography@^0.39.0":
+  version "0.39.0"
+  resolved "https://registry.yarnpkg.com/@material/typography/-/typography-0.39.0.tgz#7d7468673e104609d926528ffe5571cfd44d8c3c"
+
 "@types/jss@^9.5.3":
   version "9.5.5"
   resolved "https://registry.yarnpkg.com/@types/jss/-/jss-9.5.5.tgz#57ed99ae768c203677cd64e0ce0df02c74075bf8"
@@ -7268,6 +7315,10 @@ type-is@~1.6.15, type-is@~1.6.16:
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
+
+typeface-roboto@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-0.0.54.tgz#8f02c9a18d1cfa7f49381a6ff0d21ff061f38ad2"
 
 ua-parser-js@^0.7.18:
   version "0.7.18"

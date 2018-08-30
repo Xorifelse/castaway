@@ -9,3 +9,21 @@ a:visited {
 body{
   margin: 0px;
 }
+
+.topBar {
+  background-color: '#BE8D8A';
+  text-align: center;
+  width: 100%;
+  height: 70px;
+}
+
+.topBarBreadcrumbs {
+  background-color: '#EBF0FF';
+  text-align: center;
+  width: 100%;
+  height: 30px;
+}
+
+.topBarBreadcrumbsPNG {
+  margin-top: 2px;
+}

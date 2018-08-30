@@ -13,11 +13,13 @@ class RegisterWhoContainer extends React.PureComponent {
       btnLookingTrav: 'outlined',
       btnLookingLoc: 'outlined',
       btnGroupFalse: 'outlined',
-      btnGroupTrue: 'outlined'
+      btnGroupTrue: 'outlined',
+      userType: false
     }
   }
 
   componentDidUpdate() {
+
     // buttons variant
     if (this.props.user.type === 'traveller') {
       this.setState({
@@ -61,6 +63,15 @@ class RegisterWhoContainer extends React.PureComponent {
     this.props.setUserName(event.target.value)
   }
 
+  handleUserTypeChange = event => {
+    this.setState({ userType: event.target.checked })
+    if (this.state.userType === false) {
+      this.props.setUserType('local')
+    } else {
+      this.props.setUserType('traveller')
+    }
+  }
+
   setIfLocalFn = (type) => {
     this.props.setUserType(type)
     this.props.setLookingFor('traveller')
@@ -83,6 +94,8 @@ class RegisterWhoContainer extends React.PureComponent {
         btnGroupFalse={this.state.btnGroupFalse}
         btnGroupTrue={this.state.btnGroupTrue}
         setGroupBtn={this.props.setGroup}
+        userTypeChangeFn={this.handleUserTypeChange}
+        userTypeBool={this.state.userType}
       />
     )
   }

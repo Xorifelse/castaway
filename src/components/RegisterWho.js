@@ -3,11 +3,15 @@ import {Link} from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
 import Button         from '@material-ui/core/Button'
+import Switch         from '@material-ui/core/Switch'
 import Grid           from '@material-ui/core/Grid'
 import Typography     from '@material-ui/core/Typography'
 import TextField      from '@material-ui/core/TextField'
+import breadcrumbs_state01 from '../img/breadcrumbs_state01.png'
 
-// import { allthepeople } from '../lib/People'
+// const breadcrumbs_state01 = require('../lib/graphics/breadcrumbs-allstates/breadcrumbs_state01.png')
+
+
 const displayLookingFor = (props) => {
   return (
     <Grid item>
@@ -15,8 +19,8 @@ const displayLookingFor = (props) => {
       Looking for a... 
     </Typography>
     <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-      <Grid item><Button onClick={() => props.setLookingForBtn('traveller')} variant={props.btnLookingTrav} color="primary">Traveller</Button></Grid>
-      <Grid item><Button onClick={() => props.setLookingForBtn('local')} variant={props.btnLookingLoc} color="primary">Local</Button></Grid>
+      <Grid item><Button onClick={() => props.setLookingForBtn('traveller')} variant={props.btnLookingTrav} color="secondary">Traveller</Button></Grid>
+      <Grid item><Button onClick={() => props.setLookingForBtn('local')} variant={props.btnLookingLoc} color="secondary">Local</Button></Grid>
     </Grid>
   </Grid>
   )
@@ -29,46 +33,70 @@ const displayGroup = (props) => {
       Are you alone or in a group/ couple? 
     </Typography>
     <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-      <Grid item><Button onClick={() => props.setGroupBtn(false)} variant={props.btnGroupFalse} color="primary">Alone</Button></Grid>
-      <Grid item><Button onClick={() => props.setGroupBtn(true)} variant={props.btnGroupTrue} color="primary">Group/ couple</Button></Grid>
+      <Grid item><Button onClick={() => props.setGroupBtn(false)} variant={props.btnGroupFalse} color="secondary">Alone</Button></Grid>
+      <Grid item><Button onClick={() => props.setGroupBtn(true)} variant={props.btnGroupTrue} color="secondary">Group/ couple</Button></Grid>
     </Grid>
   </Grid>
   )
 }
 
 
+
 function RegisterWho(props) {
+
+  const { classes } = props
   return (
-    <Grid container spacing={16} direction="column" justify="center" alignItems="center">
-      <Grid item>
-      <Typography>
+    <Grid container spacing={16} direction="column" justify="top" alignItems="left" className={classes.content}>
+      <Grid item className={classes.topBarBreadcrumbs}>
+        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state01} width="80px"/></Grid>
+      </Grid>
+      <Grid item className={classes.topBar}>
+      <Typography className={classes.txtSmall}>
           Hi! I don't think we've met yet. 
         </Typography>
-      <Typography variant="headline" component="h2">
-          Who are you? 
+      <Typography variant="headline" component="h2" className={classes.txtBig}>
+          Tell me a bit about you  
         </Typography>
-        <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item>
-            <Typography>Hi, my name is...</Typography>
-            {/* input */}
-            <TextField id="name" value={props.inputValue} onChange={(event) => props.inputChangeFn(event)} />
-          </Grid>
-        </Grid>
       </Grid>
-      <Grid item>
-        <Typography variant="headline" component="h2">
+      <Grid item className={classes.name}>
+      
+        {/* <Grid container spacing={16} direction="row" justify="left" alignItems="left"> */}
+          {/* <Grid item> */}
+            <Typography variant="title">Hi, my name is...</Typography>
+            {/* input */}
+            <TextField id="name" value={props.inputValue} onChange={(event) => props.inputChangeFn(event)} className={classes.textField} />
+          {/* </Grid> */}
+        {/* </Grid> */}
+      </Grid>
+      <Grid item className={classes.type}>
+        <Typography variant="title">
           and I'm a...
         </Typography>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item><Button onClick={() => props.setTypeBtn('traveller')} variant={props.btnTypeTrav} color="primary">Traveller</Button></Grid>
-          <Grid item><Button onClick={() => props.setIfLocal('local')} variant={props.btnTypeLoc} color="primary">Local</Button></Grid>
+          <Grid item style={{position: 'relative', left: -30}}>
+            <Typography 
+              style={{display: 'inline-block'}} 
+              color={(props.userObj.type === 'traveller') ? 'secondary' : ''}
+              >Traveller</Typography>
+              <Switch 
+                value="traveller" 
+                checked={props.userTypeBool} onChange={(event) => props.userTypeChangeFn(event)} 
+                />
+              <Typography 
+                style={{display: 'inline-block'}}
+                color={(props.userObj.type === 'local') ? 'secondary' : ''}
+                >
+                Local</Typography>
+            {/* <Button onClick={() => props.setTypeBtn('traveller')} variant={props.btnTypeTrav} color="secondary">Traveller</Button> */}
+          </Grid>
+          {/* <Grid item><Button onClick={() => props.setIfLocal('local')} variant={props.btnTypeLoc} color="secondary">Local</Button></Grid> */}
         </Grid>
       </Grid>
       {/* only display below if user.type is set */}
       {(props.userObj.type !== '' && props.userObj.type !== 'local') && displayLookingFor(props)}
       {/* {(props.userObj.lookingFor !== '' || props.userObj.type === 'local') && displayGroup(props)} */}
       <Grid item>
-      <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' ) ? false : true} variant='outlined' color="primary"><Link to="/where">Next</Link></Button>
+      <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' ) ? false : true} variant='outlined' color="secondary"><Link to="/where">Next</Link></Button>
       </Grid>
     </Grid>
 
@@ -76,10 +104,29 @@ function RegisterWho(props) {
 }
 
 const styles = {
-  top: {
-    background: '#868686',
+  topBar: {
+    background: '#BE8D8A',
     textAlign: "center",
-
+    width: '100%',
+    height: '70px',
+  },
+  topBarBreadcrumbs: {
+    background: '#EBF0FF',
+    textAlign: "center",
+    width: '100%',
+    height: '30px'
+  },
+  topBarBreadcrumbsPNG: {
+    marginTop: 2,
+  },
+  txtSmall: {
+    color: 'white',
+  },
+  txtBig: {
+    color: 'white',
+  },
+  textField: {
+    width: 250
   },
   welcome: {
     background: '#a1a1a1',
@@ -95,16 +142,17 @@ const styles = {
     padding: '0 0 10px 0',
     textAlign: "center"
   },
-  nameInput: {
-    paddingTop: '50px',
-    textAlign: 'center'
-  },
-
   content: {
-    background: '#FFF',
+    background: '#EBF0FF',
+    height: '100vh',
   },
-  title: {
-    color: 'gray'
+  name: {
+    marginTop: 40,
+    marginLeft: 40
+  },
+  type: {
+    marginTop: 20,
+    marginLeft: 40
   },
   card: {
     minWidth: 150
@@ -116,7 +164,7 @@ const styles = {
   },
   title: {
     marginBottom: 16,
-    fontSize: 14,
+    fontSize: 18,
   },
   pos: {
     // marginBottom: 24,
@@ -125,6 +173,15 @@ const styles = {
     marginTop: 16,
     marginBottom: 16,
     fontSize: 48
+  },
+  colorSwitchBase: {
+    color: 'primary',
+    '&$colorChecked': {
+      color: 'primary',
+      '& + $colorBar': {
+        backgroundColor: 'primary',
+      },
+    },
   }
 }
 
