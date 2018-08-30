@@ -19,28 +19,20 @@ class PeopleFeedContainer extends React.PureComponent {
     // Or we can use react-animated-css
   }
 
-  swipedUp = (e, deltaY, isFlick) => {
-    this.props.addPerson(this.props.user.feedCurrent)
-  }
-
   swipedRight = (e, deltaY, isFlick) => {
-    this.props.nextPerson()
-  }
-
-  swipedDown = (e, deltaY, isFlick) => {
-    this.props.removePerson(this.props.user.feedCurrent)
+    this.like()
   }
 
   swipedLeft = (e, deltaY, isFlick) => {
-    this.props.previousPerson()
+    this.dislike()
   }
 
   like = () => {
-    this.props.addPerson(this.props.user.feedCurrent)
+    this.props.addPerson(this.props.db.dbMatches[this.props.user.feedCurrent].docid)
   }
 
   dislike = () => {
-    this.props.removePerson(this.props.user.feedCurrent)
+    this.props.removePerson(this.props.db.dbMatches[this.props.user.feedCurrent].docid)
   }
   
   render() {
