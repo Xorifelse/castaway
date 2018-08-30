@@ -14,10 +14,10 @@ import acceptBtn from '../img/Accept_Button.png'
 
 function PeopleFeed(props) {
   const { classes } = props
-  const bull = <span className={classes.bullet}>•</span>
+  // const bull = <span className={classes.bullet}>•</span>
   return (
     // <div style={{backgroundImage: `url(${feedbgimage})`, minHeight: '100vh', minWidth: '100vw', position: 'absolute', top: 0}>
-    <Grid container spacing={16} direction="column" justify="top" alignItems="center" className={classes.content} style={{backgroundImage: `url(${feedbgimage})`, minHeight: '100vh', minWidth: '100vw', position: 'absolute', top: 0}}>
+    <Grid container spacing={16} direction="column" justify="flex-start" alignItems="center" className={classes.content} style={{backgroundImage: `url(${feedbgimage})`, minHeight: '100vh', minWidth: '100vw', position: 'absolute', top: 0}}>
       <Grid item>
         <Card className={classes.personCard}>
           <CardMedia
@@ -47,11 +47,11 @@ function PeopleFeed(props) {
       <Grid item>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center" style={{position: 'relative', top: 8}}>
           <Grid item>
-            <img src={denyBtn} onClick={props.dislikeFn} variant="contained" color="secondary"/>
+            <img src={denyBtn} onClick={props.dislikeFn} variant="contained" color="secondary" alt=""/>
           </Grid>
           <Grid item style={{width: 50}}></Grid>
           <Grid item>
-            <img src={acceptBtn} onClick={props.likeFn} variant="contained" color="primary" />
+            <img src={acceptBtn} onClick={props.likeFn} variant="contained" color="primary" alt=""/>
           </Grid>
         </Grid>
         {/* // */}
@@ -110,15 +110,6 @@ const styles = {
   },
   pos: {
     marginBottom: 24,
-  },
-  colorSwitchBase: {
-    color: 'primary',
-    '&$colorChecked': {
-      color: 'primary',
-      '& + $colorBar': {
-        backgroundColor: 'primary',
-      },
-    },
   }
 }
 

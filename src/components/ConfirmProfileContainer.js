@@ -43,6 +43,8 @@ class ConfirmProfileContainer extends React.PureComponent {
             case firebase.storage.TaskState.RUNNING: // or 'running'
               console.log('Upload is running');
               break;
+            default:
+
           }
         }, function(error) {
 
@@ -58,6 +60,7 @@ class ConfirmProfileContainer extends React.PureComponent {
           case 'storage/unknown':
             // Unknown error occurred, inspect error.serverResponse
             break;
+          default:
         }
       }, () => {
         

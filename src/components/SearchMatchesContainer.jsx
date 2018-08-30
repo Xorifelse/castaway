@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import SearchMatches from './SearchMatches'
 import { pushDbResults, pushDbMatched, clearMatched } from '../actions/db'
 import { db } from '../lib/db_init'
 import PeopleFeedContainer from './PeopleFeedContainer';
@@ -17,19 +16,19 @@ class SearchMatchesContainer extends React.PureComponent {
     const peopleDB = db.collection("people")
     const filterArrary = []
 
-    const allLocations = (peopleArr) => peopleArr.map(memb => {
-      return memb.location
-    })
-    let cities = allLocations(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)
+    // const allLocations = (peopleArr) => peopleArr.map(memb => {
+    //   return memb.location
+    // })
+    // let cities = allLocations(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) === pos)
 
-    const dataExist = (field) => {
-      if (field !== '') {
-        return field
-      } else {
-        console.log("CITIES: " + cities)
-        return cities
-      }
-    }
+    // const dataExist = (field) => {
+    //   if (field !== '') {
+    //     return field
+    //   } else {
+    //     console.log("CITIES: " + cities)
+    //     return cities
+    //   }
+    // }
 
     filterArrary.push(peopleDB
       .where('type', '==', this.props.user.lookingFor)
@@ -55,7 +54,7 @@ class SearchMatchesContainer extends React.PureComponent {
 
   people = (dispatch) => {
     // let tmp = Promise.all([type.get(), location.get()])
-    let tmp = Promise.all(this.filterConstructor()) //Hardcoded, FIXME!
+    Promise.all(this.filterConstructor()) //Hardcoded, FIXME!
       .then(res => {
 
         res.forEach(r => {

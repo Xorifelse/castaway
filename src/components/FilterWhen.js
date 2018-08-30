@@ -21,7 +21,7 @@ function formatDate(date) {
 }
 
 function stepThree(props) {
-  const { classes, user } = props
+  const { user } = props
 
   if (!user.dateFrom || !user.dateTo) {
     return null
