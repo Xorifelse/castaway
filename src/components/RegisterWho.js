@@ -6,9 +6,10 @@ import Button         from '@material-ui/core/Button'
 import Grid           from '@material-ui/core/Grid'
 import Typography     from '@material-ui/core/Typography'
 import TextField      from '@material-ui/core/TextField'
-import {MDCTopAppBar} from '@material/top-app-bar/index'
 
-// import { allthepeople } from '../lib/People'
+import breadcrumbs_state01 from '../lib/graphics/breadcrumbs-allstates/breadcrumbs_state01.png'
+
+
 const displayLookingFor = (props) => {
   return (
     <Grid item>
@@ -16,8 +17,8 @@ const displayLookingFor = (props) => {
       Looking for a... 
     </Typography>
     <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-      <Grid item><Button onClick={() => props.setLookingForBtn('traveller')} variant={props.btnLookingTrav} color="primary">Traveller</Button></Grid>
-      <Grid item><Button onClick={() => props.setLookingForBtn('local')} variant={props.btnLookingLoc} color="primary">Local</Button></Grid>
+      <Grid item><Button onClick={() => props.setLookingForBtn('traveller')} variant={props.btnLookingTrav} color="secondary">Traveller</Button></Grid>
+      <Grid item><Button onClick={() => props.setLookingForBtn('local')} variant={props.btnLookingLoc} color="secondary">Local</Button></Grid>
     </Grid>
   </Grid>
   )
@@ -30,8 +31,8 @@ const displayGroup = (props) => {
       Are you alone or in a group/ couple? 
     </Typography>
     <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-      <Grid item><Button onClick={() => props.setGroupBtn(false)} variant={props.btnGroupFalse} color="primary">Alone</Button></Grid>
-      <Grid item><Button onClick={() => props.setGroupBtn(true)} variant={props.btnGroupTrue} color="primary">Group/ couple</Button></Grid>
+      <Grid item><Button onClick={() => props.setGroupBtn(false)} variant={props.btnGroupFalse} color="secondary">Alone</Button></Grid>
+      <Grid item><Button onClick={() => props.setGroupBtn(true)} variant={props.btnGroupTrue} color="secondary">Group/ couple</Button></Grid>
     </Grid>
   </Grid>
   )
@@ -39,8 +40,12 @@ const displayGroup = (props) => {
 
 
 function RegisterWho(props) {
+  const { classes } = props
   return (
     <Grid container spacing={16} direction="column" justify="center" alignItems="center">
+      <Grid item className={classes.topBarBreadcrumbs}>
+        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state01}/></Grid>
+      </Grid>
       <Grid item>
       <Typography>
           Hi! I don't think we've met yet. 
@@ -61,15 +66,15 @@ function RegisterWho(props) {
           and I'm a...
         </Typography>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item><Button onClick={() => props.setTypeBtn('traveller')} variant={props.btnTypeTrav} color="primary">Traveller</Button></Grid>
-          <Grid item><Button onClick={() => props.setIfLocal('local')} variant={props.btnTypeLoc} color="primary">Local</Button></Grid>
+          <Grid item><Button onClick={() => props.setTypeBtn('traveller')} variant={props.btnTypeTrav} color="secondary">Traveller</Button></Grid>
+          <Grid item><Button onClick={() => props.setIfLocal('local')} variant={props.btnTypeLoc} color="secondary">Local</Button></Grid>
         </Grid>
       </Grid>
       {/* only display below if user.type is set */}
       {(props.userObj.type !== '' && props.userObj.type !== 'local') && displayLookingFor(props)}
       {/* {(props.userObj.lookingFor !== '' || props.userObj.type === 'local') && displayGroup(props)} */}
       <Grid item>
-      <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' ) ? false : true} variant='outlined' color="primary"><Link to="/where">Next</Link></Button>
+      <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' ) ? false : true} variant='outlined' color="secondary"><Link to="/where">Next</Link></Button>
       </Grid>
     </Grid>
 
@@ -77,10 +82,22 @@ function RegisterWho(props) {
 }
 
 const styles = {
-  top: {
-    background: '#868686',
+  topBar: {
+    background: '#BE8D8A',
     textAlign: "center",
+    width: '100%',
+    height: '50px'
 
+  },
+  topBarBreadcrumbs: {
+    background: '#EBF0FF',
+    textAlign: "center",
+    width: '100%',
+    height: '50px'
+
+  },
+  topBarBreadcrumbsPNG: {
+    marginTop: 10,
   },
   welcome: {
     background: '#a1a1a1',
