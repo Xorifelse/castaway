@@ -6,7 +6,7 @@ import { db } from '../lib/db_init'
 import PeopleFeedContainer from './PeopleFeedContainer';
 
 
-class SearchMatchesContainer extends React.PureComponent{
+class SearchMatchesContainer extends React.PureComponent {
   state = {
     expired: false
   }
@@ -15,12 +15,40 @@ class SearchMatchesContainer extends React.PureComponent{
     const peopleDB = db.collection("people")
     const filterArrary = []
 
+    const allLocations = (peopleArr) => peopleArr.map(memb => {
+      return memb.location
+    })
+    let cities = allLocations(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)
+
+    const dataExist = (field) => {
+      if (field !== '') {
+        return field
+      } else {
+        console.log("CITIES: " + cities)
+        return cities
+      }
+    }
+
     filterArrary.push(peopleDB
       .where('type', '==', this.props.user.lookingFor)
-      .where('location', '==', this.props.user.location)
+      .where('location', '==', this.props.user.location)  //FIX ME: retrieve all cities if the location filter isn't valued
+      // .where('group', '==', this.props.user.group) //false -> alone, true -> group
       .get())
 
     return filterArrary
+  }
+
+  checkHobbies = person => {
+    const userHobbies = this.props.user.hobbies //array
+    // const userHobbies = ['yoga', 'jogging']
+    if (userHobbies.length !== 0) {
+      const filtered = userHobbies.filter(hobbie => person.hobbies.indexOf(hobbie) !== -1)
+      if (filtered.length === userHobbies.length) {
+        return true
+      }
+      return false
+    }
+    return true
   }
 
   people = (dispatch) => {
@@ -35,8 +63,17 @@ class SearchMatchesContainer extends React.PureComponent{
             let dateFrom = new Date(this.props.user.dateFrom).getTime() / 1000
             let dateTo = new Date(this.props.user.dateTo).getTime() / 1000
 
-            if (person.dateFrom.seconds <= dateFrom && dateTo <= person.dateTo.seconds) {
-              dispatch(person)
+            console.log("date from: ", dateFrom)
+            console.log("Person from: ", person.dateFrom.seconds)
+            console.log("date to: ", dateTo)
+            console.log("Person to: ", person.dateTo.seconds)
+
+            if (dateFrom >= person.dateFrom.seconds && dateTo <= person.dateTo.seconds) {
+
+              if (this.checkHobbies(person)) {
+
+                dispatch(person)
+              }
             }
           });
         });
@@ -60,7 +97,7 @@ class SearchMatchesContainer extends React.PureComponent{
   }
 
   render() {
-    if(!this.state.expired){
+    if (!this.state.expired) {
       if (this.props.db.dbMatches.length > 0) {
         clearTimeout(this.state.timer)
         return <PeopleFeedContainer />
