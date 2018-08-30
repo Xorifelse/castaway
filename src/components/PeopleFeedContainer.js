@@ -1,7 +1,6 @@
 import * as React  from 'react'
 import {connect}   from 'react-redux'
-import {Link}      from 'react-router-dom'
-import Button      from '@material-ui/core/Button'
+
 
 import {
   addPerson,
@@ -51,8 +50,8 @@ class PeopleFeedContainer extends React.PureComponent {
               />
           </Swipeable>
 
-          <Link to="/profile"><Button variant="contained" color="primary">Profile</Button></Link>
-          <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
+          {/* <Link to="/profile"><Button variant="contained" color="primary">Profile</Button></Link>
+          <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link> */}
         </div>
       )
     }
