@@ -54,8 +54,8 @@ function stepTwo(props) {
           type="date"
           error={props.inputErrorUntil}
           helperText={props.inputErrorUntilHelper}
-          defaultValue={formatDate(props.defaultUntil)}  //CHANGED FOR TEST
-          // defaultValue={formatDate(props.user.dateTo)}//CHANGED FOR TEST
+          // defaultValue={formatDate(props.defaultUntil)}  //CHANGED FOR TEST
+          defaultValue={formatDate(props.user.dateTo)}//CHANGED FOR TEST
           className={classes.textField}
           InputLabelProps={{
             shrink: true,
