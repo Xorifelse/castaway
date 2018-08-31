@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import UserFilter from './UserFilter'
-import { setLocation, setLookingFor } from '../actions/user'
+import { setLocation, setLookingFor, resetFeedCurrent } from '../actions/user'
 
 class UserFilterContainer extends React.PureComponent {
   constructor(props) {
@@ -35,6 +35,10 @@ class UserFilterContainer extends React.PureComponent {
     return memb.lookingFor
   })
 
+  componentDidMount() {
+    this.props.resetFeedCurrent()
+  }
+
   // allHobbies = (hobbiesArr) => hobbiesArr.map(memb => {
   //   return memb.hobies
   // })
@@ -62,4 +66,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setLocation, setLookingFor })(UserFilterContainer)
+export default connect(mapStateToProps, { setLocation, setLookingFor, resetFeedCurrent })(UserFilterContainer)

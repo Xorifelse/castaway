@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import FilterWhen from './FilterWhen'
+import {resetFeedCurrent} from '../actions/user'
 
 import { setDateFrom, setDateUntil } from '../actions/user'
 
@@ -36,6 +37,8 @@ class FilterWhenContainer extends React.PureComponent {
     }
   }
 
+
+
   render() {
     return (
       <FilterWhen
@@ -57,4 +60,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setDateFrom, setDateUntil })(FilterWhenContainer)
+export default connect(mapStateToProps, { setDateFrom, setDateUntil, resetFeedCurrent })(FilterWhenContainer)

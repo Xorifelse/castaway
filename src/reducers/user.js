@@ -13,7 +13,8 @@ import {
   SET_FIRESTORE_ID,
   SET_AVATAR_URL,
   NEXT_PERSON,
-  PREVIOUS_PERSON
+  PREVIOUS_PERSON,
+  RESET_FEED_CURRENT
 } from '../actions/user'
 
 const initialState = {
@@ -87,6 +88,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         feedCurrent: state.feedCurrent + 1
+      }
+    case RESET_FEED_CURRENT:
+      return {
+        ...state,
+        feedCurrent: 0
       }
     case PREVIOUS_PERSON:
       if (state.feedCurrent > 0) {
