@@ -10,7 +10,8 @@ import SearchMatches from './SearchMatches';
 
 class SearchMatchesContainer extends React.PureComponent {
   state = {
-    expired: false
+    expired: false,
+    fake: false
   }
 
   filterConstructor = () => {
@@ -92,7 +93,12 @@ class SearchMatchesContainer extends React.PureComponent {
         this.setState({
           expired: true
         })
-      }, 5000)
+      }, 7000),
+      fake: setTimeout(() => {
+        this.setState({
+          fake: true
+        })
+      }, 3000)
     })
   }
 
@@ -100,7 +106,12 @@ class SearchMatchesContainer extends React.PureComponent {
     if (!this.state.expired) {
       if (this.props.db.dbMatches.length > 0) {
         clearTimeout(this.state.timer)
-        return <PeopleFeedContainer />
+
+        // Fake loading screen
+        if(this.state.fake === true){
+          return <PeopleFeedContainer />
+        }
+        
       }
     } else {
       return (
