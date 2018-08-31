@@ -55,6 +55,7 @@ class SearchMatchesContainer extends React.PureComponent {
   }
 
   people = (dispatch) => {
+    // let tmp = Promise.all([type.get(), location.get()])
     Promise.all(this.filterConstructor()) //Hardcoded, FIXME!
       .then(res => {
 
@@ -107,22 +108,18 @@ class SearchMatchesContainer extends React.PureComponent {
         clearTimeout(this.state.timer)
 
         // Fake loading screen
-        if (this.state.fake === true) {
+        if(this.state.fake === true){
           return <PeopleFeedContainer />
         }
-
+        
       }
     } else {
       return (
-        <div>
-          <SearchMatches
-            topMessage="We didn't find any matches!"
-            message="Try changing your filters"
-            loading={false}
-          />
-          <Link to="/profile"><Button variant="contained" color="primary">Profile</Button></Link>
-          <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
-        </div>
+        <SearchMatches
+          topMessage="We didn't find any matches!"
+          message="Try changing your filters"
+          loading={false}
+        />
       )
     }
 
