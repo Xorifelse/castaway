@@ -27,7 +27,6 @@ const initialState = {
   dateFrom: '',
   dateTo: '',
   hobbies: [],
-  nationality: '',
   arrayLiked: [],
   arrayDisliked: [],
   feedCurrent: 0                  // current viewed person in matched
