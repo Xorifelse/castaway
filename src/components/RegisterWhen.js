@@ -32,7 +32,7 @@ function stepThree(props) {
   return (
     <Grid container spacing={16} direction="row" justify="center" alignItems="flex-end">
       <Grid>
-        <Link to="/confirm"><Button variant="contained" color="primary">Continue</Button></Link>
+        <Button variant="text" color="secondary" style={{position: 'absolute', right: 20}}><Link to="/confirm">Continue</Link></Button>
       </Grid>
     </Grid>
   )
