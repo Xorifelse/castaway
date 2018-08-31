@@ -118,3 +118,10 @@ export function setAvatarUrl(url){
     payload: url
   }
 }
+
+export const RESET_FEED_CURRENT = 'RESET_FEED_CURRENT'
+export function resetFeedCurrent(){
+  return {
+    type: RESET_FEED_CURRENT
+  }
+}
