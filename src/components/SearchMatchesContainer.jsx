@@ -82,7 +82,7 @@ class SearchMatchesContainer extends React.PureComponent {
 
   componentDidMount() {
     if (this.props.db.dbMatches.length !== 0) {
-      // this.props.clearMatched() // DISABLED FOR TESTING !!!!!!!!!!!!!!!!!!!!!!!!!!
+      this.props.clearMatched() // DISABLED FOR TESTING !!!!!!!!!!!!!!!!!!!!!!!!!!
     }
     this.people(this.props.pushDbMatched)
 
