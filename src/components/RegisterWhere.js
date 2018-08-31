@@ -1,15 +1,26 @@
 import * as React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
-import Button         from '@material-ui/core/Button'
-import Switch         from '@material-ui/core/Switch'
-import Grid           from '@material-ui/core/Grid'
-import Typography     from '@material-ui/core/Typography'
-import TextField      from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+import Switch from '@material-ui/core/Switch'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
 import breadcrumbs_state02 from '../img/breadcrumbs_state02.png'
 
 // const breadcrumbs_state01 = require('../lib/graphics/breadcrumbs-allstates/breadcrumbs_state01.png')
+
+const displayNextButton = (props) => {
+  if (props.userProfile) {
+    return
+  }
+  return (
+    <Button variant='text' color="secondary" disabled={(props.userObj.location !== '') ? false : true}>
+      <Link to={'/when'}>NEXT</Link>
+    </Button>
+  )
+}
 
 
 function RegisterWhere(props) {
@@ -18,21 +29,21 @@ function RegisterWhere(props) {
   return (
     <Grid container spacing={16} direction="column" justify="flex-start" alignItems="center" className={classes.content}>
       <Grid item className={classes.topBarBreadcrumbs}>
-        <img src={breadcrumbs_state02} width="80px" alt=""/>
+        <img src={breadcrumbs_state02} width="80px" alt="" />
       </Grid>
       <Grid item className={classes.topBar}>
         <Typography className={classes.txtSmall}>
           {(props.userObj.type === 'local') && "Awesome. You're a Local?"}
-          {(props.userObj.type === 'traveller') && "Awesome. You're a Traveller?"} 
+          {(props.userObj.type === 'traveller') && "Awesome. You're a Traveller?"}
         </Typography>
         <Typography variant="headline" component="h2" className={classes.txtBig}>
           {(props.userObj.type === 'local') && "Where do you live?"}
-          {(props.userObj.type === 'traveller') && "Where are you headed?"}  
+          {(props.userObj.type === 'traveller') && "Where are you headed?"}
         </Typography>
       </Grid>
       <Grid item >
         {/* CITY BUTTONS */}
-      
+
         <Grid container spacing={16} direction="column" justify="center" alignItems="center">
           <Grid item>
             <Typography>fill in your location or choose one from below</Typography>
@@ -50,14 +61,12 @@ function RegisterWhere(props) {
           </Grid>
           <Grid item className={classes.griditemNextBtn}>
             {/* next button */}
-            <Button variant='text' color="secondary" disabled={(props.userObj.location !== '') ? false : true}>
-              <Link to={'/when'}>NEXT</Link>
-            </Button>
+            {displayNextButton(props)}
           </Grid>
         </Grid>
       </Grid>
     </Grid>
-    
+
 
   )
 }
@@ -95,7 +104,7 @@ const styles = {
     marginTop: 40,
     marginLeft: 40,
     position: 'relative',
-     left: -30
+    left: -30
   },
   type: {
     marginTop: 20,

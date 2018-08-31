@@ -1,12 +1,12 @@
 import * as React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
-import Button         from '@material-ui/core/Button'
-import Switch         from '@material-ui/core/Switch'
-import Grid           from '@material-ui/core/Grid'
-import Typography     from '@material-ui/core/Typography'
-import TextField      from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+import Switch from '@material-ui/core/Switch'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
 import breadcrumbs_state01 from '../img/breadcrumbs_state01.png'
 
 // const breadcrumbs_state01 = require('../lib/graphics/breadcrumbs-allstates/breadcrumbs_state01.png')
@@ -16,27 +16,27 @@ const displayLookingFor = (props) => {
   const { classes } = props
   return (
     <Grid item className={classes.type}>
-    <Typography variant="title" style={{position: 'relative', left: -80}}>
-      Looking for a...
+      <Typography variant="title" style={{ position: 'relative', left: -80 }}>
+        Looking for a...
     </Typography>
-    <Grid container spacing={16} direction="row" justify="center" alignItems="flex-start">
-      <Grid item style={{position: 'relative', left: -30}}>
-        <Typography 
-          style={{display: 'inline-block'}} 
-          color={(props.userObj.lookingFor === 'traveller') ? 'secondary' : 'textPrimary'}
+      <Grid container spacing={16} direction="row" justify="center" alignItems="flex-start">
+        <Grid item style={{ position: 'relative', left: -30 }}>
+          <Typography
+            style={{ display: 'inline-block' }}
+            color={(props.userObj.lookingFor === 'traveller') ? 'secondary' : 'textPrimary'}
           >Traveller</Typography>
-          <Switch 
-            value="traveller" 
-            checked={props.userLookingForBool} onChange={(event) => props.userLookingForChangeFn(event)} 
-            />
-          <Typography 
-            style={{display: 'inline-block'}}
+          <Switch
+            value="traveller"
+            checked={props.userLookingForBool} onChange={(event) => props.userLookingForChangeFn(event)}
+          />
+          <Typography
+            style={{ display: 'inline-block' }}
             color={(props.userObj.lookingFor === 'local') ? 'secondary' : 'textPrimary'}
-            >
+          >
             Local</Typography>
+        </Grid>
       </Grid>
     </Grid>
-  </Grid>
 
   )
 }
@@ -56,6 +56,13 @@ const displayLookingFor = (props) => {
 // }
 
 
+const displayNextButton = (props) => {
+  if(props.userProfile){
+    return
+  }
+  return <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '') ? 
+    false : true} variant='text' color="secondary"><Link to="/where">Next</Link></Button>
+}
 
 function RegisterWho(props) {
 
@@ -74,34 +81,34 @@ function RegisterWho(props) {
         </Typography>
       </Grid>
       <Grid item className={classes.name}>
-      
+
         {/* <Grid container spacing={16} direction="row" justify="left" alignItems="left"> */}
-          {/* <Grid item> */}
-            <Typography variant="title" >Hi, my name is...</Typography>
-            {/* input */}
-            <TextField id="name" value={props.inputValue} onChange={(event) => props.inputChangeFn(event)} className={classes.textField} />
-          {/* </Grid> */}
+        {/* <Grid item> */}
+        <Typography variant="title" >Hi, my name is...</Typography>
+        {/* input */}
+        <TextField id="name" value={props.inputValue} onChange={(event) => props.inputChangeFn(event)} className={classes.textField} />
+        {/* </Grid> */}
         {/* </Grid> */}
       </Grid>
       <Grid item className={classes.type}>
-        <Typography variant="title" style={{position: 'relative', left: -80}}>
+        <Typography variant="title" style={{ position: 'relative', left: -80 }}>
           and I'm a...
         </Typography>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item style={{position: 'relative', left: -30}}>
-            <Typography 
-              style={{display: 'inline-block'}} 
+          <Grid item style={{ position: 'relative', left: -30 }}>
+            <Typography
+              style={{ display: 'inline-block' }}
               color={(props.userObj.type === 'traveller') ? 'secondary' : 'textPrimary'}
-              >Traveller</Typography>
-              <Switch 
-                value="traveller" 
-                checked={props.userTypeBool} onChange={(event) => props.userTypeChangeFn(event)} 
-                />
-              <Typography 
-                style={{display: 'inline-block'}}
-                color={(props.userObj.type === 'local') ? 'secondary' : 'textPrimary'}
-                >
-                Local</Typography>
+            >Traveller</Typography>
+            <Switch
+              value="traveller"
+              checked={props.userTypeBool} onChange={(event) => props.userTypeChangeFn(event)}
+            />
+            <Typography
+              style={{ display: 'inline-block' }}
+              color={(props.userObj.type === 'local') ? 'secondary' : 'textPrimary'}
+            >
+              Local</Typography>
           </Grid>
         </Grid>
       </Grid>
@@ -109,7 +116,7 @@ function RegisterWho(props) {
       {(props.userObj.type !== '' && props.userObj.type !== 'local') && displayLookingFor(props)}
       {/* {(props.userObj.lookingFor !== '' || props.userObj.type === 'local') && displayGroup(props)} */}
       <Grid item className={classes.griditemNextBtn}>
-      <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' ) ? false : true} variant='text' color="secondary"><Link to="/where">Next</Link></Button>
+      {displayNextButton(props)}
       </Grid>
     </Grid>
 
@@ -149,7 +156,7 @@ const styles = {
     marginTop: 40,
     marginLeft: 40,
     position: 'relative',
-     left: -30
+    left: -30
   },
   type: {
     marginTop: 20,
