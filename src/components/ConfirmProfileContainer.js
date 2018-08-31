@@ -18,7 +18,7 @@ class ConfirmProfileContainer extends React.PureComponent {
     return addDoc
   }
 
-  uploadToStorage = (file: FileList) => {
+  uploadToStorage = (file: FileList) => { // vs code says this is wrong but it works.. check it out?! PvD --- That is called TypeScript (Javascript with variable type declaration)! We will use this soon enough! JK
     const storageRef = storage.ref() // storage is exported from /lib/db_init.js
 
       // Create the file metadata
@@ -43,6 +43,8 @@ class ConfirmProfileContainer extends React.PureComponent {
             case firebase.storage.TaskState.RUNNING: // or 'running'
               console.log('Upload is running');
               break;
+            default:
+
           }
         }, function(error) {
 
@@ -58,6 +60,7 @@ class ConfirmProfileContainer extends React.PureComponent {
           case 'storage/unknown':
             // Unknown error occurred, inspect error.serverResponse
             break;
+          default:
         }
       }, () => {
         
@@ -79,7 +82,7 @@ class ConfirmProfileContainer extends React.PureComponent {
           userObj={this.props.user}
           dbAddFn={this.dbAddPromise}
           imgUploadFn={this.uploadToStorage} //uploadToStorage // uploadTryout
-          />
+        />
     )
   }
 }

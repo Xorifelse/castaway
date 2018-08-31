@@ -2,11 +2,6 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import UserProfile from './UserProfile'
 
-
-
-//import {} from '../actions/'
-
-
 class UserProfileContainer extends React.PureComponent {
   render() {
     return (

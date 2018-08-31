@@ -6,17 +6,18 @@ import {
   SET_DATE_FROM,
   SET_DATE_UNTIL,
   SET_GROUP,
-  PUSH_DB_RESULTS,
   ADD_LIKED,
   ADD_DISLIKED,
   SET_FIRESTORE_ID,
-  SET_AVATAR_URL
+  SET_AVATAR_URL,
+  NEXT_PERSON,
+  PREVIOUS_PERSON
 } from '../actions/user'
 
 const initialState = {
-  type: '',
+  type: 'traveller',
   name: '',
-  lookingFor: '',
+  lookingFor: 'traveller',
   location: '',
   age: 0,
   group: null,
@@ -70,6 +71,19 @@ export default (state = initialState, action = {}) => {
         arrayDisliked: state.arrayDisliked.concat(action.payload),
         feedCurrent: state.feedCurrent + 1
       }
+    case NEXT_PERSON:
+      return {
+        ...state, 
+        feedCurrent: state.feedCurrent + 1
+      }
+    case PREVIOUS_PERSON:
+      if(state.feedCurrent > 0){
+        return {
+          ...state, 
+          feedCurrent: state.feedCurrent - 1
+        }
+      }
+      break
     case SET_FIRESTORE_ID:
       return {
         ...state, firestoreID: action.payload
