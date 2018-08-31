@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import RegisterWhere from './RegisterWhere'
+import RegisterWhereLoading from './RegisterWhereLoading'
 import { setLocation } from '../actions/user'
 import { pushDbResults } from '../actions/db'
 import { db } from '../lib/db_init'
@@ -46,7 +47,7 @@ class RegisterWhereContainer extends React.PureComponent {
   }
 
   render() {
-    if (this.props.db.dbResults.length === 0) return 'getting available cities...'
+    if (this.props.db.dbResults.length === 0) return <RegisterWhereLoading userObj={this.props.user}/>
     return (
       <RegisterWhere
         cities={Array.from(new Set(this.allLocations(this.props.db.dbResults))).filter(city => {
