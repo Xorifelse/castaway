@@ -90,4 +90,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {setFirestoreID, setAvatarUrl})(ConfirmProfileContainer)downloadURL
+export default connect(mapStateToProps, {setFirestoreID, setAvatarUrl})(ConfirmProfileContainer)
