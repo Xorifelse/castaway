@@ -47,7 +47,6 @@ class RegisterWhenContainer extends React.PureComponent {
         inputErrorFromHelper={this.state.helperTextFrom}
         inputErrorUntilHelper={this.state.helperTextUntil}
         changingFilter={this.props.changingFilter}
-        userProfile={this.props.userProfile}
       />
     )
   }
