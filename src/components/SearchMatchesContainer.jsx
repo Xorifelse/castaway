@@ -6,6 +6,7 @@ import PeopleFeedContainer from './PeopleFeedContainer';
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import SearchMatches from './SearchMatches';
+import PeopleFeedNoMatches from './PeopleFeedNoMatches';
 
 
 class SearchMatchesContainer extends React.PureComponent {
@@ -110,19 +111,19 @@ class SearchMatchesContainer extends React.PureComponent {
         if (this.state.fake === true) {
           return <PeopleFeedContainer />
         }
-
       }
     } else {
       return (
-        <div>
-          <SearchMatches
-            topMessage="We didn't find any matches!"
-            message="Try changing your filters"
-            loading={false}
-          />
-          <Link to="/profile"><Button variant="contained" color="primary">Profile</Button></Link>
-          <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
-        </div>
+        // <div>
+        //   <SearchMatches
+        //     topMessage="We didn't find any matches!"
+        //     message="Try changing your filters"
+        //     loading={false}
+        //   />
+        //   <Link to="/profile"><Button variant="contained" color="primary">Profile</Button></Link>
+        //   <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
+        // </div>
+        <PeopleFeedNoMatches />
       )
     }
 
