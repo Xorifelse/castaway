@@ -5,11 +5,13 @@ import { db } from '../lib/db_init'
 import PeopleFeedContainer from './PeopleFeedContainer';
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
+import SearchMatches from './SearchMatches';
 
 
 class SearchMatchesContainer extends React.PureComponent {
   state = {
-    expired: false
+    expired: false,
+    fake: false
   }
 
   filterConstructor = () => {
@@ -80,7 +82,7 @@ class SearchMatchesContainer extends React.PureComponent {
 
   componentDidMount() {
     if (this.props.db.dbMatches.length !== 0) {
-      this.props.clearMatched()
+      // this.props.clearMatched() // DISABLED FOR TESTING !!!!!!!!!!!!!!!!!!!!!!!!!!
     }
     this.people(this.props.pushDbMatched)
 
@@ -90,7 +92,12 @@ class SearchMatchesContainer extends React.PureComponent {
         this.setState({
           expired: true
         })
-      }, 5000)
+      }, 7000),
+      fake: setTimeout(() => {
+        this.setState({
+          fake: true
+        })
+      }, 3000)
     })
   }
 
@@ -98,17 +105,34 @@ class SearchMatchesContainer extends React.PureComponent {
     if (!this.state.expired) {
       if (this.props.db.dbMatches.length > 0) {
         clearTimeout(this.state.timer)
-        return <PeopleFeedContainer />
+
+        // Fake loading screen
+        if (this.state.fake === true) {
+          return <PeopleFeedContainer />
+        }
+
       }
     } else {
-      return <div>
-        <div>No Matches Found!</div>
-        <Link to="/profile"><Button variant="contained" color="primary">Profile</Button></Link>
-        <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
-      </div>
+      return (
+        <div>
+          <SearchMatches
+            topMessage="We didn't find any matches!"
+            message="Try changing your filters"
+            loading={false}
+          />
+          <Link to="/profile"><Button variant="contained" color="primary">Profile</Button></Link>
+          <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
+        </div>
+      )
     }
 
-    return <div>Searching....</div>
+    return (
+      <SearchMatches
+        topMessage="We've created your profile!"
+        message="Looking for matches..."
+        loading={true}
+      />
+    )
   }
 }
 
