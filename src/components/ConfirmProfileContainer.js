@@ -73,9 +73,6 @@ class ConfirmProfileContainer extends React.PureComponent {
       });
   }
 
-
-
-
   render() {
     return (
         <ConfirmProfile 
@@ -93,4 +90,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {setFirestoreID, setAvatarUrl})(ConfirmProfileContainer)
+export default connect(mapStateToProps, {setFirestoreID, setAvatarUrl})(ConfirmProfileContainer)downloadURL
