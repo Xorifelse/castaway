@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
-import Switch from '@material-ui/core/Switch'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import TextField from '@material-ui/core/TextField'
+import Button         from '@material-ui/core/Button'
+import Switch         from '@material-ui/core/Switch'
+import Grid           from '@material-ui/core/Grid'
+import Typography     from '@material-ui/core/Typography'
+import TextField      from '@material-ui/core/TextField'
 import breadcrumbs_state01 from '../img/breadcrumbs_state01.png'
 
 // const breadcrumbs_state01 = require('../lib/graphics/breadcrumbs-allstates/breadcrumbs_state01.png')
@@ -19,24 +19,24 @@ const displayLookingFor = (props) => {
     <Typography variant="title" style={{position: 'relative', left: -80}}>
       Looking for a...
     </Typography>
-      <Grid container spacing={16} direction="row" justify="center" alignItems="flex-start">
-        <Grid item style={{ position: 'relative', left: -30 }}>
-          <Typography
-            style={{ display: 'inline-block' }}
-            color={(props.userObj.lookingFor === 'traveller') ? 'secondary' : 'textPrimary'}
+    <Grid container spacing={16} direction="row" justify="center" alignItems="flex-start">
+      <Grid item style={{position: 'relative', left: -30}}>
+        <Typography 
+          style={{display: 'inline-block'}} 
+          color={(props.userObj.lookingFor === 'traveller') ? 'secondary' : 'textPrimary'}
           >Traveller</Typography>
-          <Switch
-            value="traveller"
-            checked={props.userLookingForBool} onChange={(event) => props.userLookingForChangeFn(event)}
-          />
-          <Typography
-            style={{ display: 'inline-block' }}
+          <Switch 
+            value="traveller" 
+            checked={props.userLookingForBool} onChange={(event) => props.userLookingForChangeFn(event)} 
+            />
+          <Typography 
+            style={{display: 'inline-block'}}
             color={(props.userObj.lookingFor === 'local') ? 'secondary' : 'textPrimary'}
-          >
+            >
             Local</Typography>
-        </Grid>
       </Grid>
     </Grid>
+  </Grid>
 
   )
 }
@@ -55,63 +55,27 @@ const displayLookingFor = (props) => {
 //   )
 // }
 
-const displayNext = (props, classes) => {
-  if (props.userProfile) {
-    return
-  }
-  return (
-    <Grid item className={classes.griditemNextBtn}>
-      <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '') ? false : true} variant='text' color="secondary"><Link to="/where">Next</Link></Button>
-    </Grid>
-  )
-}
-
-
-const displayBreadCrumbsAndGreetings = (props, classes) => {
-  if (props.userProfile) {
-    return
-  }
-  return (
-    <Grid container spacing={16} >
-      <Grid item className={classes.topBarBreadcrumbs}>
-        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state01} width="80px" alt="" /></Grid>
-      </Grid>
-      <Grid item className={classes.topBar}>
-        <Typography className={classes.txtSmall}>
-          Hi! I don't think we've met yet.
-        </Typography>
-        <Typography variant="headline" component="h2" className={classes.txtBig}>
-          Tell me a bit about you
-        </Typography>
-      </Grid>
-      </Grid>
-  )
-}
 
 
 function RegisterWho(props) {
 
   const { classes } = props
   return (
-    <Grid container spacing={16} direction="column" justify="flex-start" alignItems="flex-start" className={classes.content}>
-
-      {/* <Grid item className={classes.topBarBreadcrumbs}>
-        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state01} width="80px" alt="" /></Grid>
+    <Grid container spacing={16} direction="column" justify="flex-start" alignItems="center" className={classes.content}>
+      <Grid item className={classes.topBarBreadcrumbs}>
+        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state01} width="80px" alt=""/></Grid>
       </Grid>
       <Grid item className={classes.topBar}>
-        <Typography className={classes.txtSmall}>
-          Hi! I don't think we've met yet.
+      <Typography className={classes.txtSmall}>
+          Hi! I don't think we've met yet. 
         </Typography>
-        <Typography variant="headline" component="h2" className={classes.txtBig}>
-          Tell me a bit about you
+      <Typography variant="headline" component="h2" className={classes.txtBig}>
+          Tell me a bit about you  
         </Typography>
-      </Grid> */}
-      {displayBreadCrumbsAndGreetings(props, classes)}
-
+      </Grid>
       <Grid item className={classes.name}>
-
+      
         {/* <Grid container spacing={16} direction="row" justify="left" alignItems="left"> */}
-
           {/* <Grid item> */}
             <Typography variant="title" >Hi, my name is...</Typography>
             {/* input */}
@@ -124,34 +88,33 @@ function RegisterWho(props) {
           and I'm a...
         </Typography>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item style={{ position: 'relative', left: -30 }}>
-            <Typography
-              style={{ display: 'inline-block' }}
+          <Grid item style={{position: 'relative', left: -30}}>
+            <Typography 
+              style={{display: 'inline-block'}} 
               color={(props.userObj.type === 'traveller') ? 'secondary' : 'textPrimary'}
-            >Traveller</Typography>
-            <Switch
-              value="traveller"
-              checked={props.userTypeBool} onChange={(event) => props.userTypeChangeFn(event)}
-            />
-            <Typography
-              style={{ display: 'inline-block' }}
-              color={(props.userObj.type === 'local') ? 'secondary' : 'textPrimary'}
-            >
-              Local</Typography>
+              >Traveller</Typography>
+              <Switch 
+                value="traveller" 
+                checked={props.userTypeBool} onChange={(event) => props.userTypeChangeFn(event)} 
+                />
+              <Typography 
+                style={{display: 'inline-block'}}
+                color={(props.userObj.type === 'local') ? 'secondary' : 'textPrimary'}
+                >
+                Local</Typography>
           </Grid>
         </Grid>
       </Grid>
       {/* only display below if user.type is set */}
       {(props.userObj.type !== '' && props.userObj.type !== 'local') && displayLookingFor(props)}
       {/* {(props.userObj.lookingFor !== '' || props.userObj.type === 'local') && displayGroup(props)} */}
-      {displayNext(props, classes)}
-      {/* <Grid item className={classes.griditemNextBtn}>
-        <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '') ? false : true} variant='text' color="secondary"><Link to="/where">Next</Link></Button>
-      </Grid> */}
+      <Grid item className={classes.griditemNextBtn}>
+      <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' ) ? false : true} variant='text' color="secondary"><Link to="/where">Next</Link></Button>
+      </Grid>
     </Grid>
+
   )
 }
-
 
 const styles = {
   topBar: {
