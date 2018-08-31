@@ -30,7 +30,7 @@ function stepThree(props) {
   return (
     <Grid container spacing={16} direction="row" justify="center" alignItems="right">
       <Grid>
-        <Link to="/search"><Button variant="contained" color="primary">Filter</Button></Link>
+        <Link to="/search"><Button variant="text" color="secondary">Filter</Button></Link>
       </Grid>
     </Grid>
   )
