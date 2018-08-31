@@ -4,13 +4,13 @@ import Button         from '@material-ui/core/Button'
 import feedbgimage from '../img/Feed_Background_Amend5.png'
 import filterbutton from '../img/Filter_Button.png'
 import accountbutton from '../img/Account_Button.png'
-import country_NL from '../img/NL.png'
-import country_UK from '../img/UK.png'
-import country_FR from '../img/FR.png'
-import country_JP from '../img/JP.png'
-import country_US from '../img/US.png'
-import country_BO from '../img/BO.png'
-// import country_unknown from '../img/country_unknown.png'
+import country_NL from '../img/flag_nl.png'
+import country_UK from '../img/flag_uk.png'
+import country_FR from '../img/flag_fr.png'
+import country_JP from '../img/flag_jp.png'
+import country_US from '../img/flag_us.png'
+import country_BO from '../img/flag_bl.png'
+import country_unknown from '../img/flag_unknown.png'
 import {Link}      from 'react-router-dom'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -25,9 +25,9 @@ function PeopleFeed(props) {
   const { classes } = props
   let country_flag = null
   if (!props.person.nationality) {
-    // country_flag = country_unknown
+    country_flag = country_unknown
   } else {
-    // country_flag = country_unknown
+    country_flag = country_unknown
     if (props.person.nationality === 'NL') {
       country_flag = country_NL
     }
@@ -64,7 +64,7 @@ function PeopleFeed(props) {
             <Typography gutterBottom variant="title" style={{position: 'absolute', bottom: 10, left: 20, color: 'rgba(255, 255, 255, 0.90)'}}>
                 {props.person.name}
               </Typography>
-            <img src={country_flag} alt="" style={{position: 'absolute', bottom: 15, right: 20, width: 25}} />
+            <img src={country_flag} alt="" style={{position: 'absolute', bottom: 15, right: 20, width: 40}} />
 
           </CardMedia>
           <CardContent>
