@@ -16,7 +16,7 @@ const displayLookingFor = (props) => {
   const { classes } = props
   return (
     <Grid item className={classes.type}>
-    <Typography variant="title">
+    <Typography variant="title" style={{position: 'relative', left: -80}}>
       Looking for a...
     </Typography>
     <Grid container spacing={16} direction="row" justify="center" alignItems="flex-start">
@@ -61,7 +61,7 @@ function RegisterWho(props) {
 
   const { classes } = props
   return (
-    <Grid container spacing={16} direction="column" justify="flex-start" alignItems="flex-start" className={classes.content}>
+    <Grid container spacing={16} direction="column" justify="flex-start" alignItems="center" className={classes.content}>
       <Grid item className={classes.topBarBreadcrumbs}>
         <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state01} width="80px" alt=""/></Grid>
       </Grid>
@@ -77,14 +77,14 @@ function RegisterWho(props) {
       
         {/* <Grid container spacing={16} direction="row" justify="left" alignItems="left"> */}
           {/* <Grid item> */}
-            <Typography variant="title">Hi, my name is...</Typography>
+            <Typography variant="title" >Hi, my name is...</Typography>
             {/* input */}
             <TextField id="name" value={props.inputValue} onChange={(event) => props.inputChangeFn(event)} className={classes.textField} />
           {/* </Grid> */}
         {/* </Grid> */}
       </Grid>
       <Grid item className={classes.type}>
-        <Typography variant="title">
+        <Typography variant="title" style={{position: 'relative', left: -80}}>
           and I'm a...
         </Typography>
         <Grid container spacing={16} direction="row" justify="center" alignItems="center">
@@ -147,7 +147,9 @@ const styles = {
   },
   name: {
     marginTop: 40,
-    marginLeft: 40
+    marginLeft: 40,
+    position: 'relative',
+     left: -30
   },
   type: {
     marginTop: 20,
