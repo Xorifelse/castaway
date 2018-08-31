@@ -29,6 +29,15 @@ function stepThree(props) {
     return null
   }
 
+  if (props.userProfile) {
+    return (
+      <Grid container spacing={16} direction="row" justify="center" alignItems="flex-end">
+        <Grid>
+          <Link to="/search"><Button variant="contained" color="primary">CONFIRM CHANGES</Button></Link>
+        </Grid>
+      </Grid>
+    )
+  }
   return (
     <Grid container spacing={16} direction="row" justify="center" alignItems="flex-end">
       <Grid>
@@ -67,6 +76,19 @@ function stepTwo(props) {
   )
 }
 
+
+const displayBreadCrumbsQuestion = (props, classes) => {
+  if (props.userProfile) {
+    return
+  }
+  return (
+    <Grid item className={classes.topBarBreadcrumbs}>
+      <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state} width="80px" alt="" /></Grid>
+    </Grid>
+  )
+}
+
+
 function RegisterWhen(props) {
   const { classes, onChangeFromFn } = props;
 
@@ -79,9 +101,10 @@ function RegisterWhen(props) {
 
   return (
     <Grid container spacing={16} direction="column" justify="flex-start" alignItems="flex-start" className={classes.content}>
-      <Grid item className={classes.topBarBreadcrumbs}>
+      {/* <Grid item className={classes.topBarBreadcrumbs}>
         <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state} width="80px" alt=""/></Grid>
-      </Grid>
+      </Grid> */}
+      {displayBreadCrumbsQuestion(props, classes)}
       <Grid item className={classes.topBar}>
         <Typography variant="headline" component="h2" className={classes.txtBig}>
           {title}

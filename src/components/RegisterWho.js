@@ -67,12 +67,12 @@ const displayNext = (props, classes) => {
 }
 
 
-
-function RegisterWho(props) {
-
-  const { classes } = props
+const displayBreadCrumbsAndGreetings = (props, classes) => {
+  if (props.userProfile) {
+    return
+  }
   return (
-    <Grid container spacing={16} direction="column" justify="flex-start" alignItems="flex-start" className={classes.content}>
+    <Grid container spacing={16} >
       <Grid item className={classes.topBarBreadcrumbs}>
         <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state01} width="80px" alt="" /></Grid>
       </Grid>
@@ -84,6 +84,30 @@ function RegisterWho(props) {
           Tell me a bit about you
         </Typography>
       </Grid>
+      </Grid>
+  )
+}
+
+
+function RegisterWho(props) {
+
+  const { classes } = props
+  return (
+    <Grid container spacing={16} direction="column" justify="flex-start" alignItems="flex-start" className={classes.content}>
+
+      {/* <Grid item className={classes.topBarBreadcrumbs}>
+        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state01} width="80px" alt="" /></Grid>
+      </Grid>
+      <Grid item className={classes.topBar}>
+        <Typography className={classes.txtSmall}>
+          Hi! I don't think we've met yet.
+        </Typography>
+        <Typography variant="headline" component="h2" className={classes.txtBig}>
+          Tell me a bit about you
+        </Typography>
+      </Grid> */}
+      {displayBreadCrumbsAndGreetings(props, classes)}
+
       <Grid item className={classes.name}>
 
         {/* <Grid container spacing={16} direction="row" justify="left" alignItems="left"> */}
@@ -124,9 +148,9 @@ function RegisterWho(props) {
         <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '') ? false : true} variant='text' color="secondary"><Link to="/where">Next</Link></Button>
       </Grid> */}
     </Grid>
-
   )
 }
+
 
 const styles = {
   topBar: {

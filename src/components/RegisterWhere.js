@@ -6,6 +6,18 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 
+const displayBreadCrumbsAndGreetings = (props) => {
+  if (props.userProfile) {
+    return
+  }
+  return (
+    <Grid item>
+      {/* next button */}
+      <Button variant='outlined' color="primary" disabled={(props.userObj.location !== '') ? false : true}><Link to={'/when'}>NEXT</Link></Button>
+    </Grid>
+  )
+}
+
 export default function RegisterWhere(props) {
   return (
     <Grid container spacing={16} direction="column" justify="center" alignItems="center">
@@ -40,10 +52,7 @@ export default function RegisterWhere(props) {
           {props.cities.map(location => <Button key={location} onClick={() => props.setLocationFn(location)} variant={props.buttonContainedFn(location)} color="primary">{location}</Button>)}
         </Grid>
       </Grid>
-      <Grid item>
-        {/* next button */}
-        <Button variant='outlined' color="primary" disabled={(props.userObj.location !== '') ? false : true}><Link to={'/when'}>NEXT</Link></Button>
-      </Grid>
+      {displayBreadCrumbsAndGreetings(props)}
     </Grid>
   )
 }

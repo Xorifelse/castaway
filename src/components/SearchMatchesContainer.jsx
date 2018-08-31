@@ -53,7 +53,6 @@ class SearchMatchesContainer extends React.PureComponent {
   }
 
   people = (dispatch) => {
-    // let tmp = Promise.all([type.get(), location.get()])
     Promise.all(this.filterConstructor()) //Hardcoded, FIXME!
       .then(res => {
 
@@ -104,6 +103,7 @@ class SearchMatchesContainer extends React.PureComponent {
     } else {
       return <div>
         <div>No Matches Found!</div>
+        <Link to="/profile"><Button variant="contained" color="primary">Profile</Button></Link>
         <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
       </div>
     }
