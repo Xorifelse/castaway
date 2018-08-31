@@ -19,11 +19,11 @@ const displayLookingFor = (props) => {
     <Typography variant="title">
       Looking for a...
     </Typography>
-    <Grid container spacing={16} direction="row" justify="center" alignItems="center">
+    <Grid container spacing={16} direction="row" justify="center" alignItems="flex-start">
       <Grid item style={{position: 'relative', left: -30}}>
         <Typography 
           style={{display: 'inline-block'}} 
-          color={(props.userObj.lookingFor === 'traveller') ? 'secondary' : ''}
+          color={(props.userObj.lookingFor === 'traveller') ? 'secondary' : 'textPrimary'}
           >Traveller</Typography>
           <Switch 
             value="traveller" 
@@ -31,37 +31,29 @@ const displayLookingFor = (props) => {
             />
           <Typography 
             style={{display: 'inline-block'}}
-            color={(props.userObj.lookingFor === 'local') ? 'secondary' : ''}
+            color={(props.userObj.lookingFor === 'local') ? 'secondary' : 'textPrimary'}
             >
             Local</Typography>
       </Grid>
     </Grid>
   </Grid>
-  //   <Grid item>
-  //   <Typography variant="headline" component="h2">
-  //     Looking for a... 
-  //   </Typography>
-  //   <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-  //     <Grid item><Button onClick={() => props.setLookingForBtn('traveller')} variant={props.btnLookingTrav} color="secondary">Traveller</Button></Grid>
-  //     <Grid item><Button onClick={() => props.setLookingForBtn('local')} variant={props.btnLookingLoc} color="secondary">Local</Button></Grid>
-  //   </Grid>
-  // </Grid>
+
   )
 }
 
-const displayGroup = (props) => {
-  return (
-    <Grid item>
-    <Typography variant="headline" component="h2">
-      Are you alone or in a group/ couple? 
-    </Typography>
-    <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-      <Grid item><Button onClick={() => props.setGroupBtn(false)} variant={props.btnGroupFalse} color="secondary">Alone</Button></Grid>
-      <Grid item><Button onClick={() => props.setGroupBtn(true)} variant={props.btnGroupTrue} color="secondary">Group/ couple</Button></Grid>
-    </Grid>
-  </Grid>
-  )
-}
+// const displayGroup = (props) => {
+//   return (
+//     <Grid item>
+//     <Typography variant="headline" component="h2">
+//       Are you alone or in a group/ couple? 
+//     </Typography>
+//     <Grid container spacing={16} direction="row" justify="center" alignItems="center">
+//       <Grid item><Button onClick={() => props.setGroupBtn(false)} variant={props.btnGroupFalse} color="secondary">Alone</Button></Grid>
+//       <Grid item><Button onClick={() => props.setGroupBtn(true)} variant={props.btnGroupTrue} color="secondary">Group/ couple</Button></Grid>
+//     </Grid>
+//   </Grid>
+//   )
+// }
 
 
 
@@ -69,9 +61,9 @@ function RegisterWho(props) {
 
   const { classes } = props
   return (
-    <Grid container spacing={16} direction="column" justify="top" alignItems="left" className={classes.content}>
+    <Grid container spacing={16} direction="column" justify="flex-start" alignItems="flex-start" className={classes.content}>
       <Grid item className={classes.topBarBreadcrumbs}>
-        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state01} width="80px"/></Grid>
+        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state01} width="80px" alt=""/></Grid>
       </Grid>
       <Grid item className={classes.topBar}>
       <Typography className={classes.txtSmall}>
@@ -99,7 +91,7 @@ function RegisterWho(props) {
           <Grid item style={{position: 'relative', left: -30}}>
             <Typography 
               style={{display: 'inline-block'}} 
-              color={(props.userObj.type === 'traveller') ? 'secondary' : ''}
+              color={(props.userObj.type === 'traveller') ? 'secondary' : 'textPrimary'}
               >Traveller</Typography>
               <Switch 
                 value="traveller" 
@@ -107,7 +99,7 @@ function RegisterWho(props) {
                 />
               <Typography 
                 style={{display: 'inline-block'}}
-                color={(props.userObj.type === 'local') ? 'secondary' : ''}
+                color={(props.userObj.type === 'local') ? 'secondary' : 'textPrimary'}
                 >
                 Local</Typography>
           </Grid>
@@ -116,8 +108,8 @@ function RegisterWho(props) {
       {/* only display below if user.type is set */}
       {(props.userObj.type !== '' && props.userObj.type !== 'local') && displayLookingFor(props)}
       {/* {(props.userObj.lookingFor !== '' || props.userObj.type === 'local') && displayGroup(props)} */}
-      <Grid item>
-      <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' ) ? false : true} variant='outlined' color="secondary"><Link to="/where">Next</Link></Button>
+      <Grid item className={classes.griditemNextBtn}>
+      <Button disabled={(props.userObj.name !== '' && props.userObj.type !== '' && props.userObj.lookingFor !== '' ) ? false : true} variant='text' color="secondary"><Link to="/where">Next</Link></Button>
       </Grid>
     </Grid>
 
@@ -149,20 +141,6 @@ const styles = {
   textField: {
     width: 250
   },
-  welcome: {
-    background: '#a1a1a1',
-    textAlign: "center"
-  },
-  hi: {
-    background: '#a1a1a1',
-    padding: '15px 0 15px 0',
-  },
-  who: {
-    fontSize: '30px',
-    background: '#a1a1a1',
-    padding: '0 0 10px 0',
-    textAlign: "center"
-  },
   content: {
     background: '#EBF0FF',
     height: '100vh',
@@ -174,6 +152,10 @@ const styles = {
   type: {
     marginTop: 20,
     marginLeft: 40
+  },
+  griditemNextBtn: {
+    marginTop: 20,
+    marginLeft: 300
   },
   card: {
     minWidth: 150
@@ -195,15 +177,15 @@ const styles = {
     marginBottom: 16,
     fontSize: 48
   },
-  colorSwitchBase: {
-    color: 'primary',
-    '&$colorChecked': {
-      color: 'primary',
-      '& + $colorBar': {
-        backgroundColor: 'primary',
-      },
-    },
-  }
+  // colorSwitchBase: {
+  //   color: 'primary',
+  //   '&$colorChecked': {
+  //     color: 'primary',
+  //     '& + $colorBar': {
+  //       backgroundColor: 'primary',
+  //     },
+  //   },
+  // }
 }
 
 export default withStyles(styles)(RegisterWho)

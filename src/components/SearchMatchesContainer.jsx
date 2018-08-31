@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import SearchMatches from './SearchMatches'
-import { pushDbResults, pushDbMatched } from '../actions/db'
+import { pushDbResults, pushDbMatched, clearMatched } from '../actions/db'
 import { db } from '../lib/db_init'
 import PeopleFeedContainer from './PeopleFeedContainer';
+import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
 
 
 class SearchMatchesContainer extends React.PureComponent {
@@ -15,19 +16,19 @@ class SearchMatchesContainer extends React.PureComponent {
     const peopleDB = db.collection("people")
     const filterArrary = []
 
-    const allLocations = (peopleArr) => peopleArr.map(memb => {
-      return memb.location
-    })
-    let cities = allLocations(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) == pos)
+    // const allLocations = (peopleArr) => peopleArr.map(memb => {
+    //   return memb.location
+    // })
+    // let cities = allLocations(this.props.db.dbResults).filter((item, pos, self) => self.indexOf(item) === pos)
 
-    const dataExist = (field) => {
-      if (field !== '') {
-        return field
-      } else {
-        console.log("CITIES: " + cities)
-        return cities
-      }
-    }
+    // const dataExist = (field) => {
+    //   if (field !== '') {
+    //     return field
+    //   } else {
+    //     console.log("CITIES: " + cities)
+    //     return cities
+    //   }
+    // }
 
     filterArrary.push(peopleDB
       .where('type', '==', this.props.user.lookingFor)
@@ -53,7 +54,7 @@ class SearchMatchesContainer extends React.PureComponent {
 
   people = (dispatch) => {
     // let tmp = Promise.all([type.get(), location.get()])
-    let tmp = Promise.all(this.filterConstructor()) //Hardcoded, FIXME!
+    Promise.all(this.filterConstructor()) //Hardcoded, FIXME!
       .then(res => {
 
         res.forEach(r => {
@@ -62,11 +63,6 @@ class SearchMatchesContainer extends React.PureComponent {
             person.docid = d.id
             let dateFrom = new Date(this.props.user.dateFrom).getTime() / 1000
             let dateTo = new Date(this.props.user.dateTo).getTime() / 1000
-
-            console.log("date from: ", dateFrom)
-            console.log("Person from: ", person.dateFrom.seconds)
-            console.log("date to: ", dateTo)
-            console.log("Person to: ", person.dateTo.seconds)
 
             if (dateFrom >= person.dateFrom.seconds && dateTo <= person.dateTo.seconds) {
 
@@ -84,6 +80,9 @@ class SearchMatchesContainer extends React.PureComponent {
   }
 
   componentDidMount() {
+    if (this.props.db.dbMatches.length !== 0) {
+      this.props.clearMatched()
+    }
     this.people(this.props.pushDbMatched)
 
     // Set a timer so the message changes when no matches are returned quickly enough.
@@ -103,7 +102,10 @@ class SearchMatchesContainer extends React.PureComponent {
         return <PeopleFeedContainer />
       }
     } else {
-      return <div>No Matches Found!</div>
+      return <div>
+        <div>No Matches Found!</div>
+        <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
+      </div>
     }
 
     return <div>Searching....</div>
@@ -117,4 +119,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { pushDbResults, pushDbMatched })(SearchMatchesContainer)
+export default connect(mapStateToProps, { pushDbResults, pushDbMatched, clearMatched })(SearchMatchesContainer)

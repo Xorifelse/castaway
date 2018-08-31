@@ -23,26 +23,16 @@ function formatDate(date) {
 }
 
 function stepThree(props) {
-  const { classes, user } = props
+  const { user } = props
 
   if (!user.dateFrom || !user.dateTo) {
     return null
   }
 
-  const changingFilter = props.changingFilter
-  if (changingFilter) {
-    return (
-      <Grid container spacing={16} direction="row" justify="center" alignItems="right">
-        <Grid>
-          <Link from="/filter" to="/search"><Button variant="contained" color="primary">Filter</Button></Link>
-        </Grid>
-      </Grid>
-    )
-  }
   return (
-    <Grid container spacing={16} direction="row" justify="center" alignItems="right">
+    <Grid container spacing={16} direction="row" justify="center" alignItems="flex-end">
       <Grid>
-        <Link from="/where" to="/confirm"><Button variant="contained" color="primary">Continue</Button></Link>
+        <Link to="/confirm"><Button variant="contained" color="primary">Continue</Button></Link>
       </Grid>
     </Grid>
   )
@@ -64,8 +54,8 @@ function stepTwo(props) {
           type="date"
           error={props.inputErrorUntil}
           helperText={props.inputErrorUntilHelper}
-          // defaultValue={formatDate(props.defaultUntil)}  //CHANGED FOR TEST
-          defaultValue={formatDate(props.user.dateTo)}
+          defaultValue={formatDate(props.defaultUntil)}  //CHANGED FOR TEST
+          // defaultValue={formatDate(props.user.dateTo)}//CHANGED FOR TEST
           className={classes.textField}
           InputLabelProps={{
             shrink: true,
@@ -88,9 +78,9 @@ function RegisterWhen(props) {
   }
 
   return (
-    <Grid container spacing={16} direction="column" justify="top" alignItems="left" className={classes.content}>
+    <Grid container spacing={16} direction="column" justify="flex-start" alignItems="flex-start" className={classes.content}>
       <Grid item className={classes.topBarBreadcrumbs}>
-        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state} width="80px" /></Grid>
+        <Grid item className={classes.topBarBreadcrumbsPNG}><img src={breadcrumbs_state} width="80px" alt=""/></Grid>
       </Grid>
       <Grid item className={classes.topBar}>
         <Typography variant="headline" component="h2" className={classes.txtBig}>
@@ -195,23 +185,9 @@ const styles = theme => ({
     marginBottom: 16,
     fontSize: 48
   },
-  colorSwitchBase: {
-    color: 'primary',
-    '&$colorChecked': {
-      color: 'primary',
-      '& + $colorBar': {
-        backgroundColor: 'primary',
-      },
-    },
-  },
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
   },
 });
 

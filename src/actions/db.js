@@ -16,6 +16,13 @@ export function pushDbMatched(resultsArray) {
   }
 }
 
+export const CLEAR_MATCHED = 'CLEAR_MATCHED'
+export function clearMatched(resultsArray) {
+  return {
+    type: CLEAR_MATCHED,
+  }
+}
+
 // export const CREATE_ALBUM = 'CREATE_ALBUM'
 // export function createAlbum(title) {
 //   return (dispatch) => {
