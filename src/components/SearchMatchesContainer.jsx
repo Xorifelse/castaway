@@ -5,6 +5,7 @@ import { db } from '../lib/db_init'
 import PeopleFeedContainer from './PeopleFeedContainer';
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
+import SearchMatches from './SearchMatches';
 
 
 class SearchMatchesContainer extends React.PureComponent {
@@ -108,7 +109,11 @@ class SearchMatchesContainer extends React.PureComponent {
       </div>
     }
 
-    return <div>Searching....</div>
+    return (
+      <SearchMatches
+        message="Looking for matches..." 
+      />
+    )
   }
 }
 
