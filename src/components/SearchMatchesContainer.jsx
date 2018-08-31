@@ -5,6 +5,7 @@ import { db } from '../lib/db_init'
 import PeopleFeedContainer from './PeopleFeedContainer';
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
+import SearchMatches from './SearchMatches';
 
 
 class SearchMatchesContainer extends React.PureComponent {
@@ -102,13 +103,22 @@ class SearchMatchesContainer extends React.PureComponent {
         return <PeopleFeedContainer />
       }
     } else {
-      return <div>
-        <div>No Matches Found!</div>
-        <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
-      </div>
+      return (
+        <SearchMatches
+          topMessage="We didn't find any matches!"
+          message="Try changing your filters"
+          loading={false}
+        />
+      )
     }
 
-    return <div>Searching....</div>
+    return (
+      <SearchMatches
+        topMessage="We've created your profile!"
+        message="Looking for matches..."
+        loading={true}
+      />
+    )
   }
 }
 
