@@ -31,6 +31,14 @@ export function setLocation(location) {
   }
 }
 
+export const SET_NATIONALITY = 'SET_NATIONALITY'
+export function setNationality(nationality) {
+  return {
+    type: SET_NATIONALITY,
+    payload: nationality
+  }
+}
+
 export const SET_DATE_FROM = 'SET DATE FROM'
 export function setDateFrom(datetime) {
   return {
@@ -52,6 +60,14 @@ export function setGroup(group) {
   return {
     type: SET_GROUP,
     payload: group
+  }
+}
+
+export const SET_HOBBIES = 'SET_HOBBIES'
+export function setHobbies(hobbie) {
+  return {
+    type: SET_HOBBIES,
+    payload: hobbie
   }
 }
 
@@ -100,5 +116,12 @@ export function setAvatarUrl(url){
   return {
     type: SET_AVATAR_URL,
     payload: url
+  }
+}
+
+export const RESET_FEED_CURRENT = 'RESET_FEED_CURRENT'
+export function resetFeedCurrent(){
+  return {
+    type: RESET_FEED_CURRENT
   }
 }

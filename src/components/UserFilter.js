@@ -1,52 +1,68 @@
 import * as React from 'react'
-// import { Link } from 'react-router-dom'
 import FilterWhenContainer from './FilterWhenContainer'
 
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
 
+import feedbgimage from '../img/Feed_Background_Amend5.png'
 
 function UserFilter(props) {
+  const { classes } = props
+
   return (
-    <Grid container spacing={16} direction="column" justify="center" alignItems="center">
+    <Grid container spacing={16} direction="column" justify="flex-start" alignItems="center" className={classes.content} >
+      <Typography gutterBottom variant="title" style={{position: 'absolute',color: 'rgba(255, 255, 255, 0.90)', background: 'rgba(23, 41, 55, 1)', textAlign: 'center', fontSize: 20, width: '100vh', marginTop: 10}}>
+        Change your preferences!
+      </Typography>
       <Grid item>
-        <Typography variant="headline" component="h2">
-          Change your preferences!
-        </Typography>
-        <Grid container spacing={16} direction="column" justify="center" alignItems="center">
-          <Grid item>
+
+        <Card className={classes.personCard}>
+          <CardMedia
+            className={classes.profileImage}
+            style={{position: 'relative', width: '100vh', backgroundColor: 'rgba(0,0,0,0)'}}>
+          </CardMedia>
+          <CardContent>
             <Typography variant="headline" component="h2">
               Looking for a...
-          </Typography>
-          </Grid>
-          <Grid item>
+            </Typography>
+            <Grid item>
             {props.lookingFor.map(lookingFor => <Button key={lookingFor} onClick={() => props.setLookingForFn(lookingFor)}
-              variant={props.buttonLookingForContainedFn(lookingFor)} color="primary">{lookingFor}</Button>)}
+              variant={props.buttonLookingForContainedFn(lookingFor)} color="secondary">{lookingFor}</Button>)}
           </Grid>
-        </Grid>
-        <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item>
+          </CardContent>
+        </Card>
+        <Card className={classes.personCard}>
+          <CardMedia
+            className={classes.profileImage}
+            style={{position: 'relative', width: '100vh', backgroundColor: 'rgba(0,0,0,0)'}}>
+          </CardMedia>
+          <CardContent>
             <Typography variant="headline" component="h2">
               Which city...
-          </Typography>
-          </Grid>
-          <Grid item>
+            </Typography>
+            <Grid item>
             {props.cities.map(location => <Button key={location} onClick={() => props.setLocationFn(location)}
-              variant={props.buttonLocationContainedFn(location)} color="primary">{location}</Button>)}
+              variant={props.buttonLocationContainedFn(location)} color="secondary">{location}</Button>)}
           </Grid>
-        </Grid>
-        {/* {props.group.map(groupType => <Button key={groupType} onClick={() => props.setGroupFn(groupType)}
-        variant={props.buttonContainedFn(groupType)} color="primary">{groupType}</Button>)} */}
-
-        {/* {props.hobbies.map(hobbie => <Button key={hobbie} onClick={() => props.setHobbiesFn(hobbie)}
-        variant={props.buttonContainedFn(hobbie)} color="primary">{hobbie}</Button>)} */}
-
-        {/* <Link to="/feed">Back To Feed</Link> */}
-        <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          <Grid item><FilterWhenContainer /></Grid>
-        </Grid>
+          </CardContent>
+        </Card>
+        <Card className={classes.personCard}>
+          <CardMedia
+            className={classes.profileImage}
+            style={{position: 'relative', width: '100vh', backgroundColor: 'rgba(0,0,0,0)'}}>
+          </CardMedia>
+          <CardContent>
+            <Typography variant="headline" component="h2">
+              Change the time
+            </Typography>
+            <Grid item><FilterWhenContainer /></Grid>
+          </CardContent>
+        </Card>
       </Grid>
     </Grid>
   )
@@ -62,6 +78,23 @@ hobbies(pin):
 */
 
 const styles = {
+  content: {
+    background: '#EBF0FF',
+    height: '100vh',
+  },
+  personCard: {
+    marginTop: 30,
+    maxWidth: 320,
+    position: 'relative',
+    background: '#EBF0FF'
+  },
+  profileImage: {
+    width: 320
+  },
+  pos: {
+    textAlign: 'center',
+    marginBottom: 24,
+  }
 };
 
 export default withStyles(styles)(UserFilter)

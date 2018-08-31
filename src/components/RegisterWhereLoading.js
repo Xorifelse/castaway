@@ -1,72 +1,42 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+
 
 import { withStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
-import Switch from '@material-ui/core/Switch'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import TextField from '@material-ui/core/TextField'
+import Grid           from '@material-ui/core/Grid'
+import Typography     from '@material-ui/core/Typography'
+import loadingImg from '../img/castaway_loader.gif'
 import breadcrumbs_state02 from '../img/breadcrumbs_state02.png'
 
 // const breadcrumbs_state01 = require('../lib/graphics/breadcrumbs-allstates/breadcrumbs_state01.png')
 
-const displayNextButton = (props) => {
-  if (props.userProfile) {
-    return
-  }
-  return (
-    <Button variant='text' color="secondary" disabled={(props.userObj.location !== '') ? false : true}>
-      <Link to={'/when'}>NEXT</Link>
-    </Button>
-  )
-}
 
-
-function RegisterWhere(props) {
+function RegisterWhereLoading(props) {
 
   const { classes } = props
   return (
     <Grid container spacing={16} direction="column" justify="flex-start" alignItems="center" className={classes.content}>
       <Grid item className={classes.topBarBreadcrumbs}>
-        <img src={breadcrumbs_state02} width="80px" alt="" />
+        <img src={breadcrumbs_state02} width="80px" alt=""/>
       </Grid>
       <Grid item className={classes.topBar}>
         <Typography className={classes.txtSmall}>
           {(props.userObj.type === 'local') && "Awesome. You're a Local?"}
-          {(props.userObj.type === 'traveller') && "Awesome. You're a Traveller?"}
+          {(props.userObj.type === 'traveller') && "Awesome. You're a Traveller?"} 
         </Typography>
         <Typography variant="headline" component="h2" className={classes.txtBig}>
           {(props.userObj.type === 'local') && "Where do you live?"}
-          {(props.userObj.type === 'traveller') && "Where are you headed?"}
+          {(props.userObj.type === 'traveller') && "Where are you headed?"}  
         </Typography>
       </Grid>
       <Grid item >
-        {/* CITY BUTTONS */}
-
-        <Grid container spacing={16} direction="column" justify="center" alignItems="center">
-          <Grid item>
-            <Typography>fill in your location or choose one from below</Typography>
-          </Grid>
-
-          <Grid item>
-            {/* input */}
-            <TextField id="city" value={props.inputValue} onChange={(event) => props.inputChangeFn(event)} />
-          </Grid>
-          <Grid item>
-            <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-              {/* map over cities with grid items */}
-              {props.cities.map(location => <Grid item key={location}><Button onClick={() => props.setLocationFn(location)} variant={props.buttonContainedFn(location)} color="secondary" >{location}</Button></Grid>)}
-            </Grid>
-          </Grid>
-          <Grid item className={classes.griditemNextBtn}>
-            {/* next button */}
-            {displayNextButton(props)}
-          </Grid>
-        </Grid>
+        {/* loading */}
+        {/* <div style={{margin: 'auto', width: '30%', paddingTop: '50%'}}> */}
+          <img src={loadingImg} style={{margin: 'auto'}} alt="" />
+        {/* </div> */}
+        
       </Grid>
     </Grid>
-
+    
 
   )
 }
@@ -104,7 +74,7 @@ const styles = {
     marginTop: 40,
     marginLeft: 40,
     position: 'relative',
-    left: -30
+     left: -30
   },
   type: {
     marginTop: 20,
@@ -145,4 +115,4 @@ const styles = {
   // }
 }
 
-export default withStyles(styles)(RegisterWhere)
+export default withStyles(styles)(RegisterWhereLoading)

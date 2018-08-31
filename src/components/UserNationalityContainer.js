@@ -1,14 +1,13 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import RegisterWhere from './RegisterWhere'
-import RegisterWhereLoading from './RegisterWhereLoading'
-import { setLocation } from '../actions/user'
+import UserNationality from './UserNationality'
+import { setNationality } from '../actions/user'
 import { pushDbResults } from '../actions/db'
 import { db } from '../lib/db_init'
 
-class RegisterWhereContainer extends React.PureComponent {
+class UserNationalityContainer extends React.PureComponent {
   handleInputChange = (event) => {
-    this.props.setLocation(event.target.value)
+    this.props.setNationality(event.target.value)
   }
 
   componentDidMount() {
@@ -34,12 +33,12 @@ class RegisterWhereContainer extends React.PureComponent {
 
   }
 
-  allLocations = (peopleArr) => peopleArr.map(memb => {
-    return memb.location
+  allNationalities = (peopleArr) => peopleArr.map(memb => {
+    return memb.nationality
   })
 
-  buttonContained = (city) => {
-    if (this.props.user.location.toLowerCase() === city.toLowerCase()) {
+  buttonContained = (nationality) => {
+    if (this.props.user.nationality.toLowerCase() === nationality.toLowerCase()) {
       return 'contained'
     } else {
       return 'outlined'
@@ -47,22 +46,21 @@ class RegisterWhereContainer extends React.PureComponent {
   }
 
   render() {
-    if (this.props.db.dbResults.length === 0) return <RegisterWhereLoading userObj={this.props.user}/>
+    if (this.props.db.dbResults.length === 0) return 'getting available cities...'
     return (
-      <RegisterWhere
-        cities={Array.from(new Set(this.allLocations(this.props.db.dbResults))).filter(city => {
-          if(this.props.user.location.length > 0){
-            return city.toLowerCase().includes(this.props.user.location.toLowerCase())
+      <UserNationality
+        nationalities={Array.from(new Set(this.allNationalities(this.props.db.dbResults))).filter(nationality => {
+          if (this.props.user.nationality.length > 0) {
+            return nationality.toLowerCase().includes(this.props.user.nationality.toLowerCase())
           } else {
             return true
           }
         })}
-        setLocationFn={this.props.setLocation}
+        setNationalityFn={this.props.setNationality}
         buttonContainedFn={this.buttonContained}
         userObj={this.props.user}
         inputChangeFn={this.handleInputChange}
-        inputValue={this.props.user.location}
-        userProfile={this.props.userProfile}
+        inputValue={this.props.user.nationality}
       />
     )
   }
@@ -76,4 +74,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setLocation, pushDbResults })(RegisterWhereContainer)
+export default connect(mapStateToProps, { setNationality, pushDbResults })(UserNationalityContainer)
