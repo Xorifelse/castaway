@@ -60,6 +60,7 @@ class PeopleFeedContainer extends React.PureComponent {
     return (
       <div>
         <div>No more matches in that area!</div>
+        <Link to="/profile"><Button variant="contained" color="primary">Profile</Button></Link>
         <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
       </div >
     )
