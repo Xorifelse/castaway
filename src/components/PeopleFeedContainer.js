@@ -11,6 +11,7 @@ import {
 } from '../actions/user'
 
 import PeopleFeed from './PeopleFeed'
+import PeopleFeedNoMatches from './PeopleFeedNoMatches'
 import Swipeable from 'react-swipeable'
 
 class PeopleFeedContainer extends React.PureComponent {
@@ -58,11 +59,11 @@ class PeopleFeedContainer extends React.PureComponent {
     }
 
     return (
-      <div>
-        <div>No more matches in that area!</div>
-        <Link to="/profile"><Button variant="contained" color="primary">Profile</Button></Link>
-        <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
-      </div >
+      // <div>
+      //   <div>No more matches in that area!</div>
+      //   <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
+      // </div >
+      <PeopleFeedNoMatches />
     )
   }
 }

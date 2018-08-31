@@ -9,26 +9,12 @@ import Typography     from '@material-ui/core/Typography'
 import TextField      from '@material-ui/core/TextField'
 import breadcrumbs_state02 from '../img/breadcrumbs_state02.png'
 
-
-const displayBreadCrumbsAndGreetings = (props) => {
-  if (props.userProfile) {
-    return
-  }
-  return (
-    <Grid item>
-      {/* next button */}
-      <Button variant='outlined' color="primary" disabled={(props.userObj.location !== '') ? false : true}><Link to={'/when'}>NEXT</Link></Button>
-    </Grid>
-  )
-}
-
 // const breadcrumbs_state01 = require('../lib/graphics/breadcrumbs-allstates/breadcrumbs_state01.png')
 
 
 function RegisterWhere(props) {
 
   const { classes } = props
-
   return (
     <Grid container spacing={16} direction="column" justify="flex-start" alignItems="center" className={classes.content}>
       <Grid item className={classes.topBarBreadcrumbs}>
@@ -70,16 +56,6 @@ function RegisterWhere(props) {
           </Grid>
         </Grid>
       </Grid>
-      <Grid>
-        .
-        </Grid>
-      <Grid item>
-        <Grid container spacing={16} direction="row" justify="center" alignItems="center">
-          {/* map over cities with grid items */}
-          {props.cities.map(location => <Button key={location} onClick={() => props.setLocationFn(location)} variant={props.buttonContainedFn(location)} color="primary">{location}</Button>)}
-        </Grid>
-      </Grid>
-      {displayBreadCrumbsAndGreetings(props)}
     </Grid>
     
 

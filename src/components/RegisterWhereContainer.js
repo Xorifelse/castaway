@@ -61,7 +61,6 @@ class RegisterWhereContainer extends React.PureComponent {
         userObj={this.props.user}
         inputChangeFn={this.handleInputChange}
         inputValue={this.props.user.location}
-        userProfile={this.props.userProfile}
       />
     )
   }

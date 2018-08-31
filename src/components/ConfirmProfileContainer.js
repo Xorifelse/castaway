@@ -73,9 +73,6 @@ class ConfirmProfileContainer extends React.PureComponent {
       });
   }
 
-
-
-
   render() {
     return (
         <ConfirmProfile 
