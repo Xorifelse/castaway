@@ -157,7 +157,7 @@ const styles = {
   },
   griditemNextBtn: {
     marginTop: 20,
-    marginLeft: 300
+    marginLeft: 250
   },
   card: {
     minWidth: 150
