@@ -21,6 +21,7 @@ const initialState = {
   name: '',
   lookingFor: 'traveller',
   location: '',
+  nationality: 'N/A', 
   age: 0,
   group: null,
   dateFrom: '',
