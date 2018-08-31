@@ -26,7 +26,7 @@ const initialState = {
   hobbies: [],
   arrayLiked: [],
   arrayDisliked: [],
-  feedCurrent: 0                  // current viewed person in matched
+  feedCurrent: 0                 // current viewed person in matched
 }
 
 export default (state = initialState, action = {}) => {
