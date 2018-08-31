@@ -103,15 +103,20 @@ class SearchMatchesContainer extends React.PureComponent {
         return <PeopleFeedContainer />
       }
     } else {
-      return <div>
-        <div>No Matches Found!</div>
-        <Link to="/filter"><Button variant="contained" color="primary">Filter</Button></Link>
-      </div>
+      return (
+        <SearchMatches
+          topMessage="We didn't find any matches!"
+          message="Try changing your filters"
+          loading={false}
+        />
+      )
     }
 
     return (
       <SearchMatches
-        message="Looking for matches..." 
+        topMessage="We've created your profile!"
+        message="Looking for matches..."
+        loading={true}
       />
     )
   }
