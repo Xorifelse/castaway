@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Button         from '@material-ui/core/Button'
-import feedbgimage from '../img/Feed_Background_Amend2.png'
+import feedbgimage from '../img/Feed_Background_Amend3.png'
 import {Link}      from 'react-router-dom'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
