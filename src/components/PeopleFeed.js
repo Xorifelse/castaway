@@ -24,10 +24,9 @@ import acceptBtn from '../img/Accept_Button.png'
 function PeopleFeed(props) {
   const { classes } = props
   let country_flag = null
-  if (!props.person.nationality) {
-    country_flag = country_unknown
-  } else {
-    country_flag = country_unknown
+    if (props.person.nationality === 'N/A') {
+      country_flag = country_unknown
+    } 
     if (props.person.nationality === 'NL') {
       country_flag = country_NL
     }
@@ -46,7 +45,7 @@ function PeopleFeed(props) {
     if (props.person.nationality === 'BO') {
       country_flag = country_BO
     }
-  }
+  
   // const bull = <span className={classes.bullet}>•</span>
   return (
     // <div style={{backgroundImage: `url(${feedbgimage})`, minHeight: '100vh', minWidth: '100vw', position: 'absolute', top: 0}>
